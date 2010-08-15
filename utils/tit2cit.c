@@ -53,6 +53,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include <X11/Xos.h>	/* OS dependent stuff */
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifdef __CYGWIN32__
 #define FOPEN_R		"rb"
@@ -60,7 +61,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #define FOPEN_R		"r"
 #endif
 
-extern char *malloc(size_t), *calloc(size_t, size_t), *realloc(void *, size_t);
 
 extern int HZencode(char *);		/* from HZutil.o */
 extern int HZgetprompt(char *, char *);	/* from HZutil.o */
