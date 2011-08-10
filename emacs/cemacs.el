@@ -318,7 +318,7 @@
 ) 
 
 (cond
- ((> emacs-major-version 19)
+ ((and (> emacs-major-version 19) (< emacs-major-version 23))
   (undo-mule-clever-options)
   )
 )
