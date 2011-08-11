@@ -323,6 +323,20 @@
   )
 )
 
+(when (> emacs-major-version 22)
+  (when (equal (getenv "CHAR_ENCODING") "BIG5")
+    (set-keyboard-coding-system 'big5)
+    (set-terminal-coding-system `big5)
+    (set-language-environment "Chinese-BIG5")
+    )
+  (when (equal (getenv "CHAR_ENCODING") "GB")
+    (set-keyboard-coding-system 'gb2312)
+    (set-terminal-coding-system `gb2312)
+    (set-language-environment "Chinese-GB")
+    )
+  )
+
+
 ;; Older versions of emacs-19 do not have those functions:
 ;;  current-left-margin
 ;;  current-fill-column
@@ -1318,6 +1332,7 @@ ESC v PageUp     ^e end of line   ^x^c quit    ^c^p input lookup before cursor"
 (global-set-key "\C-c\C-p" 'cemacs-input-lookup-previous)
 (global-set-key "\C-c\C-l" 'cemacs-help-next)
 
+(when (< emacs-major-version 23)
 (substitute-key-definition 'forward-char
 			   'cemacs-forward-char global-map)
 (substitute-key-definition 'backward-char
@@ -1330,6 +1345,7 @@ ESC v PageUp     ^e end of line   ^x^c quit    ^c^p input lookup before cursor"
 			   'cemacs-backward-delete-char global-map)
 (substitute-key-definition 'backward-delete-char-untabify
 			   'cemacs-backward-delete-char-untabify global-map)
+)
 (substitute-key-definition 'next-line
 			   'cemacs-next-line global-map)
 (substitute-key-definition 'previous-line
