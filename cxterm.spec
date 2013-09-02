@@ -54,7 +54,7 @@ Fonts used by cxterm
 %setup 
 
 %build
-CFLAGS="-Wall -O3" ./configure --prefix=/usr/X11R6
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr/X11R6
 make
 
 %install
