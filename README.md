@@ -29,6 +29,21 @@ at this moment.
 Double hit F# key will show the corresponding input "codes" of last
 entered Chinese character.
 
+For UTF8 to GB2312 cross converting, I put the following in my ~/.bashrc:
+
+    alias u82gb='iconv -f utf8 -t gb2312'
+    alias gb2u8='iconv -t utf8 -f gb2312'
+
+By the way, I recently found zsh to be better than bash, at least at
+handling "/" in directory/symlink arguments when TAB is pressed. 
+The following 2 commands will give you totally different results under bash:
+
+    /bin/rm -fr some_sym_link_to_dir
+
+and:
+
+    /bin/rm -fr some_sym_link_to_dir/
+
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
 用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
 最近输入的一个中文的编码。
