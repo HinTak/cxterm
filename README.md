@@ -6,10 +6,14 @@ quite some years, but it somehow failed to work with Ubuntu Linux recently.
 Today I've made it work again on Ubuntu 18.04, by commenting out VEOL2, 
 and VLNEXT lines in main.c . I don't know why, but it is working now. Cheers!
 
-Ubuntu's default local is zh_CN.UTF-8. If you use GB encoding, you may need 
-add GB2312 locale: Login as root, add one line "zh_CN GB2312" to file: 
-    /var/lib/locales/supported.d/local , 
-then run command "locale-gen --purge"
+Ubuntu's default locale is `zh_CN.UTF-8`. Yes, UTF8 is more popular. If you 
+use GB encoding, you may need add GB2312 locale: 
+
+Login as root, add one line `"zh_CN GB2312"` to file: 
+
+    /var/lib/locales/supported.d/local
+
+then run command "locale-gen --purge".
 
 And add following to your ~/.bashrc:
 
@@ -18,4 +22,4 @@ And add following to your ~/.bashrc:
     fi
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
-用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com
+用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com .
