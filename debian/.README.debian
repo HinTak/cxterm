@@ -1,0 +1,11 @@
+cxterm for DEBIAN
+----------------------
+
+- For cxterm-big5 and cxterm-ks, the default fonts are taipei16 and
+  hanglm16 respectively. However the alias of these fonts are not
+  present in fonts.alias after you have installed the corresponding
+  fonts. Therefore you need to add the alias to fonts.alias
+  manually before starting cxterm.
+
+Anthony Wong <ypwong@debian.org>, Fri,  8 Jan 1999 13:40:46 +0800
+Updated on: Sat,  5 Jun 1999 04:37:40 +0800

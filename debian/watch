@@ -1,0 +1,5 @@
+# You can run the "uscan" command to check for upstream updates and more.
+
+# Site          Directory                  Pattern          Version Script
+
+ftp.ifcss.edu  /pub/software/x-win/cxterm  cxterm-*.tar.gz  debian  uupdate

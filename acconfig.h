@@ -1,0 +1,2 @@
+#undef HANZI
+#undef NARROWPROTO

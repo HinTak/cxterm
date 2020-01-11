@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+trap "echo ;\
+      echo 'Received signal.  Aborting removal of xterm package.' ;\
+      echo ;\
+      exit 1" 1 2 3 15
+
+case "$1" in
+  remove) ;;
+  purge) ;;
+  upgrade|failed-upgrade|abort-install|abort-upgrade|disappear) exit 0 ;;
+  *)
+    echo "ERROR: cxterm postrm called with unknown argument \"$1\"."
+    echo "Aborting removal of cxterm package."
+    exit 1 ;;
+esac
+
+if command -v suidunregister > /dev/null 2>&1; then
+    suidunregister -s 'cxterm-common' /usr/X11R6/bin/cxterm.common
+fi
+
+exit

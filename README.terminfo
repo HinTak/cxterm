@@ -1,0 +1,42 @@
+Screen corruption problem when using full-screen programs
+like lynx, emacs, or vi:
+========================
+
+Thanks to some hints on the web site of Thomas Dickey 
+(http://dickey.his.com/xterm/xterm.html) - author of xterm and
+some other programs on Xfree86. Basically he was complaining
+about most of the xterm derivatives on the market and said none of
+them does ANSI escape sequence properly (including CXterm). And
+he explained that xterm in the latest XFree86 does it far better...
+
+There's the problem. CXterm uses the xterm termcap/terminfo entries.
+As xterm in XFree86 got better over the years, its termcap/terminfo
+entries had changed; whereas CXterm is essentially stuck in time
+with X Consortium's initial X11R6. In fact X.Org's latest X11R6.6
+ships the same termcap for their xterm as X Consortium did 10 years ago, 
+so the problem is just that XFree86 has moved onwards a lot. 
+
+CXterm looks for a "cxterm" termcap/terminfo entries before falling
+back to those of xterm's. So to make CXterm work properly,
+just append "cxterm.termcap" to "/etc/termcap", and run 
+"tic cxterm.terminfo" as root so that some cxterm entries get
+added to the terminfo database. These two files are adapted from
+X.Org's X11R6.6.
+  
+--
+Hin-Tak Leung <htl10@users.sourceforge.net> 06 May, 2003
+
+----------------------------------------------------------
+More clues from Thomas Dickey (in xterm's faq). I realise
+that cxterm 5.0p3 is identical X11R6 xterm except
+for the Chinese bits, but we have since added an ANSI
+color patch and in version 5.1.p1 we have made a bit
+more color change. So we really need to have new 
+termcap/terminfo entries which is cxterm 5.0p3 +color, 
+rather than the puriest X11R6 xterm or
+xterm-xfree86. I also added reset_1string, erase_chars,
+and enter_blink_mode. (not sure about "erase_chars",
+may remove it later, but the other two do work).
+
+26 Aug, 2004
+----------------------------------------------------------

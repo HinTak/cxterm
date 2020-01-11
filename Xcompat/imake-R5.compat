@@ -1,0 +1,37 @@
+/* imake.compat file for X11R5 */
+
+X_COMPATIBLE_FLAGS = -DCXTERM_COMPATIBLE -DX11RELEASE=5
+
+/* some "X11R5" is really X11R4 to imake */
+
+#ifndef XCOMM
+#define XCOMM	#
+#endif
+#ifndef NullParameter
+#define NullParameter
+#endif
+
+/* used in cxterm/Imakefile */
+
+#ifndef RemoveFile
+#define RemoveFile(file) $(RM) file
+#endif /* RemoveFile */
+
+#ifndef LinkRule
+#define LinkRule(program,options,objects,libraries) \
+$(CC) -o program options objects libraries $(EXTRA_LOAD_FLAGS)
+#endif /* LinkRule */
+
+#ifndef SpecialCObjectRule
+#define	SpecialCObjectRule(a,b,c) SpecialObjectRule(a,b,c)
+#endif
+
+/* used in fonts/Imakefile (again, for false-self-claim X11R5) */
+#ifndef FontObj
+#if defined UsePCFFonts && UsePCFFonts
+#define FontObj(basename) basename.pcf
+#else
+#define FontObj(basename) basename.snf
+#endif
+#endif /* FontObj */
+

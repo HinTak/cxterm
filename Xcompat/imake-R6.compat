@@ -1,0 +1,4 @@
+/* imake.compat file for X11R6 */
+
+X_COMPATIBLE =
+

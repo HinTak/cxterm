@@ -1,0 +1,5 @@
+VTPrsTbl.o: VTPrsTbl.c /usr/include/stdc-predef.h VTparse.h
+
+/usr/include/stdc-predef.h:
+
+VTparse.h:

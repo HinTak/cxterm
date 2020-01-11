@@ -1,0 +1,519 @@
+.\" $Id: cxterm.1,v 1.1 2001/11/28 04:41:31 xucs Exp $
+.TH CXTERM 1 "Version 5.0" "January 1, 1995"
+.SH NAME
+cxterm \- Chinese terminal emulator for X
+.SH SYNOPSIS
+.B cxterm
+[\-\fItoolkitoption\fP ...] [\-option ...]
+.SH DESCRIPTION
+The \fIcxterm\fP program is a Chinese terminal emulator
+for the X Window System. It provides DEC VT102 compatible terminals
+with a capability of interfacing Chinese language input/output.
+It is fully compatible with X11R6 \fIxterm\fP.
+Although the Tektronix 4014 window of xterm remains in cxterm,
+you can only use Chinese in the VT102 window (the default mode).
+It requires at least two X11 fonts from the X server, one 16-bit Chinese
+font and one normal 8-bit terminal character font, to display Chinese
+characters as well as normal 7-bit ASCII.
+.PP
+In \fIcxterm\fP, one Chinese character is represented by 2 bytes, and one
+ASCII is represented by 1 byte. There are two kinds of Chinese encoding
+schemes, one requires that the highest-bits (MSB) be set to 1 in both bytes
+of a Chinese character, the other only requires that the MSB in the first
+byte of a Chinese character be set to 1. Both schemes requires that the
+MSB in each ASCII code be unset, i.e. second half of the ASCII code set
+(from 128 to 255) cannot be used in \fIcxterm\fP.
+The \fIcxterm\fP program recognizes both GB and BIG5 encoding,
+which are examples of the above two scheme respectively.
+However, two encoding cannot co-exist in the same time.
+.PP
+Please refer manual page \fIxterm(1)\fP for usage of \fIxterm\fP.
+This manual will cover only those features related to the Chinese
+language processing part.
+.SH "CHINESE INPUT BASIC"
+\fICxterm\fP adds a special two-line display area to the bottom of window.
+It is often called the input area and
+is used to display and convert key sequences into Chinese characters.
+Chinese characters are input by their
+corresponding input keystroke sequences
+defined in some input mapping method.
+When a valid input key is pressed,
+\fIcxterm\fP will first append it to an input key buffer
+and echo it in the upper line of the input area.
+It then translates the input key buffer into Chinese character(s)
+and display the converted character(s)
+in the lower line of the input area.
+In case the same input keystroke sequence
+can be translated in different ways,
+all possible candidates will be displayed as a selection list.
+Each candidate is preceded by a label
+that is usually a digit and
+is often refered as the selection key for that candidate.
+Pressing the selection key
+will send the corresponding candidate
+to the \fIcxterm\fP terminal as input.
+The input area and input key buffer is then cleared and prepared
+for the next input cycle.
+.PP
+If the current input keystroke sequence yields more candidates than
+that can be displayed in the input area,
+only the first group of ten candidates are shown.
+The rest of the selection list will shown a group at a time
+upon a press of the "move-right" key.
+Conceptually it can be considered as a "viewport"
+that reveals only a segment of the list.
+The size of each group or viewport is usually ten candidates;
+the actual number can be redefined
+and it depends on the current width of the window.
+Initially the viewport is at the beginning of the list.
+A ``>'' sign at the right edge of the viewport
+indicates more candidates available to the right.
+A move-right key (usually ``>'' or ``.'',
+both on the same physical key button)
+will move the viewport to the right
+and reveal the next group of candidates.
+A ``<'' sign at the left edge of the viewport 
+suggests more candidates at the right.
+A move-left key (usually ``<'' or ``,'',
+both on the same physical key button)
+will move the viewport backward and reveal the previous group.
+.PP
+Chinese input area in \fIcxterm\fP is not a separate window.
+Whether the X cursor is in the input area
+or elsewhere in the \fIcxterm\fP cxterm
+makes no difference to the keyboard input.
+.PP
+\fICxterm\fP is always in one of the different input modes
+corresponding to different input methods.
+Two built-in methods are the "ASCII" and "IC".
+The "ASCII" method is
+to input 7-bit ASCII characters without any translation
+(just like \fIxterm\fP).
+The "IC" (Internal Coding) method
+translates every 4 hexadecimal digits into one double-byte code,
+corresponding to a Chinese character in the adopted encoding.
+.PP
+Most other input methods are stored as external files
+and are loaded in run-time on demand.
+Such external input methods are user-accessible and expandable.
+See \fItit2cit(1)\fP on the format of the input method specification
+file and on how to add your own input method.
+The name of the input method is determined by the name of the
+external file where the input method is stored.
+.PP
+An input method can be character-based
+(each candidate is a single Chinese character),
+phrase-based (each candidate is a multiple Chinese character unit), or both.
+This makes no different to the \fIcxterm\fP input mechanism.
+If a keystroke sequence yields to a phrase (a multi-character word),
+the whole phrase will be displayed as a whole in the selection list,
+and when the corresponding selection key is pressed,
+it will be input as a whole unit.
+.SH "ADVANCED INPUT FEATURES"
+\fICxterm\fP provides the following input features:
+prefix input, wildcard input, auto-selection of unique choice,
+word association by composition,
+continuous input by auto-segmentation, 
+and post-selection association input.
+.PP
+Chinese input in \fIcxterm\fP requires only minimal keystrokes.
+If a keystroke sequence matches an input unit
+(single character or phrase),
+all its non-empty prefixes also match that input unit.
+A selection can be made any time
+without waiting for the whole key sequence being typed.
+It is however a common practice to type more keys
+to reduce the size of the candidate list for an easy selection.
+.PP
+If the exact keystroke sequence for an input unit is forgotten,
+the wildcard characters (usually ``*'' and ``?'') can be used
+in place of the actual keys.
+The expansion is similar to the file name generation
+as in a Unix shell.
+A wildchar (usually ``?'') can substitute any single key,
+while a wildcard (usually ``*'') can substitute
+any number (including zero) of keys.
+.PP
+Automatic selection refers to the automatic input of a candidate
+when it is the only candidate
+matching the current input keystroke sequence.
+\fICxterm\fP supports three kinds of automatic selection,
+``NEVER'', ``ALWAYS'', and ``WHENNOMATCH''.
+Under the ``NEVER'' mode,
+\fIcxterm\fP will not take any action;
+a user has to press the corresponding selection key to pick the input unit.
+Under the ``ALWAYS'' mode,
+\fIcxterm\fP will automatically pick the unique choice
+and sent to the terminal.
+Under the ``WHENNOMATCH'' mode,
+\fIcxterm\fP will input the unique choice
+only after the user types another key into the keystroke sequence,
+and only if the new sequence no longer matches any candidate.
+The newly typed key will start a new keystroke sequence
+for the next input cycle.
+For example, if the current keystroke sequence ``ab'' yields only
+one candidate ``X'',
+but after the user types a key ``c'',
+the key sequence ``abc'' yields nothing,
+then \fIcxterm\fP will pick the choice ``X'' for the keystroke ``ab''
+and leave ``c'' alone in the keystroke sequence for the next input.
+If ``abc'' matches one or more candidates,
+the input process continues and the automatic selection aborts.
+.PP
+\fICxterm\fP provides an alternative way
+to input a Chinese phrase by composition.
+If the input keystroke sequence contains two or more segments
+connected by association keys (usually ``-''),
+\fIcxterm\fP will match it against a predefined
+list of phrases (called glossary, or the association list).
+It produces only those phrase candidates,
+in which the first Chinese character matches the first segment,
+and the second character matches the second segment, and so on.
+.PP
+\fICxterm\fP usually relies on the association keys
+typed by the user to segment the keystroke buffer.
+It also supports an auto-segmentation mode.
+When this mode is on,
+\fIcxterm\fP can automatically insert association keys
+following the rule of longest matches of keystroke segments.
+That is, if the current keystroke sequence matches some candidates
+but not any more when a new input key is typed,
+\fIcxterm\fP inserts an artificial associate key before
+the newly input keystroke.
+Combined with the ``WHENNOMATCH'' auto-selection mode,
+it is sometimes possible to keep typing input keys
+and having cxterm making the selection.
+.PP
+If the association input mode is on (the default case),
+\fIcxterm\fP will form and display a new candidate list
+whenever a Chinese character is input.
+The list consists of all possible subsequences
+of the latest input Chinese character.
+The user can pick up a candidate from the the list
+instead of typing another key sequence.
+.PP
+Both phrase input by composition and post-selection association input
+require a predefined list of phrases (the association list).
+The list is stored as an external file
+and it is loaded each time cxterm starts up.
+The user can change the file to add or drop phrases.
+The list is usually in the usage frequency order,
+since both composition and association will search for
+and display candidates in that order.
+.SH "INPUT BUFFER LINE EDITING"
+\fICxterm\fP also provides some basic line editing
+for the input keystroke buffer in upper line of the input area.
+The following table is the key binding in emacs-style.
+See \fItit2cit(1)\fP on how to change the definition.
+.sp
+.in +2
+.DS
+.TA 1.2i
+.ta 1.2i
+.nf
+BS or DEL	delete the previous typed input key
+ctrl-F	move cursor forward one key
+ctrl-B	move cursor backward one key
+ctrl-A	move cursor to start of the buffer
+ctrl-E	move cursor to end of the buffer
+ctrl-D	delete input key at the cursor position
+ctrl-U	delete all keys and clear the buffer
+ctrl-P	fetch the keystrokes of the last input
+.fi
+.DE
+.sp
+.in -2
+.SH OPTIONS
+The \fIcxterm\fP program accepts all the standard X Toolkit
+command line options, X11R6 \fIxterm\fP command line options, as well as
+the following:
+.TP 8
+.B \-fh \fIchineseFont\fP
+This option specifies a Chinese font to be used when display Chinese text.
+This font should be the same height and twice the width as the normal
+ASCII font.
+.TP 8
+.B \-fhb \fIchineseFont\fP
+This option specifies a Chinese font to be used when display bold Chinese text.
+This font must be the same height and width as the normal Chinese font.
+If only one of the normal or bold Chinese fonts is specified, it will be
+used as the normal font and the bold font will be produced by overstriking
+this font. The default is to do overstriking of the normal font.
+.TP 8
+.B \-hm \fIinputMethod\fP
+This option specifies the name of the initial input method when
+\fIcxterm\fP starts up.
+The default is "ASCII"; \fIcxterm\fP will start up in the English mode.
+.TP 8
+.B \-hz \fIencoding\fP
+This option specifies which encoding scheme, GB or BIG5, are to be used. 
+The default is GB.
+.TP 8
+.B \-GB
+This option indicates that \fIcxterm\fP should use GB encoding.
+It is the same as option "\-hz GB".
+.TP 8
+.B \-BIG5
+This option indicates that \fIcxterm\fP should use BIG5 encoding.
+It is the same as option "\-hz BIG5".
+.TP 8
+.B \-hid \fIhanziInputDir\fP
+This option specifies the search path for the directory containing the
+Chinese input methods.
+Alternative directory names are separated by a colon ``:''.
+The default is the current directory.
+.TP 8
+.B \-has \fIhanziAssociationFile\fP
+This option specifies the name of the association file,
+turns on the association input mode,
+and enables phrase input by composition.
+The default is no association file and the association input mode off.
+.TP 8
+.B \-hls \fIlineSpacing\fP
+This option specifies the height of the vertical white space (in pixel)
+which is used to separate two adjacent text lines in the screen.
+.SH RESOURCES
+The program understands all of the core X Toolkit resource names and classes,
+all \fIxterm\fP resource names and classes, as well as the following
+resources specified as part of the \fIvt100\fP widget (class \fIVT100\fP):
+.\".in +1in
+.TP 8
+.B "hanziFont (\fPclass\fB HanziFont)"
+Specifies the name of the Chinese font to use.
+.TP 8
+.B "hanziBoldFont (\fPclass\fB HanziBoldFont)"
+Specifies the name of the bold Chinese font to use instead of overstriking.
+.TP 8
+.B "hanziMode (\fPclass\fB HanziMode)"
+Specifies the name of the initial method instead of the ASCII.
+.TP 8
+.B "hanziEncoding (\fPclass\fB HanziEncoding)"
+Specifies the encoding scheme, GB or BIG5.
+.TP 8
+.B "hanziInputDir (\fPclass\fB HanziInputDir)"
+Specifies the search paths for the directory containing the input methods.
+The names of the directories are separated by ``:'' characters.
+.TP 8
+.B "hanziAssociation (\fPclass\fB HanziAssociation)"
+Specifies the name of the association file
+and turns on the association mode.
+.TP 8
+.B "hanziLineSpacing (\fPclass\fB HanziLineSpacing)"
+Specifies the vertical spacing (in pixel) between two text lines.
+.\".in -1in
+.sp
+.PP
+All the font selection entries in \fIfontMenu\fP can be used
+to set Chinese font or fonts as well.
+.PP
+\fICxterm\fP adds two more entries to the \fIvtMenu\fP:
+.TP 8
+.B "line3 (\fPclass\fB SmeLine)"
+This is a separator.
+.TP 8
+.B "cxtermconfig (\fPclass\fB SmeBSB)"
+This entry invokes the \fBpopup-panel(config)\fP action.
+.sp
+.SH ACTIONS
+In addition to all the \fIxterm\fP \fIvt100\fP \fBtranslations\fP resources,
+the following are also accepted by \fIcxterm\fP:
+.TP 8
+.B "switch-HZ-mode(\fImethod\fP)"
+This action dynamically switch the input method to \fImethod\fP.
+If \fImethod\fP is not a built-in input method and does not reside in memory,
+it is loaded from external file first.
+The file name must be "\fImethod\fP.cit", and
+it must be under one of the following places:
+the current directory, the home directory,
+the directory specified by resource hanziInputDir,
+or the directory specified by the environment variable HZINPUTDIR.
+.TP 8
+.B "set-HZ-parameter(\fIparam\fP[,...])"
+The \fIparam\fP overrides the input method defaults as followed:
+.sp
+.DS
+.TA 2.5i
+.ta 2.5i
+.nf
+parameter string	meaning
+----------------	-------
+auto-select=never	set auto-select mode to "NEVER"
+auto-select=always	set auto-select mode to "ALWAYS"
+auto-select=whennomatch	set auto-select mode to "WHENNOMATCH"
+auto-segment=no	disable auto-segmentation
+auto-segment=yes	enable auto-segmentation
+association=no	disable post-selection association
+association=yes	enable post-selection association
+input-conv=disable	temporary disable HZ input conversion
+input-conv=enable	enable HZ input conversion again
+input-conv=toggle	toggle HZ input conversion enable/disable
+.fi
+.DE
+.sp
+The hanzi input conversion is usually \fIenable\fP.
+When it is set \fIdisable\fP,
+the \fIcxterm\fP input area becomes ``insensitive''
+and all input key are uninterpreted and treated as ASCII.
+If hanzi input is current disabled (or enabled),
+\fIinput-conv=toggle\fP enables (or disables) it.
+Switching of input method automatically enables HZ input.
+.TP 8
+.B "popup-panel(\fIconfig\fP)"
+This action popup the \fIcxterm\fP input configuration panel.
+.TP 8
+.B "click-HZ-area()"
+This action triggers input area actions
+if the current pointer location is inside the input area.
+If a candidate in the selection list is clicked,
+it will be input into the terminal.
+If the ``<'' or ``>'' sign of the selection list is clicked,
+the viewport will be moved to the left or right of the selection list.
+If the input key buffer is clicked,
+the line editing will be turned on
+and the cursor will be moved to the pointer location.
+.PP
+The defaults bindings in \fIcxterm\fP window are:
+.sp
+.in +4
+.DS
+.TA 2.5i
+.ta 2.5i
+.nf
+ Shift <KeyPress> Prior:	scroll-back(1,halfpage) \\n\\
+  Shift <KeyPress> Next:	scroll-forw(1,halfpage) \\n\\
+Shift <KeyPress> Select:	select-cursor-start() \\
+	select-cursor-end(PRIMARY, CUT_BUFFER0) \\n\\
+Shift <KeyPress> Insert:	insert-selection(PRIMARY, CUT_BUFFER0) \\n\\
+          <KeyPress> F1:	switch-HZ-mode(ASCII) \\n\\
+          <KeyPress> F2:	switch-HZ-mode(IC) \\n\\
+        ~Meta<KeyPress>:	insert-seven-bit() \\n\\
+         Meta<KeyPress>:	insert-eight-bit() \\n\\
+   Ctrl ~Meta<Btn1Down>:	popup-menu(mainMenu) \\n\\
+       ~Meta <Btn1Down>:	select-start() \\n\\
+     ~Meta <Btn1Motion>:	select-extend() \\n\\
+  Ctrl ~Meta <Btn2Down>:	popup-menu(vtMenu) \\n\\
+ ~Ctrl ~Meta <Btn2Down>:	ignore() \\n\\
+   ~Ctrl ~Meta <Btn2Up>:	insert-selection(PRIMARY, CUT_BUFFER0) \\n\\
+  Ctrl ~Meta <Btn3Down>:	popup-menu(fontMenu) \\n\\
+ ~Ctrl ~Meta <Btn3Down>:	start-extend() \\n\\
+     ~Meta <Btn3Motion>:	select-extend() \\n\\
+    ~Ctrl ~Meta <BtnUp>:	select-end(PRIMARY, CUT_BUFFER0) \\n\\
+              <BtnDown>:	bell(0)
+.fi
+.DE
+.sp
+.in -4
+.PP
+Below is a sample of how to use \fBswitch-HZ-mode()\fP action to add more
+input methods, or redefine input mode switch keys:
+.sp
+.in +4
+.DS
+.TA 3.0i
+.ta 3.0i
+.nf
+cxterm*VT100.Translations: #override \\
+           <KeyPress> F1:	set-HZ-parameter(input-conv=toggle) \\n\\
+           <KeyPress> F2:	switch-HZ-mode(IC) \\n\\
+           <KeyPress> F3:	popup-panel(config) \\n\\
+    ~Shift <KeyPress> F4:	switch-HZ-mode(TONEPY) \\n\\
+     Shift <KeyPress> F4:	switch-HZ-mode(PY) \\n\\
+    ~Shift <KeyPress> F5:	switch-HZ-mode(WuBi) \\n\\
+     Shift <KeyPress> F5:	switch-HZ-mode(CangJie) \\n\\
+ ~Meta <KeyPress> Escape:	insert() set-HZ-parameter(input-conv=off)
+.fi
+.DE
+.in -4
+.sp
+In this example, pressing <F2> will
+switch the current input method to IC;
+<F4> will switch again to TONEPY method
+(external input method, requires TONEPY.cit to be in the search path(s) of
+the .cit files);
+<shift>+<F4> will switch again to PY method, and so on.
+The last line above may be a good setting for those who use vi (or celvis).
+Pressing <ESC> will pass ESC to vi to end the insertion mode, and
+temporarily disable \fIcxterm\fP hanzi input
+(so that you can enter subsequent vi commands as ASCII).
+.PP
+The following \fIxterm\fP actions have additional meaning:
+.TP 8
+.B "set-vt-font(\fId/1/2/3/4/5/6/e/s\fP [,\fInormalfont\fP [, \fIboldfont\fP]])"
+This action sets Chinese font or fonts as well,
+if the Chinese font or fonts are indicated in the resources
+or as arguments.  The font selection entries in \fIfontMenu\fP
+can be also used to set Chinese font and fonts.
+.TP 8
+.B "hard-reset()"
+This action also resets the input area, dropping all the external
+input methods which are already loaded.
+It is also invoked from the \fBhardreset\fP entry in \fIvtMenu\fP.
+.SH "CONTROL SEQUENCES"
+All the
+.I xterm
+escape sequences can be used in
+.I cxterm
+without any change.
+(See the
+.I "Xterm Control Sequences"
+document.)
+A set of new escape sequences are added to deal with Chinese characters:
+.TP 8
+.B "<ESC>]160;\fIstring\fP<BEL>"
+Set the input method search paths to \fIstring\fP.
+It affects the subsequence loading of input methods.
+However, it has no effect on those input methods
+that has already been loaded.
+.TP 8
+.B "<ESC>]161;\fIstring\fP<BEL>"
+Switch the input method to \fIstring\fP,
+equivalent to action \fBswitch-HZ-mode(\fP\fIstring\fP\fB)\fP.
+.TP 8
+.B "<ESC>]162;\fIstring\fP<BEL>"
+Change the input parameters of the current input mode
+according to \fIstring\fP.
+See action \fBset-HZ-parameter\fP for the format of the parameters.
+.SH "ENVIRONMENT VARIABLE"
+.IP HZINPUTDIR
+It defines the external input method searching path
+in absent of \fI\-hid\fP options or ``hanziInputDir'' resource.
+.IP CHAR_ENCODING
+Process(es) running on the new \fIcxterm\fP window
+will have this new environment variable.
+Its value is the name of the encoding scheme specified
+when \fIcxterm\fP starts.
+.SH EXAMPLES
+.LP
+Start a \fIcxterm\fP in reserve video with scroll bar:
+(It is in GB encoding and uses X11 fonts hanzigb16st and 8x16 by default).
+.RS
+.sp .5
+.nf
+.B cxterm -rv -sb
+.fi
+.RE
+.LP
+Start a \fIcxterm\fP in BIG5 encoding (where hku16et is a BIG5
+encoding X11 font):
+.RS
+.sp .5
+.nf
+.B cxterm -fh hku16et -fn 8x16 -BIG5
+.fi
+.RE
+.SH "SEE ALSO"
+.BI tit2cit (1)
+.BI hzimctrl (1),
+.BI X (1), 
+.BI xterm (1),
+.BI resize (1),
+.SH COPYRIGHT
+Copyright 1994, 1995, Yongguang Zhang.
+.br
+Copyright 1991, Yongguang Zhang and Man-Chi Pong.
+.br
+This version of \fIcxterm\fP is derived from from \fIxterm\fP,
+which is part of the X window system Version 11 Release 6
+developed by X Consortium.
+Please also see \fIX(1)\fP for a full statement of rights
+and permissions for X11.

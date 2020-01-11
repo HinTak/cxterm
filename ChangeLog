@@ -1,0 +1,231 @@
+Aug 25, 2013 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + HZtable.h - fix compilation against newer xorg
+      libX11-devel header
+    + cxterm.spec - minor update to the spec file regarding font
+      location
+Feb 28, 2006 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + main.c - unitialised pointer and missing unix98 prototypes (the 
+      strcpy'ed char *) causes segfaults on x86_64.
+      Changed obsolete "Copyright" tag to "License" in spec file,
+      and bumped version up.
+	
+Aug 26, 2004 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + Added "cxterm-color" termcap and terminfo entry -
+      only added enough extra from X11R6.6 xterm entry
+      to make color/attribute(bold/underline/reverse/blink) work.
+      and changed cxterm's own TERM identification to "cxterm-color",
+      and only fall back to "cxterm" if there is no "cxterm-color"
+      termcap/terminfo entry. See README.terminfo
+	
+Aug 14, 2004 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + Strange to note, just fix a bug with erratic cursor movement 
+      and screen corruption during resizing; the bug was introduced
+      8-9 years ago by the color-patch. Basically the cursor
+      is all over the place and the wrong part of the off-screen
+      buffer has been copied during a resize. Guess most people just
+      do a clear screen on resize and it doesn't bother people enough
+      that the cursor should be in a sensible position after resize.
+      Good to have xterm's 9 years of cvs repository for reference!
+	
+Aug 05, 2004 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + More change to cemacs.el to disable mule default to scratch
+      buffer.
+	
+Aug 04, 2004 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + Redhat problem again. Fedora 2 shipped with the optional legacy BSD
+      pty mode in the 2.6 kernel switched off. Well, cxterm is very old...
+      Merged unix98-related code-changes and small extras fom xterm's source
+      over the last 9 years since the fork. Now uses the newer 
+      unix98-style ptys on linux. Probably will break other platforms. Caution!
+
+08/21/2003 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + Redhat 9 problem - it sets LANG by default, and cemacs misbehaves 
+      under either LANG=en_GB.UTF-8 (UK default) or LANG=zh_TW.big5 .
+      Updated cemacs.el to internally unset every clever things that 
+      the mule part of emacs switches on by mistake due to LANG being set.
+
+7/5/2003 cvs - Changsen Xu <xucs007@yahoo.com>
+    + Systematic GB WuBi method correction (refered to Windows ChenXi WuBi
+	³¿êØÎå±Ê, version 6.5, 2002, and Doc/WuBiCode_1986.txt). Code of 60
+	characters, and all orders of same-code characters were corrected.
+
+    + WuBi code name changed from 11, 12, 13, etc. to letters, so as to ease
+      input-code reading at cross-checking.
+
+06/13/2003  cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + added emacs notes and cemacs.el scripts 
+	
+05/06/2003  cxterm-5.2.3 - Hin-Tak Leung <htl10@users.sourceforge.net>
+    + updated ./depcomp and ./missing from GNU automake 1.7
+
+    + Misc relocation fixes to do with rpm generation.
+
+    + Adapted termcap and terminfo from X.Org's X11R6.6 for cxterm.
+	
+06/08/2002  cxterm-5.2.3pre Hin-Tak Leung <htl10@users.sourceforge.net>
+    + Fixed most of the warnings flagged by GCC's -Wall option
+
+    + migrated to ANSI C prototyping with GCC's protoize
+
+    + Fixed autoconf problem on Cygwin. 
+
+    + Added ./depcomp and ./missing from GNU automake 1.6.1 (needed by
+      the configure script and missing in 5.2.2).
+
+
+12/06/2001  cxterm-5.2.2    released by Changsen Xu <xucs007@yahoo.com>
+    + F3 popup size fix. 
+	- updated cxterm/HZpopup.c
+
+    + Fixed ESCAPE problem of GB Chinese (BIG5/JIS/KS already
+      function this way): pressing ESCAPE key in the inserting mode of
+      vi/vim will not only switch to command mode, but also switch from
+      any Chinese input method to ASCII input method. 
+	- updated scripts/cxtermrc.tpl
+
+11/28/2001  cxterm-5.2.1 released by Changsen Xu <xucs007@yahoo.com>
+    + Fixed scrollbar problem after autoconf introduced: Must define
+      NARROWPROTO when compiling.
+
+11/27/2001  cxterm-5.2.0 released by Changsen Xu <xucs007@yahoo.com>
+    + autoconf introduced. This is quite some changes, so I set version as 5.2.
+      For cygwin, further fixes will be needed (I don't know cygwin).
+
+
+
+11/13/2001  cxterm-5.1p2.src.tgz released by Changsen Xu <xucs007@yahoo.com>
+
+    + Input key cross reference for the last CJK character (of a phrase)
+      inputed: Double-hit of any function key (F#) within 1 second will
+      show you corresponding InputKeys in that method.
+
+    + Set up hosting on sourceforge.net: http://cxterm.sourceforge.net,
+      but cvs don't support sysbolic links, so I move scripts/config.sh
+      to the root directory. Other symbolic links in root directory to
+      Doc subDirectory, such as README, version etc., thus were "removed".
+
+    + GB Chinese "Ô¹" in the old WuBi.tit has wrong key: dbn/dbnu; It's
+      corrected to Ï¦¶úÐÄu (qbn or qbnu) --- the later is used by most
+      Windows 95/98/NT/2000 WuBi methods.
+
+
+03/26/2001   cxterm-5.1p1-2.src.rpm released (can be found on
+    http://rpmfind.net ) by Heng Yuan <heng@ag.arizona.edu>
+
+    + Script fixes, RPM re-packaging.
+
+
+
+06/12/1999  cxterm 5.1p1 released by ZHUANG Hao <hz69@columbia.edu>
+
+    + 1) Blinking support for the CXterm. Now you can see the flashing words !
+  
+    + 2) True ANSI color support. Now the CXterm supports hilight colors and
+         normal colors. (16 foreground + 8 background)
+  
+    + 3) FIXED: abnormal display while typing Chinese Characters in BBS;
+  
+    + 4) FIXED: strange color block leftover when the cursor jumps to other
+         locations;
+  
+    + 5) FIXED: the color of the Chinese Input Line changes with the last
+         character displayed on screen.
+  
+    + 6) Special color processing for BBS, use '-bbs on/off' switches or the
+         X resource string 'cxterm*bbs' to turn it on or off.
+  
+    + 7) Chinese mode on/off by pressing <Ctrl> key, but won't be affected by
+         normal <Ctrl>+<key> press. (But you can set it to any key, like
+         <Shift>, <Meta>... See the resource file for more info)
+  
+    + 8) Default RichWin-like Chinese input key settings: use - and = to
+         search back or forward... makes the punctuation input more convenient.
+         But you can change it if you don't like. (This default is for GB
+         only)
+  
+    + 9) Some secure protection.
+
+
+
+
+
+1996-1997	cxterm-5.?p?	Ji-Tzay Yang and Bruce Cheng
+
+    + Color patches
+
+
+
+
+08/08/95	cxterm-5.0p3 packaged and released.
+
+    + X11R6 fix level 12 applied
+	- patch ./cxterm/main.c, ./cxterm/TekPrsTbl.c, and ./cxterm/VTPrsTbl.c
+
+    + some X11R5 is really X11R4 in some aspects
+	- update ./Xcompat/imake-R5.compat
+
+    + fixed two bugs that cause core dump during HZ input
+	- fixed ./cxterm/HZfilter.c 
+
+    + new phrase dictionary for KS encoding
+	- add ./dict/ks/simple.lx
+	- update ./cxterm/CXterm.ad
+
+05/22/95	cxterm-5.0p2 packaged and released.
+
+    + improve installation script to check for fullpath name
+	- enhance ./script/installc.sh
+
+    + fixed the "Error 5, errno 22" problem in SGI IRIX5.3
+	- fix ./cxterm/main.c
+
+    + some imake program generates wrong imake includes
+	- update ./dict/Imakefile
+
+    + replace the Big5 input method Boshiamy with the one provided
+      by K.C.Kao (kckao@event.ee.ntit.edu.tw), which has more hanzi.
+	- update ./dict/big5/Boshiamy.tit
+
+02/14/95	cxterm-5.0p1 packaged and released.
+
+    + X11R6 fixes up to level 11 applied
+	- patch ./cxterm/main.c
+
+    + IC builtin method now also accepts GL codes (hibit unset).
+	- update ./cxterm/HZbuiltn.c
+
+    + added two Big5 input methods.
+	- add ./dict/big5/Boshiamy.tit, ./dict/big5/HSU.tit
+	- update ./dict/big5/Imakefile, ./cxterm/CXterm.ad 
+
+    + fixed a bug in CXterm so that now "CXterm -Big5" works.
+	- update ./scripts/CXterm.sh, ./scripts/installc.sh
+
+    + fixed the "XtGravity redefined" problem for some old X11R4.
+	- fix ./cxterm/charproc.c (line 88)
+
+    + fix a font making problem in some X11R4 (e.g. SGI) system.
+	- added a rule in ./Xcompat/imake-R4.compat
+	- include "imake.local" in ./fonts/Imakefile
+
+    + fixed the "make depend" problem in Sun OpenWindow (makedepend bug).
+	- update ./Imakefile, ./Makefile.ini
+
+    + rewrite ": ${M:=V}" in "if ... then ... fi"
+	- some shells don't understand this
+	- update ./scripts/*.sh
+
+    + added a new way to determine X version. 
+	- fixed ./Imakefile
+	- added a new file ./xrel.c
+	- stupid OpenWindow imake templates
+
+    + minor bug fixes.
+	- ./cxterm/HZchList.c ./cxterm/HZfilter.c ./cxterm/HZinCntx.c
+	- ./utils/tit2cit.c
+
+    + recorded the changes
+	- update Doc/version, add Doc/HISTORY (this file)
+	- update Doc/CXTERM.FAQ
+
+01/17/95	cxterm-5.0 packaged and released.

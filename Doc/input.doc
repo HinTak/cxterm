@@ -1,0 +1,476 @@
+
+		HANZI INPUT in CXTERM Version 5.0
+		=================================
+
+		(C) 1994,1995 by  YONGGUANG ZHANG
+
+
+CXTERM provides an off-the-spot pre-editing style hanzi input.
+When a user enters a hanzi, he/she types in a keystroke sequence in
+the cxterm window.  The keystroke sequence is a representation of the
+hanzi according to the input method of the user's choice.  Cxterm does
+input conversion while processing the user's key strokes.  When the
+user types a key, cxterm will echo it in a dedicated input area below
+the terminal window.  At the same time, cxterm also translates what a
+user types so far into a set of possible hanzi candidates.  The list
+of candidates is also shown in the input area with a label (usually a
+number) preceding each candidate.  By typing the number key, the user
+picks one candidate to send it into the terminal and finish a hanzi
+input.  The cxterm will clear the input area and the keystroke buffer
+to prepare for the next hanzi input.
+
+1.  INPUT METHOD
+
+Cxterm provides many popular hanzi input methods.  The descriptions
+of an input method (the mapping between keystroke sequences and hanzi)
+along with a set of key bindings are stored in an external file and
+loaded into cxterm in run time.  Users can use their own input method
+by writing input method specification file and load it into cxterm.
+Many cxterm input features are "input method independent", which means
+the user can choose whatever input method and get the same interface.
+
+2.  SWITCHING INPUT METHODS
+
+When cxterm starts up, it is usually in the "ASCII" input mode, i.e.,
+what users type are all English.  To input Chinese, cxterm must be
+switched to one of the Chinese modes.  Different Chinese modes are
+different in its input method.  Once in a Chinese mode, some keys
+are interpreted as Chinese input keystrokes as explained above.
+
+Users can freely switch from one input method to another (or from ASCII
+or to ASCII) at any time after cxterm starts up.  The input feature in
+this text are applicable to any external input methods.  Users can
+switch an input method by one of the following three ways:  1) press a
+predefined function key,  2) use the popup input configuration panel,
+3) run the utility program "hzimctrl", or 4) write the corresponding
+cxterm terminal escape sequence to the terminal (from the application
+program).
+
+The specification of the predefined function key for switching input
+method is included in the "Translation" table in the user's X resources
+for cxterm.  Typical files to store the X resources are $HOME/.Xdefaults,
+$HOME/.Xdefaults-hostname, or $HOME/.Xresources.  However when the
+script "CXterm" is used, the resource file is called "CXterm.ad" and
+resides in the destination directory for cxterm input dictionary
+(chosen by the users during cxterm installation). 
+
+The predefined function keys for switching input methods are usually
+The <Fn> keys or <Shift>+<Fn> keys.  Usually <F1> temporary disable
+Chinese input function (<F1> again to resume) and <Shift>+<F1>
+switches cxterm back to "ASCII" mode.
+
+The input methods can also be changed by the configuration panel.  To
+pop up the panel, press (<Control> + Middle-Mouse-Button) then choose
+the last item "HANZI configuration".  (See Section 17.)
+
+  --------------------------------------------------------------------
+  Ex 1.  The default function keys used in CXterm (in GB encoding)
+    include:
+	<F4>	TONEPY	(pin-yin input with tone 1-5)
+	<F6>	PY	(pin-yin input without tone)
+	<F7>	WuBi	(wu-bi-zi-xing (5-stroke) input)
+	<F8>	English	(input Chinese words by English words)
+
+    After pressing <F4>, you will get
+        ________________________________________________________
+        ~{汉字输入∷带调拼音∷~}
+
+    After you type 'z' 'h' 'o' 'n' 'g' '1', you will get
+        ________________________________________________________
+	~{汉字输入∷带调拼音∷~} zhong1
+          1.~{中~} 2.~{终~} 3.~{钟~} 4.~{忠~} 5~{.衷~} 6.~{锺~} >
+
+    Type a number, say '4', to choose the fourth Chinese character in
+    the list -- ~{忠~}.
+  --------------------------------------------------------------------
+
+3.  CHOICE LIST TRAVERSAL
+
+If the current keystroke sequence yields more candidates than that can
+be displayed in the input area, only a segment of the whole candidate
+list is shown at a time.  Conceptually it can be considered as a
+"viewport" that reveals part of the list.  The size of the viewport is
+usually ten (10) candidates, which can be changed in the input method
+specification file.  The size of the viewport is also affected by
+whether the viewport can fit into the input area.  Initially the
+viewport is at the beginning of the list.  A '>' sign at the right
+edge of the viewport indicates more choices to the right.  A move-right
+key (usually '>' or '.') will move the viewport to the right and reveal
+the next ten choices.  A '<' sign at the left edge of the viewport will
+suggest more choices at the right.  A move-left key (usually '<' or ',')
+will move the viewport backward and reveal the previous ten choices.
+The user can repeatly type the move-left or move-right key to traverse
+the choice list in either direction.
+
+4.  PHRASE INPUT
+
+Cxterm provides two kinds of phrase input.  First, cxterm supports the
+keystroke sequence to hanzi phrase mapping.  The cxterm input engine
+does not distinguish single hanzi and phrase hanzi.  In a phrase-based
+input method, cxterm converts and displays phrases in the candidate
+list; one can pick a phrase as a whole.
+
+  --------------------------------------------------------------------
+  Ex 2.	 After 't' 'a' 'b' 'l' 'e' keys are entered under the
+    "English" input method: 
+      ________________________________________________________
+      ~{汉字输入∷英汉∷~} table
+        1.~{桌子~} 2.~{表~}
+
+    Choosing '1' will input ~{桌子~} -- two characters in a roll.
+  --------------------------------------------------------------------
+
+The second type of phrase input is composition by an association key
+(usually the key '-').  If a keystroke sequence contains two or more
+segments connected by '-', cxterm will match it against a predefined
+list of phrases (called glossary, or the association list).  The
+candidate list only contains those phrases in which the first hanzi
+matches the first segment in the keystroke sequence, and the second
+hanzi matches the second segment, and so on.
+
+  --------------------------------------------------------------------
+  Ex 3.  In pinyin input, "jin4" matches all the following characters
+	~{仅进晋禁近浸尽劲~}
+    and "shi4" matches
+	~{式示士世柿事拭誓逝势是适仕侍释饰氏市恃室视试似~}
+    plus other infrequently-used ones.
+
+    The input "jin4-shi4" will matches any two-character word whose
+    first character is from the first list and the second character
+    from the second list: ~{近世~}, ~{进士~}, ~{尽是~}, ~{近视~}, etc.
+
+    Here is how the screen looks like when you input "jin4-shi4":
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} jin4-shi4
+        1.~{近似~} 2.~{近似值~} 3.~{近世~} 4.~{尽是~} 5~{.进士~} >
+  --------------------------------------------------------------------
+
+Although cxterm supports both kinds of phrase input, we highly recommend
+the second one over the first, since the phrase composition based on a
+glossary of phrases is "input method independent", i.e., a phrase in
+the glossary is available regardless of the input method chosen.
+
+5.  PREFIX INPUT
+
+Hanzi input in cxterm requires only minimal keystroke.  If a keystroke
+sequence matches a hanzi, all its non-empty prefixes also match the
+hanzi.  The user can make a choice without finishing typing the whole
+key sequence, although it is a common practice to type more keys to
+reduce the number of candidates that one has to choose from.
+
+  --------------------------------------------------------------------
+  Ex 4.  You can input ~{中~} by only three keys 'z' 'h' 'o':
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} zho
+        1.~{中~} 2.~{终~} 3.~{钟~} 4.~{忠~} 5~{.衷~} 6.~{锺~} >
+
+    Then press key '1'.
+  --------------------------------------------------------------------
+  --------------------------------------------------------------------
+  Ex 5.  The prefix input is very useful in phrase input.  For example,
+    "z-g" in pinyin input method yields all the phrases whose first
+    hanzi matches a pinyin beginning with 'z' and the second hanzi
+    matches a pinyin beginning with 'g':
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} z-g
+        1.~{这个~} 2.~{中国~} 3.~{整个~} 4.~{职工~} 5~{.最高~} >
+  --------------------------------------------------------------------
+
+6.  WILDCARD INPUT
+
+Instead of typing the exact keystroke sequence for a hanzi, a user can
+use the wildcard characters (usually '*' and '?').  The expansion is
+similar to the "glob-style" file-name matching in many Unix shells.
+A wildchar ('?') can substitute any single key, while a wildcard
+(usually ``*'') can substitute any number (including zero) of keys.
+It is to assist hanzi input when the user forgets the keystroke
+sequence.
+
+  --------------------------------------------------------------------
+  Ex 6.  If you want to input the character ~{众~}, but forget whether
+    it is "zhong4" or "zong4", you may try "z*ong4":
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} z*ong4
+        1.~{中~} 2.~{种~} 3.~{重~} 4.~{众~} 5.~{仲~} 6.~{纵~} >
+  --------------------------------------------------------------------
+
+WARNING: unless you have a top-of-the-line computer, you should refrain
+from using wildcards in the association phrase input, since it takes a 
+long time to exhaust the whole search space.
+
+7.  AUTO SELECTION
+
+Automatic selection refers to the automatic input of a candidate when
+it is the only candidate matching the current input keystroke sequence.
+Cxterm supports three kinds of automatic selection, "NEVER", "ALWAYS",
+and "WHENNOMATCH".  If it is set to "NEVER", there will be no automatic
+selection; a user has to press the selection key to pick the candidate.
+If the mode is "ALWAYS", cxterm will automatically pick the candidate,
+if it is the only one, and sent it to the terminal.  If the mode is
+"WHENNOMATCH", automatic selection is done only when after the user
+types another key and the new sequence on longer matches any hanzi.
+The new input key will start a keystroke sequence for the next hanzi.
+
+  --------------------------------------------------------------------
+  Ex 7.  The mode is set to "WHENNOMATCH", and when "e3" is input,
+    There is only one choice:
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} e3
+        1.~{恶~}
+
+    Without doing any selection, the user immediately types 'x'.
+    Since there is no such input string as "e3x", cxterm picks and
+    inputs ~{恶~} and starts a new round of input for the unmatched
+    "x":
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} x
+        1.~{西~} 2.~{息~} 3.~{希~} 4.~{吸~} 5.~{惜~} 6.~{稀~} >
+  --------------------------------------------------------------------
+
+8.  AUTO SEGMENTATION AND CONTINUOUS INPUT
+
+Continuous input in cxterm is based on automatic segmentation of input
+keystrokes.  If the current keystroke sequence matches some hanzi but
+it no longer does when the user types a new input key, cxterm will
+insert an association key (usually '-') before the new input key and
+try to find the matches from the glossary list.
+
+  --------------------------------------------------------------------
+  Ex 8.  In pinyin input method, cxterm will turn "jisuanji" into
+    "ji-suan-ji".  Here is how.  After "ji" is typed, cxterm shows
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} ji
+        1.~{其~} 2.~{几~} 3.~{期~} 4.~{机~} 5.~{基~} 6.~{击~} >
+
+    When the user types the next 's', cxterm first tries the new sequence
+    "jis" and it matches nothing (since "jis" is not a valid pinyin).
+    It then tries to break the sequence by inserting a '-' before 's':
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} ji-s
+        1.~{就是~} 2.~{技术~} 3.~{建设~} 4.~{计算~} 5.~{精神~} >
+
+    Similarly, when the second 'j' is typed, cxterm breaks "suanj" by
+    another '-':
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} ji-suan
+        1.~{计算~} 2.~{计算机~} 3.~{就算~} 4.~{结算~} 5.~{强酸~} >
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} ji-suan-j
+        1.~{计算机~}
+  --------------------------------------------------------------------
+
+Automatic segmentation is based on the longest match of input keys
+and it is input method independent. It can be used with prefix input.
+
+  --------------------------------------------------------------------
+  Ex 9.  "xyz" will be segmented into "x-y-z":
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~} x-y-z
+        1.~{下意识~} 2.~{小业主~} 3.~{选言肢~} 4.~{信用证~}
+  --------------------------------------------------------------------
+
+Combining this auto segmentation with the "WHENNOMATCH" mode of auto-
+selection, it is possible to achieve some degree of continuous input:
+just keep typing input keys and hopefully cxterm will make the selection.
+
+9.  ASSOCIATION INPUT
+
+When the input of a hanzi is completed (by user selection or auto
+selection), cxterm uses the glossary list to guess the possible
+subsequent hanzi.  If the word that the user intends to input is in
+the list, he/she can simply pick it by a selection key, instead of
+typing another keystroke sequence.
+
+  --------------------------------------------------------------------
+  Ex 10.  After "zhong" is input and ~{中~} is selected, a new choice
+    list will be presented:
+      ________________________________________________________
+      ~{汉字输入∷带调拼音∷~}				~{联想~}
+        1.~{国~} 2.~{心~} 3.~{央~} 4.~{间~} 5.~{华~} 6.~{学~} >
+  --------------------------------------------------------------------
+
+10.  ASSOCIATION LIST
+
+Both phrase input by composition and (after selection) association
+input require a predefined list of phrases.  The list is stored as
+an external file and it is loaded each time cxterm starts up.  A user
+can change the file to add new phrases and drop existing ones.  The
+list should be kept in frequency order, i.e., the more frequently used
+words should be put earlier in the file.  This is because both phrase
+input and association will search for and display the phrase
+candidates by the order of the list.
+
+The file name for the associate list is also defined in the X resource
+(See section 2).  The default path as defined in the "CXterm.ad" is
+the "dict/gb/simple.lx" for GB encoding.
+
+11.  KEYSTROKE BUFFER EDITING
+
+Cxterm provides some basic line editing for the input keystroke buffer.
+The commands are in emacs-style, although the key binding can be
+changed in the input method's specification file.  The keys include:
+	^H, Del 	delete the previous input key
+	^F 		move cursor forward one key
+	^B 		move cursor backward one key
+	^A 		move cursor to start of keystroke buffer
+	^E 		move cursor to end of keystroke buffer
+	^D 		delete the input key at the cursor position
+	^U 		delete all keys and clear the keystroke buffer
+	^P 		fetch the keystrokes from previous input
+
+After each editing action, cxterm will redo the conversion from the
+current keystroke buffer and display the updated candidate list.
+
+12.  MOUSE ACTION
+
+Besides key actions, clicking the left mouse-button when the cursor
+is inside the input area will trigger some input actions.  A click at
+the candidate or its label in the input area will input that choice.
+A click at the '<' or '>' sign will move the display viewport to the
+left or right of the choice list.  A click at the input keystroke
+buffer will place the cursor at the mouse position.
+
+13.  TEMPORARILY DISABLE CHINESE INPUT
+
+Very often when you are typing Chinese, you need to switch back to
+ASCII once in a while.  For example, you need to type some English
+words in a Chinese text, or need to perform some editing task in
+your editor.  You may press Shift-<F1> to switch the input method
+back to "ASCII".  However, a better way is to temporarily disable
+Chinese input conversion and save the current input context, then
+later resume input from the previous save point.  This is done by
+pressing <F1>, which by default is bound to cxterm action
+"set-HZ-parameter(input-conv=toggle)".
+
+The action "set-HZ-parameter(input-conv=toggle)" alternatively
+executes "set-HZ-parameter(input-conv=disable)" to freeze the input
+and a third "set-HZ-parameter(input-conv=enable)" to unfreeze it.
+The first time you press <F1>, the input area will have an foggy
+look and become "insensitive".  You can see the key buffer and the
+choice list vaguely, but whatever you type is interpreted as ASCII
+only.  The next time you press <F1> the input area will become clear
+and "sensitive" again, continuing the input from wherever you
+stopped.
+
+14.  INPUT DIRECTORIES
+
+Input directories are where you put the external input methods.  The
+name of an input method is the same as the file name (minus the
+suffix).  Input methods included in this package have suffix ".tit"
+in the filenames, which is textual input table format suitable for
+human understanding and maintenance.  The cxterm installation script
+automatically compile these input methods into files with suffix
+".cit", which is compiled input table format loadable by cxterm.  
+
+Cxterm will search the input directories for an input method.  One
+may specify the paths by command line options or environment variable
+"HZINPUTDIR" before cxterm starts up (see cxterm(1)), or by control
+program "hzimctrl", cxterm configuration panel after cxterm starts up.
+More than one directories can be specified using ':' as delimiters.
+
+The file that stores the association list must also reside in one
+of the input directories.
+
+15.  CUSTOMIZATION
+
+Hanzi input in cxterm is built around a generic input engine.  Most
+input processing features are customizable:
+
+  Input processing:
+    a) encoding and fonts
+    b) key binding to invoke input methods (also see Section 2)
+    c) path to search for the input methods (also see Section 14)
+    d) association list (also see Section 10)
+
+  For each input method:
+    e) input conversion table (keys sequence to hanzi)
+    f) title of the input method (shown as the prompt)
+    g) the set of valid input keys
+    h) special keys -- wildcard keys, association keys, selection keys,
+       choice list traversal keys, input buffer pre-editing keys, etc.
+    i) default auto-selection mode (also see Section 7)
+    j) key prompts (displayed labels for each input key)
+
+See manual page cxterm(1) on how to specify input processing values
+(a-d).  See manual page tit2cit(1) on how to change the values (e-j)
+for each input method.  Any change to the input method requires a
+recompilation of the input method by tit2cit.
+
+  --------------------------------------------------------------------
+  Ex 11.  The input method WuBi provided in this package does not do
+    auto-selection; one has to press a selection key explicitly.  It
+    can be turned on after the input method is loaded into cxterm
+    (see Section 17).  Alternatively, you can change the default in
+    its method specification file: dict/gb/WuBi.tit (under cxterm
+    source).
+
+    The first few lines of the file used to look like:
+
+	# ....
+	# ....
+	ENCODE: GB
+	PROMPT: ....
+	AUTOSELECT: NEVER
+	....
+
+    Edit this file and change the auto-selection value from "NEVER"
+    to "ALWAYS":
+
+	# ....
+	# ....
+	ENCODE: GB
+	PROMPT: ....
+	AUTOSELECT: ALWAYS
+	....
+
+    Then recompile WuBi.cit:
+
+	tit2cit dict/gb/WuBi.tit > dict/gb/WuBi.cit
+
+    And if you store those .cit files elsewhere, copy WuBi.cit there.
+  --------------------------------------------------------------------
+
+16.  RUN-TIME CONFIGURATION
+
+The following parameters can be changed after cxterm starts up.
+
+    Path to search for the input methods (Section 14)
+    Auto-selection mode (Section 7)
+    Auto-segmentation mode (Section 8)
+    Association mode (Section 9)
+
+They can be changed through control program "hzimctrl" or the cxterm
+configuration panel.  Not all modes are available for all input methods.
+For example, if an input method explicitly specifies no association
+key, the auto-selection mode can only be "NEVER".
+
+17.  POPUP CONFIGURATION PANEL
+
+A popup panel for cxterm input configuration can be invoked by popping
+up the cxterm main menu (<Control> + Middle-Mouse-Button) and choosing
+the last item.  It can be also popped by pressing a predefined key
+(usually F3, or as specified in the user "Translation" table, see
+Section 2).
+
+The top part of the panel is for changing HZINPUTDIR.  HZINPUTDIR is a
+variable that contains a list of directories that cxterm searches for
+the file that holds a given input method.  It is properly predefined
+to refer the input methods bundled in the cxterm package.   This
+variable can be changed during any time so that input methods stored
+elsewhere can be loaded.  When a change has been made, press "Confirm"
+button to accept the new value.
+
+The second part of the panel is for switching input method.  Users can
+type in the input method name in text window, or pick one from the
+list of all input methods found in the current input directories (as
+HZINPUTDIR).    Press "Confirm" button to trigger the switch.
+
+The third part is for changing input parameters, including auto-
+selection, auto-segmentation, and association described above. To
+change a parameter, press the corresponding value button to see the
+menu of all choices and choose one.  Press "Confirm" button to do
+the actual changes.  If a value gets automatically changed back, the
+selected value is not supported.  (For example, if the association
+list is not present during cxterm starts up, the "Association" value
+will always be "No".)
+

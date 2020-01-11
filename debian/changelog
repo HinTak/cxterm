@@ -1,0 +1,111 @@
+cxterm (5.1p1-7.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Remove assumption in tit2cit that structures are unpadded
+    (closes: #94631).
+
+ -- Colin Watson <cjwatson@debian.org>  Wed, 13 Feb 2002 01:41:33 +0000
+
+cxterm (5.1p1-7.1) unstable; urgency=low
+
+  * NMU
+  * Add "libxaw7-dev | libxaw-dev" to build-deps (Closes: #110380).
+
+ -- Martin Michlmayr <tbm@cyrius.com>  Fri, 07 Sep 2001 17:49:17 +0200
+
+cxterm (5.1p1-7) unstable; urgency=low
+
+  * Moved the X resource file from /usr/X11R6/lib/X11/app-defaults to
+    /etc/X11/app-defaults to comply with the convention of X 4.0.
+    (Closes: #81089)
+  * Set the X resource file as conffile.
+  
+ -- Anthony Wong <ypwong@debian.org>  Thu,  4 Jan 2001 03:39:31 +0800
+
+cxterm (5.1p1-6) unstable; urgency=low
+
+  * Use xlibs-dev instead of xlib6g-dev in Build-Depends.
+  * Changed to depends on xfonts-base (>> 4.0).
+
+ -- Anthony Wong <ypwong@debian.org>  Sat, 30 Dec 2000 00:30:11 +0800
+
+cxterm (5.1p1-5) unstable; urgency=low
+
+  * Now cxterm-{gb,jis,ks} can depend on xfonts-base (>= 4.0.1-8), as
+    the related fonts have been merged into xfonts-base from the now
+    obsoleted xfonts-cjk. (Closes: #77345)
+  * cxterm-gb now suggests "xfonts-intl-chinese | intlfonts-chinese
+    (>= 1.1-5)" instead of only intlfonts-chinese. (Closes: #74251)
+  * cxterm-jis now suggests "xfonts-intl-japanese | intlfonts-japanese
+    (>= 1.1-5)".
+
+ -- Anthony Wong <ypwong@debian.org>  Fri, 22 Dec 2000 13:17:52 +0800
+
+cxterm (5.1p1-4) unstable; urgency=low
+
+  * A one-line fix to make it compiled successfully on alpha. 
+    (Closes: #53547)
+  * Yet another Update for the CTLauBig5 Cantonese input method
+
+ -- Anthony Wong <ypwong@debian.org>  Thu, 30 Dec 1999 04:35:42 +0800
+
+cxterm (5.1p1-3) unstable; urgency=low
+
+  * Modified the resource file to make Ctrl-<Button 1> works in
+    cxterm-{big5,jis,ks}
+  * Depends on xfonts-intl-chinese due to change of package name
+  * Version depends on intlfonts-chinese and xfonts-cjk to make
+    sure that font aliases will be present
+  * Added Build-Depends
+  * Don't compile with debug options (e.g. -g) on
+  * README.debian is no longer needed any more
+  * Yet another Update for the CTLauBig5 Cantonese input method
+  * Fixed cxterm-{big5,gb,jis,ks}.{postinst,prerm} to add and
+    remove the doc symlinks
+
+ -- Anthony Wong <ypwong@debian.org>  Mon, 20 Dec 1999 14:59:28 +0800
+
+cxterm (5.1p1-2) unstable; urgency=low
+
+  * Provides: x-terminal-emulator and use update-alternatives to
+    handle x-terminal-emulator with priority 10; Closes: #45958
+  * sgid utmp cxterm.common if the group exists
+  * Standards-Version: 3.0.1.1; FHS-compliant doc directories
+  * Updated the CTLauBig5 Cantonese input method
+
+ -- Anthony Wong <ypwong@debian.org>  Sat, 25 Sep 1999 18:09:02 +0800
+
+cxterm (5.1p1-1) unstable; urgency=low
+
+  * New upstream release
+  * Put back xterm-color to the Xresource file, as this version has
+    better support to it
+  * Incorporated the CTLauBig5 input method
+
+ -- Anthony Wong <ypwong@debian.org>  Tue, 22 Jun 1999 04:03:21 +0800
+
+cxterm (5.0.p3-2) unstable; urgency=low
+
+  * Fixed some code to be able to compile on Potato
+  * Changed Architecture of cxterm-{big5,gb,jis,ks} from 'any' to 'all'
+  * Changed Recommends to Suggests in cxterm-common (thanks to Yung-
+    Ching Hsiao <yhsiao@cae.wisc.edu> :)
+  * Reverted terminfo from xterm-color to xterm
+  * Updated Standards-Version to 2.5.1.0
+  * Now uses update-alternatives to determine which cxterm to run when
+    'cxterm' is typed
+
+ -- Anthony Wong <ypwong@debian.org>  Tue, 18 May 1999 02:56:02 +0800
+
+cxterm (5.0.p3-1) unstable; urgency=low
+
+  * Initial Release.
+  * Some source files were modified so that they can be successfully
+    compiled.
+
+ -- Anthony Wong <ypwong@debian.org>  Fri,  8 Jan 1999 13:40:46 +0800
+
+Local variables:
+mode: debian-changelog
+add-log-mailing-address: "ypwong@debian.org"
+End:

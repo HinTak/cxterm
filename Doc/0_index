@@ -1,0 +1,31 @@
+
+This directory contains some documentation for cxterm.
+
+
+filename	contents
+--------	----------------------------------------------------------
+
+README		same as toplevel README
+
+COPYRIGHT	same as toplevel COPYRIGHT
+
+HISTORY		the history of change in cxterm-5.0
+
+input.doc	the input feature for this cxterm.
+
+example.c	an example on how to handle Chinese code in C programs.
+
+x-resrc		some hints on how to change the X resource for cxterm.
+
+CXTERM.FAQ	FAQ for cxterm.
+
+bug-report	use this form to send bug report
+
+version		the version name and number of this cxterm
+
+tutorial-1/	a tutorial on WuBi input method, from Yu Huang's
+		learning_wubi.zip.
+
+tutorial-2/	a tutorial on how to use WuBi and CangJie input method,
+		adopted from Liangsheng Wu's wb-cj-input.zip.
+

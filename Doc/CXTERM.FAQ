@@ -1,0 +1,1220 @@
+File Name:			ftp://ftp.cs.purdue.edu/pub/ygz/CXTERM.FAQ
+Last Update:			Sun Aug  6 15:48:19 PDT 1995
+Author of this FAQ:		Yongguang Zhang (ygz@cs.purdue.edu)
+
+
+CONTENTS:
+	1)  Basic
+	 1.1  Do I need cxterm?
+	 1.2  What hardware and system software do I need?
+	 1.3  Where do I get the software?
+	2)  Installation and configuration
+	 2.1  How to install cxterm-5.0?
+	 2.2  How to make celvis?
+	 2.3  How to make cless?
+	 2.4  How to make hztty?
+	3)  Execution
+	 3.1  How to run cxterm-5.0?
+	 3.2  How to read CND-CM articles?
+	 3.3  How to read/post alt.chinese.text using cxterm & hztty?
+	 3.4  How to read/post chinese.text.unicode using cxterm & hztty ?
+	4)  Using Chinese in X Window
+	 4.1  Do I need to install the fonts myself?
+	 4.2  How to install the Chinese fonts in a X terminal?
+	 4.3  Do I need to install fonts in more than one workstation?
+	 4.4  How to install fonts by myself?
+	 4.5  Why did I fail in install the fonts?
+	 4.6  Why do I fail in "xset +fp ....." command?
+	 4.7  Is it possible to make font files smaller?
+	 4.8  May I run cxterm remotely?
+	 4.9  How to install fonts in XXX platform?
+	 4.9.1  Macintosh + MacX
+	 4.9.2  NCD X terminal
+	 4.9.3  HP workstation, HP X-Terminal (X/700)
+	 4.9.4  Sun OpenWindow System
+	5)  About CXTERM
+	 5.1  Why cannot I compile cxterm in XXX platform?
+	 5.1.1  SunOS/Solaris OpenWindow (1)
+	 5.1.2  SunOS/Solaris OpenWindow (2)
+	 5.1.3  Sun Solaris 2
+	 5.1.4  IBM RS6000, AIX 4.1
+	 5.1.5  SGI IRIX 5.3
+	 5.2  Why does cxterm print error messages when starts up?
+	 5.3  Why does cxterm print warning messages when starts up?
+	 5.4  Why does cxterm beep when you press F4?
+	 5.5  Why cannot I switch input method by F4?
+	 5.6  Why cannot I switch back by F1?
+	 5.7  Why is cxterm screen sometimes messed?
+	 5.8  Why cannot I input or output Chinese in the shell prompt?
+	 5.9  Why are the lines so close to each other in cxterm?
+	 5.10 Where can I get more input methods for cxterm?
+	 5.11 Why are cxterm popup menus or windows so small?
+	6)  About CELVIS, CLESS, etc.
+	 6.1  Why cannot I start celvis?
+	 6.2  Why cannot I compile celvis in System V Unix?
+	 6.3  Why cannot I input Chinese in celvis?
+	 6.4  Why does celvis truncate long lines?
+	 6.5  How to print the Chinese article that I displayed in X window?
+	 6.6  Why cannot I use "more" to read Chinese article?
+	 6.7  Why cannot I read alt.chinese.text.big5 in cxterm?
+	 6.8  Why does hztty fail to open tty?
+	 6.9  Did cxterm, celvis, hztty, etc. come from some funded project?
+
+
+===========================================================================
+1)  Basic
+---------------------------------------------------------------------------
+1.1  Do I need cxterm?
+---------------------------------------------------------------------------
+
+ Depends on what you want to do.  CXTERM is a convenient tool for
+ input/output Chinese in a Unix + X window environment.
+
+ 1) If you want to read Chinese file
+
+    You need:
+	a) cxterm-5.0 (including Chinese fonts for X11)
+	b) cless  (a Chinese "more" for cxterm)
+
+    Alternatives:
+	i)	ChiRK
+	ii)	Chinese fonts for X11  and  xhzview
+	iii)	Chinese fonts for X11  and  Mule
+
+ 2) If you want to edit and write your own Chinese file
+
+    You need:
+	a) cxterm-5.0 (including Chinese fonts for X11)
+	b) celvis  (a Chinese "vi" for cxterm)
+
+    Alternatives:
+	i)	Chinese fonts for X11  and  Mule
+
+ 3) If you want to read the HXWZ (CND-CM) or other Chinese magazine
+    distributed by e-mail
+
+    You need:
+	Same as 1)
+
+ 4) If you want to join the news group alt.chinese.text.
+
+    You need:
+	a) cxterm-5.0 (including Chinese fonts for X11)
+	b) hztty  (a terminal emulator
+        (plus any tty news reader such as rn, rrn, nn, tin, but not xrn)
+
+    Alternatively, any one of the following works too:
+	i)	Chinese fonts for X11  and  Mule
+	ii)	ChiRK			(read only, cannot post)
+	iii)	Chinese fonts for X11  and  xhzview	(ditto)
+
+ 5) If you want to join the news group alt.chinese.text.big5.
+
+    You need:
+	Same as 4) except that you don't need "hztty".
+
+ 6) If you want to use Chinese for other purpose, like gopher, irc, etc.
+
+    A good collections of software for you convenience are:
+
+	a) cxterm-5.0 (including Chinese fonts for X11)
+	b) cless
+	c) celvis
+	d) hztty
+	e) HCu or a similar tool to convert between Chinese encoding
+	d) hz2ps or gb2ps or similar Chinese text printing utility
+
+ Two other similar Chinese terminal emulators are the CXIN+CRXVT 
+ package (for Big5 Chinese only), and UXTERM (no Chinese input).
+
+---------------------------------------------------------------------------
+1.2  What hardware and system software do I need?
+---------------------------------------------------------------------------
+
+ 1) Any hardware configuration that supports Unix and X window.
+    Examples:
+	Sun workstation, HP, DEC station, IBM/RT, IBM/RS, SGI, ...
+	386/486/Pentium PC (with VGA or better), Macintosh,
+	Visual X Terminal, NCD, HP/X, ...
+
+ 2) If you don't have access to a Unix workstation, you at least
+    need access to
+	i)  an Unix server machine, and
+	ii) an X terminal, or a PC, or a Mac, whichever is connected
+	    to the Unix server through TCP/IP.
+    The PC or Mac must run some sort of X Window system or X Window
+    emulator (such as MacX).
+
+ 3) A complete version of X Window System Version 11 (Release 4 or
+    higher) must be installed in your system or accessible from your
+    Unix account.  Cxterm needs the following X11 standard libraries
+    Xlib, Xt, Xaw, Xmu, and Xext.  (Beware that some commercial systems
+    are only X11-compatible and don't include some or all of the
+    libraries.)
+
+---------------------------------------------------------------------------
+1.3  Where do I get the software?
+---------------------------------------------------------------------------
+
+ If you have Internet access, use anonymous ftp.  Remember to set
+ the binary mode before getting them.
+
+ 1) cxterm
+	ftp.cs.purdue.edu:	pub/ygz/cxterm-5.0.p?.tar.gz
+	(or many mirror sites)
+	(p? is the patch level number, currently being 3)
+
+ 2) other related software, such as cless, celvis, hztty, etc.
+
+    Try the following few places:
+	ifcss.org:		software/
+	cnd.org:		pub/software/
+	ftp.edu.tw:		
+	ftp.cs.purdue.edu:	pub/ygz/
+
+    For example,
+        celvis:	    ftp://ftp.cs.purdue.edu/pub/ygz/celvis.tar.gz
+        hztty:	    ftp://ftp.cs.purdue.edu/pub/ygz/hztty-2.0.tar.gz
+        cless:	    ftp://ftp.ifcss.org//pub/software/unix/c-utils/cless-*
+
+ If you don't have Internet access, you may send e-mail to
+ c-xterm@cs.purdue.edu, we may arrange them to sent to you.
+
+===========================================================================
+2)  Installation and configuration
+---------------------------------------------------------------------------
+2.1  How to install cxterm-5.0 ?
+---------------------------------------------------------------------------
+
+  1) ftp the cxterm-5.0.tar.gz
+
+  2) unpack
+	csh%  gzip -dc cxterm-5.0.tar.gz | tar xvf -
+	csh%  cd cxterm-5.0
+
+  3) make
+	csh%  ./config.sh
+
+  Since the script will try to install the fonts all together,
+  you'd better make under the machine's X window display, i.e.,
+  not through "telnet" or "rlogin".  So, sit in front of the console,
+  login, start X window, do the above steps in one of the xterm.
+
+  If you use X terminal in stead of a real workstation, or you have
+  to install cxterm in a "remote" "back-end" host, the font installation
+  may fail.  Read section 4 of this FAQ.
+
+---------------------------------------------------------------------------
+2.2  How to make celvis ?
+---------------------------------------------------------------------------
+
+  1) ftp the celvis.tar.gz
+
+  2) unpack
+	csh%  gzip -dc celvis.tar.gz | tar xvf -
+	csh%  cd celvis
+
+  3) make
+    If your operating system is derived from BSD Unix (e.g. SunOS, Ultrix),
+    simply type
+
+	csh%  make
+	csh%  mv celvis ~/bin
+
+    If your operating system is not a BSD derivative, e.g. system V Unix
+    such as Solaris 2, AIX, IRIX, try other Makefile (Makefile.???) which
+    fits your OS type.  You may need to do minor revision to that Makefile.
+
+---------------------------------------------------------------------------
+2.3  How to make cless ?
+---------------------------------------------------------------------------
+
+  See cless-*.README
+
+---------------------------------------------------------------------------
+2.4  How to make hztty ?
+---------------------------------------------------------------------------
+
+  1) ftp the hztty-2.?.tar.gz
+
+  2) unpack
+        csh%  gzip -dc hztty-2.*.tar.gz | tar xvf -
+        csh%  cd hztty
+
+  3) make
+        csh%  make
+
+    Choice one of the <platform> you use from the list. 
+
+        csh%  make <platform>
+
+    If success, the executable hztty program is produced.
+
+===========================================================================
+3)  Execution
+---------------------------------------------------------------------------
+3.1  How to run cxterm-5.0 ?
+---------------------------------------------------------------------------
+
+    Set the PATH to include the name of the directory (e.g. ~/bin) where
+    you put the executable binaries.  Then,
+
+	% CXterm &
+
+    will start a Chinese X terminal for you, if you want to specify fonts,
+    like using hanzigb16fs instead, try:
+
+	% CXterm -fh hanzigb16fs -fn 8x16 &
+
+    If you want to use BIG5 cxterm, try:
+
+	% CXterm -Big5 &
+
+    You can also add other standard xterm options as well, such as
+    "-sb" (add scrollbar), "-rv" (get reverse video).
+
+    On the cxterm window, issue celvis command you get the Chinese editor.
+
+    Try any Chinese text file to see how cxterm and celvis work :
+
+	% celvis README-DIR.gb		(GB coding)
+    or
+	% celvis README-DIR.b5		(BIG5 coding)
+
+---------------------------------------------------------------------------
+3.2  How to read CND-CM articles ?
+---------------------------------------------------------------------------
+
+    Decode your Chinese articles received by e-mail.
+    Save your mail as a text file (say, "Chinese.uue"). Then do uudecode as:
+
+        % uudecode Chinese.uue
+
+    Then a decoded Chinese file (with name "cm9104c.gb" or alike) is produced.
+    That is the Chinese articles in GB coding.
+
+    Start cxterm:
+
+        % CXterm &
+
+    Read Chinese article in the cxterm window, using cless, or celvis:
+
+        % cless cm9104c.gb
+    or
+        % celvis cm9104c.gb
+
+---------------------------------------------------------------------------
+3.3  How to read/post alt.chinese.text using cxterm & hztty ?
+---------------------------------------------------------------------------
+
+  1) The normal case
+
+    Start cxterm:
+
+	% CXterm &
+
+    In the cxterm window, run your favor news reader program with hztty.
+    For example, if your news reader is "rn":
+
+	% hztty rn
+
+    You cannot use X Window based news readers like xrn with hztty.
+
+  2) To use Big5 cxterm to read alt.chinese.text
+
+    run the following in the cxterm window:
+
+	% hztty -O hz2gb:gb2big -I big2gb:gb2hz rn
+
+  3) To read/post alt.chinese.text.big5 in a Big5 cxterm: 
+
+    just do it; you don't need hztty.
+
+  4) To read/post alt.chinese.text.big5 in a GB cxterm: 
+
+	% hztty -O big2gb -I gb2big rn
+
+---------------------------------------------------------------------------
+3.4  How to read/post chinese.text.unicode using cxterm & hztty ?
+---------------------------------------------------------------------------
+
+  chinese.text.unicode use Unicode in UTF-8 format.
+
+  1) The normal case
+
+    Start cxterm:
+
+	% CXterm &
+
+    In the cxterm window, run your favor news reader program with hztty.
+    For example, if your news reader is "rn":
+
+	% hztty -O utf-uni:uni2gb -I gb2uni:uni-utf rn
+
+	(replace gb with big with Big5 cxterm is used)
+
+    You cannot use X Window based news readers like xrn with hztty.
+
+===========================================================================
+4)  Using Chinese in X Window
+---------------------------------------------------------------------------
+4.1  Do I need to install the fonts myself?
+---------------------------------------------------------------------------
+
+    Let's see the three most common cases:
+
+      Case 1.   You will run cxterm in host A, which is a workstation.
+		Its console monitor runs X window and you use cxterm there.
+
+	This is the simplest and most common case.  You don't need
+	to install the fonts yourself.  Just use "config.sh" when you
+	make cxterm5.0 and let it install the fonts for you.
+
+	Just one comment, many workstations are setup to use XDM, the
+	X Display Manager.  X window is always running.  If you see a big
+	window in the center of display prompting you for username and
+	password when you first login, that is XDM.  Usually you don't
+	need to start the X window yourself, and you don't "own" the
+	X window process.  In this case the font path you give during
+	cxterm installation must be globally accessible.  This may
+	require you to open up your directories.  So be careful in
+	choosing the destination font directory.
+
+      Case 2.	You install and run cxterm in host A, which is a
+		workstation.  But sometimes you want to run cxterm in
+		another workstation B too.
+
+	If A and B are different types of machine, e.g., one is Sun and
+	the other is HP.  You need to compile and install cxterm in both
+	A and B.
+
+	If A and B are the same and the cxterm directories in both machines
+	are the actually the same shared path, then you shouldn't have
+	any problem.  Just use the cxterm (that you installed in A) in
+	either A or B.
+
+	If the file systems are cross-mounted but not the same, then
+	you need to make a copy of the CXterm script and make some changes
+	on the cxterm binaries, font path, etc.  (Or, you may simple
+	re-install cxterm in B.)
+
+      Case 3.	You use a workstation or an X terminal, lets call it A,
+		as the X window display.  Since A is too low-end, or for
+		other reason, you usually login from A to a back-end
+		server or a remote machine called B, and run applications
+		from there.  So you want to install and run cxterm from B
+		too.
+
+	In this case, you still install cxterm in B, the host computer,
+	using "config.sh".  But it probably does little in font installation.
+	You need to install the fonts in A, your display machine.
+
+	  But before you start, check first if the X window in A already
+	  has some Chinese fonts.  For GB encoding Chinese (used in
+	  mainland China and Singapore), the font names usually have the
+	  following sub-string: "hanzigb", "cclib", or "beijing", etc.
+	  For Big5 Chinese (used in Hong Kong and Taiwan), the font names
+	  usually include "big5", "hku", "taipei", etc.  Run "xlsfonts" to
+	  obtain a list of all the fonts in your system.  Check if such a
+	  font is included in the list.  Run "xfd -fn fontname" to verify
+	  that the font is really a Chinese font.
+
+	  For example, if you only use GB encode Chinese and your X window
+	  is X11R6, or XFree86 3.1 (and later), the fonts are already
+	  included.  The name of the fonts are hanzigb16fs, hanzigb16st,
+	  and hanzigb24st.  For example, Slackware Linux 2.1 includes
+	  these fonts in package "fntbig1" of diskset "X".
+
+	It may be a little tricky in installing fonts in A, if you are not
+	already an expert.  You may start to regret not having bought the
+	system guru next door a beer.  The net may not be helpful, 'cause
+	you usually must sit in front of your X window to do font
+	installation.
+
+	I cannot give you much detail because the procedure varies.  I can
+	only offer some hints.
+
+	First, check if of your X window supports the "font server".
+	If yes, you can install the fonts in a directory in B (during
+	"config.sh") and run font server from B.  The font server command
+	is called "fs".  It is standard in X11R5 and later.  Set the
+	fs(1) manual page for how to set up the fs.config file.  After
+	fs is up and running, you can set the font path by:
+
+		xset fp+ tcp/hostname_for_B:port
+
+	then you should be able to use the Chinese fonts now.  The concept
+	is that whenever the X window in A needs the Chinese font, it
+	will go to B and ask the running process "fs".
+
+	If the font server is not supported, check if the X window in A
+	and B are both X11R5 or later.  If yes, it uses .pcf fonts that
+	are hardware independent.  When you install fonts in host B using
+	"config.sh", choose a directory that is accessible from A, for
+	example, one that is NFS-mounted by A.  Or, copy the font directory
+	to A's local file system if it has one.  See Q4.2 below if A is
+        an X terminal. 
+
+	If the X window is X11R4 or older, it uses .snf fonts that are
+	hardware dependent.  So most likely you need to install the fonts
+	in machine A (or one of the same platform).  Here is an example
+	on how to compile fonts in X11R4:
+
+	    make a directory in A and download all the *.bdf and fonts.alias
+	    from cxterm-5.0/fonts/.  cd to this directory and type
+		bdftosnf -t gb16st.bdf > gb16st.snf
+		bdftosnf -t hku16et.bdf > hku16et.snf
+		mkfontdir .
+	    When you are done, to use the fonts, run
+		xset fp+ the_full_path_name_of_this_font_directory
+
+	Again, if A is an X terminal, see Q4.2 below.
+
+	In summary, if the machine you run cxterm process on is different
+	from the one that you display the window, there may be font problems.
+	If you encount such a problem but cannot solve it, don't feel bad.
+	The best bet is that you have a good system support staff.
+	It may also help reading through this section of FAQ.
+
+    Sometime You may need to install fonts manually, for example, fonts
+    you download from the Internet.
+
+---------------------------------------------------------------------------
+4.2  How to install the Chinese fonts in a X terminal?
+---------------------------------------------------------------------------
+
+    Fonts are hard to add to X terminal since X terminal doesn't have its
+    own disk.  Different model of X terminals have different solutions.
+    Many X terminals download fonts from a set of font paths at a particular 
+    machine.  Locate that machine and copy fonts in one of those paths.
+    Some X terminals can be set up to read font files via NFS.  In this case
+    your font directory must be put in a file system which is exported to
+    the X terminals.  Others may use font daemons.  So the best way to do
+    this is to give the *.bdf font files to your system manager and ask
+    him/her to install them for you.
+
+---------------------------------------------------------------------------
+4.3  I have access to more than one workstations, do I need to install
+     a copy of Chinese fonts in each of them?
+---------------------------------------------------------------------------
+
+    It depends.  If you use X11R5 and up, most likely you can share a
+    copy of the fonts in all workstations, as long as each of them can
+    access the font file directories remotely (e.g. through NFS).
+
+    If you use X11R4 or lower, you need to install one copy for each
+    architecture, because the .snf files are architecture dependent.
+    For example, if you have a network of Sun, DEC, and HP workstations,
+    which share some file systems, you can install one copy for Sun, one
+    copy for DEC, and one copy for HP.  All workstations of the same
+    architecture can share a same copy via NFS.
+
+    See also Q4.1
+
+---------------------------------------------------------------------------
+4.4  How to install fonts by myself?
+---------------------------------------------------------------------------
+
+    Usually you don't need to install the fonts yourself.  Using the
+    script "config.sh" will install the fonts for you automatically.
+    The following is for those who wish to bypass the cxterm script
+    and install fonts themselves.  Note that these are general steps
+    that works ONLY with standard X11 as released by X Consortium.
+    They may not work for you if your X window is a commercial version,
+    e.g., come with your workstation operating systems.  (See also Q4.9)
+
+    a) Choose a directory dedicated for the fonts, e.g., $HOME/xfonts.
+    
+    b) Copy all the files from cxterm-5.0/fonts/ to $HOME/xfonts,
+
+    c.1) If your X window is X11R4, do the following
+
+	% bdftosnf -t gb16st.bdf > gb16st.snf
+	% bdftosnf -t hku16et.bdf > hku16et.snf
+
+    c.2) If your X window is X11R5, or X11R6, do the following
+
+	% bdftopcf -t gb16st.bdf > gb16st.pcf
+	% bdftopcf -t hku16et.bdf > hku16et.pcf
+
+    d) Add the font path to your system.  You can put it in your X startup
+    file, like $HOME/.xinitrc.
+
+	% xset fp+ $HOME/xfonts
+
+---------------------------------------------------------------------------
+4.5  I failed in install the fonts, what's wrong?
+---------------------------------------------------------------------------
+
+    Here is how to test your font installation:
+
+    1)  run
+		% xset q
+
+	You will see a list of directories under "Font Path:" section.
+	The path-name of your new-added font directory, should appear
+	on the list exactly once.
+
+	If you cannot find your new-added font directory in the list,
+	your installation failed.  It may be caused by:
+
+	a)  you used the cxterm config.sh script to install cxterm,
+	    but you didn't do so in front of your machine's X Window
+	    display.  (Don't run config.sh throught telnet or rlogin.)
+
+	b)  the X server doesn't have the privilege to read your font
+	    directory  (e.g. X server is not started by you and your directory
+	    is protected);
+
+	c)  there are too many directories in the "Font Path:" list (remove
+	    some unimportant ones to make rooms for this new one); or
+
+	d)  your font directory is actually in another machine, but that
+	    directory is not mounted on the workstation where the X window
+	    runs.  (In this case, try to put the font files in your
+	    workstation.  If that is not possible, e.g. in a diskless
+	    workstation, or X terminal, ask your system manager for help.)
+
+	If you install the fonts by hand (not using the config.sh script),
+	it may also be caused by:
+
+	e)  you didn't follow the steps to build the font directory
+	    (e.g. you forgot to "mkfontdir");
+
+	f)  you didn't give a *full* path name (the path name which starts
+	    from the root as "/....") for "fontdir" in "xset fp+ fontdir";
+
+	If your font directory appears twice or more.  Run
+
+		% xset fp
+		% xset fp+ your_font_directory
+
+	and redo the testing again.
+
+    2)  run
+		% xset fp rehash
+		% xlsfonts
+
+	The output of the second command is a list of font names.
+	The string "hanzigb16st" (or the fontname of the font that you
+	installed) should appear in the list exactly once.
+
+	If you cannot find "hanzigb16st", but you can find something
+	like -isas-...,  the ./config.sh script failed to put
+	"fonts.alias" in your font directory (or you forgot to do so
+	if installed by hand), perhaps caused by "permission denied".
+
+	If you cannot find anything about hanzigb16st, or -isas- font,
+	the ./config.sh or you failed to convert the .bdf fonts into
+	the proper format.
+
+    3)  run
+		% xfd -fn hanzigb16st -start 12288
+
+	You should be able to see all the Chinese characters page by page.
+	(All "real" Hanzi starts from the 16th page.)
+
+    In the default ASCII font for cxterm is "8x16".  If your system
+    doesn't have it (e.g. you don't see "8x16" in the output of xlsfonts),
+    you should specify an alternative font in cxterm command option "-fn".
+    You may choose '-sony-fixed-medium-r-normal--16-120-*-*-*-*-iso8859-1',
+    or even 'fixed'.
+
+---------------------------------------------------------------------------
+4.6  When I typed the "xset +fp ....." command, it failed with a BadValue
+     error and something like major opcode 51 (X_SetFontPath).
+---------------------------------------------------------------------------
+
+    It means the X server cannot find or read your font directory, or
+    that your directory does not look like a font directory to the server.
+
+    Is the font directory you're specifying readable from the SERVER's file
+    system?  Remember, it's the server, not the client, which interprets your
+    font directory.  Trouble in this area is especially likely when you issue
+    an xset command with shell metacharacters in it (e.g. "xset +fp ~/fonts")
+    and the server is an X terminal or managed by xdm.
+
+    Is the directory really a font directory?  If you're running an MIT server
+    (or most varieties of vendor servers), look in the directory for the file
+    "fonts.dir".  (See the previous question and answer.)
+
+    [This Q&A is taken from X11 FAQ]
+
+---------------------------------------------------------------------------
+4.7  The fonts are quite large.  Is it possible to make them smaller?
+---------------------------------------------------------------------------
+
+    First, all the *.bdf or *.bdf.Z can be removed after .pcf or .snf
+    files are generated.
+
+    X11R4 and XFree86 3.1 are known to support compressed fonts.
+    The original X11R5 and X11R6 are not.  Check the document to see
+    if a vendor-supplied window system supports it or not and how to
+    do it.
+
+---------------------------------------------------------------------------
+4.8  May I run cxterm in one machine but display window in another
+     workstation (i.e. another machine)?
+---------------------------------------------------------------------------
+
+    Yes, X is a network-transparent window system.  Try the following:
+
+	MachineA%  cxterm -display WorkstationB:0.0
+
+    One thing you have to keep in mind is that X11 fonts are associated
+    with X server (each workstation will run its own X server), not cxterm.
+    Therefore the Chinese fonts must be locally installed and accessible
+    in the workstation on which your cxterm window is going to display.
+
+---------------------------------------------------------------------------
+4.9  How to install fonts in XXX platform?
+---------------------------------------------------------------------------
+4.9.1  Macintosh + MacX
+
+    You can install cxterm in a Unix host machine and display cxterm
+    on a Macintosh if you have MacX.  But you need to install Chinese
+    fonts in your Macintosh.  I will use the "gb16st" font as an
+    example, you can repeat it for any other fonts of your choice.
+    The steps are for MacX 1.2 and may slightly vary for other versions.
+
+    1) Download gb16st.bdf to your Macintosh.
+    2) In MacX, go to menu "Edit", choose the item "Fonts ...".
+    3) In the Font window, click in the button [New Font ...].
+    4) In the New Font window, select in "New Entry Type:" menu
+       the item "X Font".
+    5) Click in [Compile a BDF File ...].
+    6) Choose the gb16st.bdf in the file selection box.
+
+    After the bdf file is compiled, a new font file labelled "gb16st"
+    will be generated.
+
+    7) Drag that file into "MacX 1.2", then into "Mac X Fonts", and
+       finally in the "Misc" folder.
+    8) Again go to menu "Edit", choose the iterm "Fonts ...".
+    9) In the Font window, click in the button [New Font ...].
+    10) In the New Font window, select in "New Entry Type:" menu
+        the item "Alias".
+    11) Enter "hanzigb16st" as the alias name, select the item
+        -ISAS-SONG TI-MEDIUM-R-NORMAL--16-160-72-72-C-160-GB2312.1980-0
+        as "Target of Alias".
+    12) Finally, click "Update Font Directory".
+
+    These steps first compile the bdf file gb16st.bdf (the fontname
+    is "-ISAS-SONG TI-MEDIUM-R-NORMAL--16-160-72-72-C-160-GB2312.1980-0"
+    as appear in the header of gb16st.bdf) into a MacX font stored in file
+    "gb16st", then an alias of "hanzigb16st" is made to this fontname.
+    You can start cxterm in your Unix host then the window will be on
+    your Mac.
+
+4.9.2  NCD X terminal
+
+    You probably have to install the fonts by hand.  Read the NCD manual.
+    Pay attention to the following when you install X fonts for NCD:
+
+    NCD use a different .snf font format.  Use ncdbdftosnf to get
+    the .snf fonts.
+
+    The fonts are loaded on NCD by tftp from a font server, and on that
+    font server /etc/tftpaccess.ctl should contain all the directories
+    tftp has access privilege to, so add your new font dir to it.
+    Or, put the font path in the /tftpdir.  For example, if chinese
+    fonts are in
+	/tftpdir/usr/lib/X11/ncd/fonts/pcf/chinese
+    one has to use the following instruction:
+	xset fp+ /usr/lib/X11/ncd/fonts/pcf/chinese
+    because tftpd does a chroot("/tftpdir") when involked
+
+4.9.3  HP workstation, HP X-Terminal (X/700)
+
+    You probably have to install the fonts by hand too.
+
+    HP's X11R5 by the vendor seems to be still using .snf.
+    So, use the bdftosnf provided by HP (not by MIT) to compile fonts.
+  
+    For HP 700X, use /usr/bin/X11/700X/xtbdftosnf to compile the fonts and
+    /usr/bin/X11/700X/xtmkfontdir to make the font directory.
+    Probably you have to put the font directory in
+    /usr/tftpdir/usr/lib/X11/700X/fonts/.
+
+4.9.4  Sun OpenWindow System
+
+    If you use OpenWindow with X11/NeWS window system server ("xnews"),
+    you may need to install the fonts by hand.
+
+    NOTE:  This only applies if you use the xnews server, not X11 server.
+    If you are not sure, type "xset q" and look at the "Font Path:" list.
+    If it contains one directory "/usr/openwin/lib/fonts", you are likely
+    using the xnews server.  (X11 server font path list should have lots
+    of directories like /usr/openwin/lib/X11/fonts/...
+
+    a) Choose a directory dedicated for the fonts, e.g., $HOME/xfonts.
+
+    b) Copy all the files from cxterm-5.0/fonts/ to $HOME/xfonts,
+
+    c) Do the following
+
+	% convertfont -M -n hanzigb16st -o hanzigb16st gb16st.bdf
+
+	% convertfont -M -n hku16et -o hku16et hku16et.bdf
+
+	% bldfamily
+	(ignore the error messages by "bldfamily".)
+
+    d) Add the font path to your system.  You can put it in your X startup
+    file, like $HOME/.xinitrc.
+
+	% xset fp+ $HOME/xfonts
+
+
+===========================================================================
+5)  About CXTERM
+---------------------------------------------------------------------------
+5.1  I cannot compile cxterm in XXX platform.  There are many error 
+     messages produced.
+---------------------------------------------------------------------------
+
+    The ftp directory ftp://ftp.cs.purdue.edu/pub/ygz/cxterm-platforms/
+    contains some hints on porting cxterm in various platforms.  If you
+    cannot find a file for your platform, try some newsgroups to see if
+    some one out there has done it.  Here is some common problems.
+
+5.1.1  SunOS/Solaris OpenWindow (1)
+
+    There is a bug in an old version of OpenWindow that prevents
+    compilation of cxterm:
+
+        ld: Undefined symbol
+           _sin
+           _cos
+           ....
+           _get_wmShellWidgetClass
+           _get_applicationShellWidgetClass
+
+    Beside updating your system or having Sun to fix this problem,
+    you can get around by changing the cxterm-5.0/cxterm/Imakefile.
+    Replace the line
+
+	NormalProgramTarget(cxterm,$(OBJS1),$(DEPLIBS1),XawClientLibs,\
+	$(TERMCAPLIB) $(PTYLIB))
+
+    with
+
+	#if HasGcc
+	NormalProgramTarget(cxterm,$(OBJS1),$(DEPLIBS1),-static XawClientLibs,\
+	$(TERMCAPLIB) $(PTYLIB) -lm)
+	#else
+	NormalProgramTarget(cxterm,$(OBJS1),$(DEPLIBS1),-Bstatic XawClientLibs,\
+	$(TERMCAPLIB) $(PTYLIB) -lm)
+	#endif
+
+5.1.2  SunOS/Solaris OpenWindow (2)
+
+    If you see something like the following in the output when you run
+    config.sh (also saved in Install.log):
+
+	...
+	imake -I/usr/openwin/lib/config
+	...
+	imake -DUseInstalled -I/usr/openwin/lib/X11/config -DTOPDIR=../. -DCURDIR=./cxterm 
+	"Imakefile.c", line 4: Can't find include file Imake.tmpl
+	...
+
+    If you take a careful look, the two -I.... paths are different.
+    This is because the OpenWindow in your computer was not properly
+    installed.  You should bug your system manager or system software
+    support people to correct this for you.  Or, if you cannot wait,
+    try add the following line to the beginning of both Imakefile and
+    dict/Imakefile (under cxterm source tree cxterm-5.0/):
+
+	IMAKE_DEFINES = -I/usr/openwin/lib/config
+
+    then try config.sh again.
+
+5.1.3  Sun Solaris 2
+
+    If you see the error message like this when you compile cxterm:
+
+	Undefined		    first referenced
+	 symbol				in file
+	index				/usr/ucblib/libtermcap.a(termcap.o)
+	rindex				/usr/ucblib/libtermcap.a(termcap.o)
+	ld: fatal: Symbol referencing errors. No output written to cxterm
+
+    If you use -ltermcap (i.e. /usr/ucblib/libtermcap.a) in Solaris 2.x,
+    use MUST also link with /usr/ucblib/libucb.a.  So, if you use
+    /usr/bin/cc or perhaps gcc, you should also link with -lucb.
+    Talk to your system manager about this and see what his suggestion is.
+    Or, you may try the cc in BSD Compatibility Package, i.e.
+    /usr/ucb/cc.  If you /usr/ucb/cc instead of /usr/bin/cc, explicitly
+    spell so in the X11 system configuration or put /usr/ucb before
+    /usr/bin in your PATH.
+
+    I don't know if there is other way to turn on the BSD flag so that
+    /usr/ucblib/libucb.a will be automatically linked.
+
+
+5.1.4  IBM RS6000, AIX 4.1
+
+    The current cxterm works on AIX 3.x, but not AIX 4.1.  You need to
+    make the follow change:
+
+	In the file "cxterm/input.c", replace line 49
+		#include <X11/DECkeysym.h>
+	by
+		#define DXK_Remove      0x1000FF00   
+
+	In the file "cxterm/main.c", remove line 465
+		extern void pututline();
+	and line 468
+		extern void utmpname();
+
+	Also in the file "cxterm/main.c", replace line 1288
+		#ifdef AIXV3
+	by
+		#ifdef AIXV3_BUT_NOT_AIXV4
+
+	In the files "dict/gb/Makefile", "dict/big5/Makefile",
+	"dict/jis/Makefile" and "dict/ks/Makefile", replace following line
+		DICTC = ($TOP)/utils/tit2cit
+	by
+		DICTC = ../../utils/tit2cit
+
+    There will be a lot of warning message during the compilation,
+    try to ignore them.
+
+    (Thanks to Jianxiong WU, jxwu@crg3.uwaterloo.ca)
+
+5.1.5  SGI IRIX 5.3
+
+    Ignore the "Warning" messages during compilation.  If you run cxterm
+    and get
+
+	cxterm: Error 5, errno 22: Invalid argument
+
+    you have been using an older version of cxterm.  This problem is fixed
+    since patch-level 2 (cxterm-5.0p2).
+
+---------------------------------------------------------------------------
+5.2  When I start cxterm, it prints error messages
+	"cxterm:  unable to open font ...".
+---------------------------------------------------------------------------
+
+    This may be caused by improper installation of X11 font.  See the
+    answer of the question 4.4
+
+---------------------------------------------------------------------------
+5.3  When I start cxterm, several pieces of warning messages emerge:
+	Widget class ... version mismatch ...
+---------------------------------------------------------------------------
+
+    These warning messages are not important.  You can just ignore them.
+    Probably the version of X window you use to compile cxterm is not
+    the version you run cxterm on.  E.g, compiling cxterm in X11R4 but
+    run it on X11R3, or compiling cxterm in MIT X11, but run it on
+    Open Windows.  Anyway, these messages won't harm cxterm.
+
+---------------------------------------------------------------------------
+5.4  When I try to switch the input methods by pressing F4, it beeps
+     and nothing happens.
+---------------------------------------------------------------------------
+
+    The X resource for cxterm is not loaded.  The cxterm installation
+    script should have created the CXterm.ad in the input dictionary 
+    directories.  Append it to ~/.Xdefaults or load it each time
+    by running "xrdb -merge CXterm.ad"
+
+---------------------------------------------------------------------------
+5.5  When I try to switch the input methods by pressing F4, it says
+	unable to load input table for XXXX
+---------------------------------------------------------------------------
+
+    You have set up the resource CXterm.ad successfully,
+    The hanzi input path given in CXterm.ad is not correct and cxterm
+    can not find the file XXXX.cit.  For example, you may have moved
+    the cxterm directory but forget to update the X resources to
+    reflect the changes.
+
+    Or you may set the environment HZINPUTDIR to point to the right
+    directory that contains the input method XXXX.
+
+---------------------------------------------------------------------------
+5.6  I can switch input method by pressing F2, ..., F8, but then I can not
+     go back to ASCII by press F1.
+---------------------------------------------------------------------------
+
+    In some systems <F1> has been is reserved for system use.  (For example,
+    <F1> in DECstation is "Hold Screen", and in OpenWindows or Motif it is
+    often the "Help" key.)  In such an environment you can be trapped into
+    other input modes and never be able to come back to the normal ASCII
+    mode again.  You can correct this problem by carefully editing the
+    cxterm resource definition (see cxterm-5.0/Doc/x-resrc) and choosing
+    an unused function key, or use the popup panel (press <F3>) to switch
+    back.
+
+---------------------------------------------------------------------------
+5.7  When I move cursor in cxterm (e.g., in celvis), cxterm sometimes
+     doesn't display the chinese characters correctly, especially when
+     moving the cursor from ASCII characters to Chinese characters or vise
+     versa.  Ctrl-R can redraw the screen correctly though.
+---------------------------------------------------------------------------
+
+    Probably you are not using a match ASCII font for the Chinese font.
+    The ASCII font should be exactly half as wide as the the Chinese font.
+    For 16x16 Chinese fonts such as "hanzigb16st" and "hku16et", "8x16"
+    should be used.  You can specify the fonts in cxterm command line like
+
+	cxterm -fh hanzigb16st -fn 8x16 
+
+    The matching font for "hanzigb24st" is "12x24".
+
+---------------------------------------------------------------------------
+5.8  I cannot input or output Chinese in the shell prompt -- what I got is
+     two random ASCII characters instead of a Chinese character.
+---------------------------------------------------------------------------
+
+    Maybe the 8th bits are stripped from the Chinese characters.
+
+    Cxterm tries to set the proper tty for you, but the user or the system
+    may later mistakenly reset it.
+
+    Some shell (e.g. bash, tcsh) strips the 8th bit.  In such shells,
+    eight-bit characters are usually for special key bindings.  To allow
+    input Chinese in shell prompt, try
+
+    1) in tcsh, type or put the following lines in .tcshrc
+		unsetenv NOREBIND
+		setenv LANG
+
+    2) in bash, add the following line in $HOME/.inputrc and restart bash
+		set meta-flag On
+		set convert-meta Off
+		set output-meta On
+
+       This essentially disables all the Meta- keybinding in all commands
+       that use GNU readline, which is good if you want to input Chinese
+       in their prompts.  You can still use the ESC+ binding.  However if
+       you only want bash to have this behavior but not other GNU-readline
+       applications, use the following lines instead:
+		$if Bash
+		set meta-flag On
+		set convert-meta Off
+		set output-meta On
+		$endif
+
+    Csh, sh, ksh usually don't have this problem.  But be careful of the
+    name of the shell, for example in Linux, csh actually means tcsh and 
+    sh means bash.
+
+    Some system (or your shell startup file, e.g. .cshrc or .login) set the
+    tty to strip the 8th bit.  You can reset it by typing "stty pass8".
+    (Different systems may have different stty format.  Read stty(1) manual
+    for help.  Some possible stty options are "pass8", "cs8", "-istrip",
+    "-parenb", etc.)
+
+    Check your X resource file.  If you find something like "eightBitOutput",
+    set it to be "true" or "on".  (Or simply remove it, the default is "on".)
+
+    Some operating system may strip the 8th bit from every character.
+    You are out of luck since such system is not for international use.
+
+---------------------------------------------------------------------------
+5.9  The lines are too close to each other in cxterm.  It is hard to read.
+---------------------------------------------------------------------------
+
+    You may increase the line spacing by adding option "-hls" when you
+    start cxterm.  For example, "cxterm -hls 2" (or "CXterm -hls 2")
+    increase the line spacing to 2 pixel.  You may also add this option
+    in the X resource (CXterm.ad or ~/.Xdefaults).  See cxterm(1).
+
+---------------------------------------------------------------------------
+5.10  Where can I get more input methods for cxterm?
+---------------------------------------------------------------------------
+
+    Ftp directory ftp.cs.purdue.edu: pub/ygz/cxterm-dictionary have some
+    external input methods for cxterm, and there will be more in the
+    future, if we can find any.  We also welcome you to contribute
+    new input methods.  See cxterm-dictionary/00DICTIONARY.readme.
+
+    Here is how to install them:
+
+    1)  ftp it in *binary* mode.
+
+    2)  convert it to .cit format by tit2cit:
+
+        % tit2cit FOO.tit > FOO.cit
+
+    3)  put it in the directory with other .cit files you already have, e.g:
+
+        % cp FOO.cit ~/dicts/gb
+
+    4)  modify the X resource add new input method FOO.  See (document
+	in cxterm-5.0/Doc/x-resrc).
+
+    5)  restart cxterm.
+
+---------------------------------------------------------------------------
+5.11  Why are cxterm popup menus or windows so small?
+---------------------------------------------------------------------------
+
+    If the cxterm popup menu or configuration panel is so small, e.g,
+    that can only contains a few characters, check your X resource file.
+    You should not have something like
+		cxterm*geometry:  80x24
+    or
+		cxterm*vt100*geometry:  80x24
+    or
+		*vt100*geometry:  80x24
+    in your X resource.  They are over-generalized. For example,
+    "cxterm*geometry:  80x24" means all subwindows under the application
+    "cxterm" will have size of 80x24.  For the main text window, 80x24
+    means 24 lines of text with 80 characters per line, which is OK.
+    But for other subwindows like menus or popup panels, 80x24 means 80
+    pixels width and 24 pixels height, which is too small to be useful.
+    By default, cxterm calculates the proper size for these menu or
+    popup windows, so you don't need to specify their sizes.  If you
+    need to specify the size of the cxterm main text window, use this
+    instead:  "cxterm*vt100.geometry:  80x24".  Note that '.' is used
+    in between "vt100" and "geometry", which says the geometry is for
+    vt100 only, not for its sub-windows (as '*' suggested).  This line
+    says that any type of vt100 window (i.e., the text window) under
+    cxterm will be 80x24.  All other subwindows will not be affected.
+
+    Also look for "cxterm*length: ..." or such over-generalized statements.
+
+===========================================================================
+6)  About CELVIS, CLESS, etc.
+---------------------------------------------------------------------------
+6.1  When I ran celvis, the prompt was: 
+	Can't read /etc/termcap
+---------------------------------------------------------------------------
+
+    Your Unix system may be a SYS V deriver (ask your system manager to
+    confirm this), and you may have a /etc/terminfo instead of /etc/termcap.
+    Use Makefile.s5 as the Makefile. If it still doesn't work, change the
+    line in Makefile.s5
+		LIBS=   -ltermcap
+    into
+		LIBS=   -lterminfo
+    or
+		LIBS=	-ltermlib
+    and try again.
+
+---------------------------------------------------------------------------
+6.2  I cannot compile celvis in System V Unix (e.g. SGI IRIX), it complains
+     a lot like:
+
+	accom: Error: curses.c, line 269: prototype parameter 2 type must
+	have all of the actual arguments qualifiers (except the outermost)
+	and pointed-to types must be compatible (ANSI 3.3.2.2,3.3.16.1)
+		signal(2        , trapint);
+---------------------------------------------------------------------------
+
+    edit curses.c, replace the line 269:
+		signal(SIGINT, trapint);
+    with
+		signal(SIGINT, (void(*)()) trapint);
+
+    and replace line 388:
+		signal(SIGWINCH, getsize);
+    with
+		signal(SIGWINCH, (void(*)()) getsize);
+    
+    Then try again.
+
+---------------------------------------------------------------------------
+6.3  I cannot input Chinese in celvis; it sometimes results in a beep.
+---------------------------------------------------------------------------
+
+    In celvis, you should be aware of the two vi modes, "input" mode (in
+    which you insert English text), and the "edit" mode (in which you move
+    the cursor).  Chinese input is only accepted in "input" mode.  Trying
+    to enter Chinese characters in "command" mode will result in a beep.
+
+    Also check the above question and answer.
+
+---------------------------------------------------------------------------
+6.4  In celvis, the text seems to have been truncated at the right for each
+     line.  Even extending the window width won't help.
+---------------------------------------------------------------------------
+
+    The lines that are longer then the window width are not truncated.
+    They are side-scrolled by celvis.  To see the rest of the line, you
+    need to move the cursor towards the right edge of the window until
+    the hidden text is revealed.
+
+    It is the feature (or bug, sometimes people look this way) of celvis
+    that it side-scrolls instead of wraps a line.
+
+---------------------------------------------------------------------------
+6.5  How to print the Chinese article that I displayed in X window?
+---------------------------------------------------------------------------
+
+    You may dump the Chinese window to a Postscript printer. Use
+    X11 utilities xdpr
+
+	% xdpr -device ps -Pprinter_name
+
+    and click the mouse in the desired window (where ps is for Postscript
+    printer.  Manual xdpr(1) describes options for other kinds of printers.
+
+    However, there are quite a few packages that let you convert a Chinese
+    text file into a Postscript file.  Both "HZ2PS" and "GB2PS" are good
+    packages to print plain Chinese text.  They can be found in ftp site
+    ftp://ftp.ifcss.org/pub/software/unix/print/.
+
+---------------------------------------------------------------------------
+6.6  When I use "more" to read Chinese article in cxterm, the Chinese
+     characters are messed up from time to time.
+---------------------------------------------------------------------------
+
+    Try to use "cless" instead.  "more" is not designed for Chinese.
+
+---------------------------------------------------------------------------
+6.7  Why cannot I read alt.chinese.text.big5 in cxterm?
+---------------------------------------------------------------------------
+
+    First, by default the cxterm uses GB encoding, not the Big5 encoding
+    as used in alt.chinese.text.big5.  To use cxterm with Big5, you need
+    to open cxterm this way:
+
+	cxterm -fh hku-ch16 -fn 8x16 -BIG5 &
+
+    Second, read the question 5.8 and see if that was the reason.
+
+    Third, the news feeding path in your system may not be 8-bit clear,
+    If the news articles in the news spool of your system are already
+    stripped of the 8th bits (many systems do so), you are out of luck
+    and generally there is no way for you to read the articles.
+    (An alternative way is to read newsgroup alt.chinese.text instead,
+    which has the same content but use HZ encoding to bypass the 8th-bit
+    problem.  However you need hztty as well.  After open a Big5 cxterm,
+    type:
+
+        hztty -O hz2gb:gb2big -I big2gb:gb2hz  the-news-reader-of-your-choice
+
+    Fourth, your news reader may not be compatible with Big5 Chinese.
+    Try some other newsreader, such as "tin".
+
+---------------------------------------------------------------------------
+6.8  Why does hztty fail to open tty?
+---------------------------------------------------------------------------
+
+    If you see the following error message when you execute hztty,
+
+	/dev/ttyp7: Permission denied
+	                             Fail to open tty
+
+	[hztty exited]
+
+    This is because /dev/ttyp7, which detected by hztty to be useful,
+    was not cleared up properly the last time it was used.  For example, 
+    Someone "unpluged" the terminal without logging out first.  You can
+    try the folllowing: "telnet localhost", login and logout again, then
+    retry hztty.
+
+---------------------------------------------------------------------------
+6.9  Did cxterm, celvis, hztty, etc. come from some funded project?
+---------------------------------------------------------------------------
+
+    No.  The author(s) wrote them in their spare time.
+

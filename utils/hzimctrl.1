@@ -1,0 +1,41 @@
+.\" $Id: hzimctrl.1,v 1.1 2001/11/28 04:41:31 xucs Exp $
+.TH HZIMCTRL 1 "CXTERM Version 5.0" "January 01, 1995"
+.SH NAME
+hzimctrl \- utility to switch current input method, set input parameters,
+and change input method searching path
+.SH SYNOPSIS
+.B hzimctrl
+[-m input_method | -d hzinputdir | -p parameter] ...
+.SH DESCRIPTION
+.I Hzimctrl
+invokes input method control functions
+according to the options.
+Cxterm escape sequences are used to make the changing in run-time. 
+.TP 8
+.B \-m \fIinput_method\fP
+This option specifies the name of a Chinese input method
+and switches the current input method accordingly.
+.TP 8
+.B \-d \fIhzinputdir\fP
+This option sets the search path
+for the directory containing the Chinese input methods
+to be the following argument.
+Alternative directory names separated by a colon ``:''
+can be also put into the search path.
+The search path is usually defined in the environment variable
+HZINPUTDIR when \fIcxterm\fP is started,
+or is given in \fIcxterm\fP option "\-hid".
+.TP 8
+.B \-p \fIparameters\fP
+This option sets or resets the current input parameters
+according to the argument.
+For the format of the parameters
+please refer to cxterm(1). 
+.SH "SEE ALSO"
+cxterm(1)
+.SH AUTHOR
+Yongguang Zhang
+.br
+See
+.IR cxterm (1)
+for the copyright notice.

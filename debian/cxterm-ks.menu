@@ -1,0 +1,2 @@
+?package(cxterm-ks):needs=X11 section=XShells\
+  title="CXterm (KS)" command="/usr/X11R6/bin/cxtermks"

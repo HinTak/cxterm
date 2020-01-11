@@ -1,0 +1,96 @@
+# $Id: Punct.tit,v 1.1.1.1 2001/11/13 18:19:03 xucs Exp $
+# HANZI input table for cxterm
+# To be used by cxterm, convert me to .cit format first
+# .cit version 2
+ENCODE:	BIG5
+PROMPT:	º~¦r¿é¤J::¼ÐÂI²Å¸¹::\040
+AUTOSELECT:	NEVER
+#
+COMMENT (C) 1991,1994,1995 by Yongguang Zhang.	(ygz@cs.purdue.edu)
+COMMENT Permission to use/modify/copy for any purpose is hereby granted.
+COMMENT Absolutely no fee and no warranties.
+COMMENT
+COMMENT use <CTRL-f> to move to the right
+COMMENT use <CTRL-b> to move to the left
+# input key definitions
+VALIDINPUTKEY:	!"\043$%&'()*+,-./0123456789:;<=>?@[\134]^_`abcdefghijkl
+VALIDINPUTKEY:	mnopqrstuvwxyz{|}~
+WILDCARDKEY:	\000		# no wildcard
+WILDCHARKEY:	\000		# no wildchar
+ASSOCIATIONKEY:	\000		# no association
+# choice list keys
+SELECTKEY:	1\040
+SELECTKEY:	2
+SELECTKEY:	3
+SELECTKEY:	4
+SELECTKEY:	5
+SELECTKEY:	6
+SELECTKEY:	7
+SELECTKEY:	8
+SELECTKEY:	9
+SELECTKEY:	0
+MOVERIGHT:	\006			# ctrl-F
+MOVELEFT:	\002			# ctrl-B
+# pre-editing keys
+BACKSPACE:	\010\177		# ctrl-H,  DEL
+DELETEALL:	\015\025		# RETURN,  ctrl-U
+CURSOR-BEGIN:	\000
+CURSOR-END:	\000
+CURSOR-FORW:	\000
+CURSOR-BACK:	\000
+CURSOR-ERASE:	\000
+REPEATKEY:	\020\022		# ctrl-P,  ctrl-R
+# the following line must not be removed
+BEGINDICTIONARY
+#
+!	¡I¡T
+"	¡§¡¨¡©¡ª¡²
+\043	¡­¡Ì
+$	¢D¢L¢F¢G
+%	¢H
+&	¡Í¡®
+'	¡¥¡¦¡«¡¬
+(	¡]¡e¡}¡_¡g¡u¡y¡x¡|
+)	¡^¡f¡~¡`¡h¡v¡z¡w¡{
+*	¡Î¡Ñ£S£N¡ä
++	¡Ï¡Þ¡Ó£U¡t¡å
+,	¡A¡M¡B¡N
+-	¡Ð¡ß¡ß¡V¡Â¢w¡ã
+.	¡C¡D¡E¡O¡P¡K¡L¡î¡ï¢X¡ó
+/	¡þ¢A¡Ò¡Ô¢@¢B
+0	¢¯£Ì£Ö£à¢Â¢Ì
+1	¢°£Ã£Í£×¢¹¢Ã¢Í
+2	¢±£Ä£Î£Ø¢º¢Ä¢Î
+3	¢²£Å£Ï£Ù¢»¢Å
+4	¢³£Æ£Ð£Ú¢¼¢Æ
+5	¢´£Ç£Ñ£Û¢½¢Ç
+6	¢µ£È£Ò£Ü¢¾¢È
+7	¢¶£É£Ó£Ý¢¿¢É
+8	¢·£Ê£Ô£Þ¢À¢Ê
+9	¢¸£Ë£Õ£ß¢Á¢Ë
+:	¡G¡J¡R
+;	¡F¡Q
+<	¡q¡à¡m¡o¡s¡Ø
+=	¡×¡â¡Ú¡Ü¡Ý
+>	¡r¡á¡n¡p¡t¡Ù
+?	¡H¡S
+@	¢I¡ó
+[	¡£¡i¡k
+\134	¢@¢B¡þ¢A
+]	¡¤¡j¡l
+^	¡s
+_	¡Z¡\
+`	¡¥¡¦¡«¡¬
+graph	¢b¢c¢d¢e¢f¢g¢h¢i¢j¢k¢l¢m¢n¢o¢p¢q¢r¢s¢t¢u¢v¢w¢x¢y¢z
+graph	¢{¢|¢}¢~¢¡¢¢¢£¢¤¢¥¢¦¢§¢¨¢©¢ª¢«¢¬¢­¢®
+logo	¡¯¡°¡±¡²¡³¡´¡µ¡¶¡·¡¸¡¹¡º¡»¡¼¡½¡¾¡¿¡À¡Á¡Â¡Ã¡Ä¡Å¡Æ¡Ç
+logo	¡È¡É¡Ê¡Ë
+math	¡Ï¡Ð¡Ñ¡Ò¡Ó¡Ô¡Õ¡Ö¡×¡Ø¡Ù¡Ú¡Û¡Ü¡Ý¡Þ¡ß¡à¡á¡â¡ã¡ä¡å¡æ¡ç
+math	¡è¡é¡ê¡ë¡ì¡í¡î¡ï
+symbol	¡ñ¡ð¡ò¡ó¡ô¡õ¡ö¡÷¡ø¡ù¡ú¡û¡ü¡ý¡þ¢@¢A¢B
+unit	¢C¢D¢E¢F¢G¢H¢H¢I¢P¢Q¢R¢S¢T¢U¢V¢W¢X¢Y¢Z¢[¢\¢]¢^¢_¢`
+unit	¢a
+{	¡¡¡a¡c
+|	¡U¡ý¡Y¢x¡ü
+}	¡¢¡b¡d
+~	¡\¡ã¡Û

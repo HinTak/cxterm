@@ -1,0 +1,74 @@
+This package was debianized by Anthony Wong <ypwong@debian.org> on
+Fri,  8 Jan 1999 13:40:46 +0800.
+
+It was downloaded from
+
+    ftp://eedesign5.ee.columbia.edu/pub/unix/cxterm5.1
+
+Upstream Author:
+
+    * Originally written by Yongguang Zhang (C) 1995
+    * Color patches by Ji-Tzay Yang and Bruce Cheng in 1996-1997
+    * Blink/input patches and bug fixes by ZHUANG Hao, 1997-1999
+
+Copyright:
+
+The original copyright notice follows:
+
+===========================================================================
+
+	CXTERM 5.0 COPYRIGHT AND PERMISSION NOTICE
+
+  This copyright and permission notice outlines the rights and
+  restrictions covering most parts of this distribution of cxterm.
+  The part of cxterm source code that was actually xterm source code
+  from "X11R6/xc/programs/xterm" is also copyrighted by X Consortium.
+  Files that carried over from the xterm source without change are
+  exempted from this notice.  Some individual files, such as the fonts
+  and input dictionaries, may also be covered by other copyrights.
+
+
+    CXTERM 5.0   (C) 1995 BY YONGGUANG ZHANG.
+    X11R6 CXTERM (C) 1994 BY YONGGUANG ZHANG.
+    X11R5 CXTERM (C) 1991 BY YONGGUANG ZHANG AND MAN-CHI PONG.
+    X11R4 CXTERM (C) 1990 BY MAN-CHI PONG AND YONGGUANG ZHANG.
+
+  Permission to retain, use, modify, copy, and distribute CXTERM 5.0
+  in source or binary and its documentation (hereafter, the Software)
+  for non-commercial purpose is hereby granted to you without a fee,
+  provided that this entire copyright and permission notice appear in
+  all such copies, that no charge be associated with such copies,
+  that distribution of derivative works (including value-added
+  distributions such as with additional input dictionaries or fonts)
+  include clarification that such added or derived parts are not from
+  the original Software, and that the names of the author(s) not be
+  used to endorse or promote such works.
+
+  Any commercial use of the Software requires a license directly from
+  the author(s).  Please contact the author(s) to negotiate an
+  appropriate license.  Commercial use includes integration of all or
+  part of the binary or source code covered by this permission
+  notices into a product for sale or license to third parties on your
+  behalf, or distribution of the binary or source code to third
+  parties that need it to utilize a product sold or licensed on your
+  behalf.
+
+  THE AUTHOR(S) OF THE SOFTWARE MAKE NO REPRESENTATIONS ABOUT THE
+  SUITABILITY OF THE SOFTWARE FOR ANY PURPOSE.  IT IS PROVIDED "AS
+  IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.  THE AUTHOR(S) SHALL NOT
+  BE LIABLE FOR ANY DAMAGES SUFFERED BY THE USERS OF THE SOFTWARE.
+
+  By using or downloading the Software, you agree to abide by the
+  copyright law and all other applicable laws, and the terms of this
+  permission notice.  You may be held legally responsible for any
+  copyright infringement that is caused or encouraged by your failure
+  to abide by these terms.  The author(s) shall have the right to
+  change this notice for future release of the Software.
+
+  For more information on copyright and licensing issues, contact
+  the author(s) at:
+
+	Yongguang Zhang
+	P.O.Box 8472
+	CALABASAS, CA 91372-8472
+

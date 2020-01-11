@@ -1,0 +1,29 @@
+#!/bin/sh
+# Usage: genCxterm prefixDirectory pkgdataDirectory
+#
+# This is to generate cxterm shell script.
+# First argument must be the install prefix directory. I'll call this
+# from Makefile
+#
+# --- Changsen Xu, Nov/27/2001
+
+
+if [ $# != 2 ]; then
+    exit 1
+fi
+
+echo "#!/bin/sh"			>  cxterm
+echo "CXTERM_BIN=$1/bin/cxterm.bin"	>> cxterm
+echo "CXTERM_RC=$2/cxtermrc"		>> cxterm
+echo "DICTDIR=$2/dict"			>> cxterm
+echo "FONTSDIR=$2/fonts"		>> cxterm
+cat  cxterm.tpl				>> cxterm
+
+chmod +x cxterm
+
+# set up the resource file
+sed -e 's|^\(cxterm[*.].*hanziInputDir:\).*$|\1     '"$2/dict"'/gb|;
+        s|^\(cxtermb5[*.].*hanziInputDir:\).*$|\1   '"$2/dict"'/big5|
+        s|^\(cxtermjis[*.].*hanziInputDir:\).*$|\1  '"$2/dict"'/jis|
+        s|^\(cxtermks[*.].*hanziInputDir:\).*$|\1   '"$2/dict"'/ks|' \
+        cxtermrc.tpl > cxtermrc

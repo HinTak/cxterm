@@ -1,0 +1,70 @@
+CXTERM VERSION 5.1 PATCH LEVEL 1
+** June 12, 1999 **
+
+This package contains all the source files needed to make a color
+cxterm 5.1. To build the color cxterm, unpack the files and run the
+shell script -- config.sh
+
+Fixes and enhancement have been made by Mr. Zhuang Hao on the basis of
+color CXterm version 5.0.p3. Great thanks to the former authors for their
+contributions. Please remember these names:
+
+  Yongguang Zhang: Original Version  5.0.p3, B&W.   1995
+  Ji-Tzay Yang & Bruce Cheng: Add color to CXterm   1996-1997
+
+The final version 5.1 adds new features to the former releases and
+support true ANSI color scheme, and enhancement for BBS color.
+
+---------------------------------------------------------------------------
+Changes and Fixes made:
+
+  1) Blinking support for the CXterm. Now you can see the flashing words !
+  2) True ANSI color support. Now the CXterm supports hilight colors and
+     normal colors. (16 foreground + 8 background)
+  3) FIXED: abnormal display while typing Chinese Characters in BBS;
+  4) FIXED: strange color block leftover when the cursor jumps to other
+     locations;
+  5) FIXED: the color of the Chinese Input Line changes with the last
+     character displayed on screen.
+  6) Special color processing for BBS, use '-bbs on/off' switches or the
+     X resource string 'cxterm*bbs' to turn it on or off.
+  7) Chinese mode on/off by pressing <Ctrl> key, but won't be affected by
+     normal <Ctrl>+<key> press. (But you can set it to any key, like
+     <Shift>, <Meta>... See the resource file for more info)
+  8) Default RichWin-like Chinese input key settings: use - and = to
+     search back or forward... makes the punctuation input more convenient.
+     But you can change it if you don't like. (This default is for GB
+     only)
+  9) Some secure protection.
+
+The default color mapping complies to SGI's default RGB map. You are free
+to change it as you like.
+---------------------------------------------------------------------------
+
+I have successfully compiled and run the package on the following
+platforms:
+
+  * Linux Debian (slink, kernel 2.0.36) [X11R6]
+  * FreeBSD 2.2.6 Release [X11R6]
+  * IRIX 5.3 [X11R6]
+  * Solaris 2.5.1 [X11R5]
+  * HP-UX 10.0 [X11R5]
+
+Make sure your X development package works well with your C compiler.
+
+You do NOT have to download the xfonts directory by default. Everything
+you need is in the tar ball. However, there are some more fonts in this
+directory:
+
+  * 16-pixel Fang Song fonts. This fonts is thinner and makes your CXterm
+    screen look nice. However, the same font is shipped with recent Linux
+    and FreeBSD release. Check your system first or you'll waste your
+    space. The name may be 'hanzigb16fs'.
+  * 24-pixel Song Ti. You can protect your eye-sight by applying large
+    fonts. Why not have a try ? :)
+
+Thanks for your feedback.
+
+ZHUANG Hao
+hz69@columbia.edu
+
