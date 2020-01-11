@@ -49,7 +49,7 @@ and:
 
 zsh handles "/" smartly, it will show you, but strip it when running command.
 
-## Chinese
+## 中文
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
 用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
