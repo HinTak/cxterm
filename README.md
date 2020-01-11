@@ -36,7 +36,8 @@ For UTF8 to GB2312 cross converting, I put the following in my ~/.bashrc:
 
 By the way, I recently found zsh to be better than bash, at least at
 handling "/" in directory/symlink arguments when TAB is pressed. 
-The following 2 commands will give you totally different results under bash:
+The following 2 commands will give you totally different results 
+under bash (at Ubuntu 18.04 default configuration):
 
     /bin/rm -fr some_sym_link_to_dir
 
