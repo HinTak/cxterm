@@ -13,13 +13,18 @@ Login as root, add one line `"zh_CN GB2312"` to file:
 
     /var/lib/locales/supported.d/local
 
-then run command "locale-gen --purge".
+then run command:
+
+    locale-gen --purge
 
 And add following to your ~/.bashrc:
 
     if [ "$CHAR_ENCODING" == "GB" ]; then
-	export LC_CTYPE=zh_CN.GB2312
+	    export LC_CTYPE=zh_CN.GB2312
     fi
+
+I don't have time/knowledge to get it working with UTF8 or GBK locale
+at this moment.
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
 用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com .
