@@ -34,6 +34,8 @@ For UTF8 to GB2312 cross converting, I put the following in my ~/.bashrc:
     alias u82gb='iconv -f utf8 -t gb2312'
     alias gb2u8='iconv -t utf8 -f gb2312'
 
+## zsh, better bash ?
+
 By the way, I recently found zsh to be better than bash, at least at
 handling "/" in directory/symlink arguments when TAB is pressed. 
 The following 2 commands will give you totally different results 
@@ -44,6 +46,10 @@ under bash (at Ubuntu 18.04 default configuration):
 and:
 
     /bin/rm -fr some_sym_link_to_dir/
+
+zsh handles "/" smartly, it will show you, but strip it when running command.
+
+## Chinese
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
 用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
