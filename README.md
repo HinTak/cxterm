@@ -30,10 +30,10 @@ Double hit F# key will show the corresponding input "codes" of last
 entered Chinese character.
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
+用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
+最近输入的一个中文的编码。
 
 ![wubi.png](Doc/screenshot/wubi.png)
 
 ![pinyin.png](Doc/screenshot/pinyin.png)
 
-用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
-最近输入的一个中文的编码。
