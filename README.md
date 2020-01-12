@@ -47,13 +47,14 @@ and:
 
     /bin/rm -fr some_sym_link_to_dir/
 
-zsh handles "/" smartly, it will show you, but strip it when running command.
+zsh handles "/" smartly, it will show you, but strip it off when 
+running command.
 
 ## 中文
 
 cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
 用于ubuntu 18.04。本次修复了一下。重新发布于gitee.com . 双击F#键，可以显示
-最近输入的一个中文的编码。
+最近输入的一个中文的编码。 iconv 可以在utf8与gb2312间互相转码.
 
 ![wubi.png](Doc/screenshot/wubi.png)
 
