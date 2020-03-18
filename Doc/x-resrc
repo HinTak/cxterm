@@ -1,0 +1,86 @@
+
+If the cxterm installation is successful, a predefined set of key
+binding is loaded each time you start the cxterm.  However you may
+arbitrary reassign the function keys to other cxterm actions, such
+as switching input methods, changing input parameters, popup menu,
+etc.  The specification of the function key definitions is included
+in the "Translation" table in the user's X resources for cxterm.
+Writing X resources may require a fair amount of X11 expertise.
+There are lots of X window books out there to teach you how to do
+that.  Here I will give you some hints on how to make some change 
+to the X resource for customizing cxterm.
+
+You need to update the X resource database to change the key binding
+of cxterm.  Once you make the change, it will become effective next
+time you start cxterm.  (Changing X resource won't affect the running
+cxterm.)
+
+You may make the change in the X resource file of your account.
+The typical location includes $HOME/.Xdefaults, or $HOME/.Xresources,
+or $HOME/.Xdefaults-"hostname".  If you are not sure, ask your system
+manager.  Here is a way that might help you to identify your X window
+resource file:
+
+1) if in your X window startup script (e.g. ~/.xinitrc), there is a
+   line like "xrdb -load filename", then the "filename" is the resource
+   file; (remember to rerun "xrdb -load filename" after you make the
+   change)
+2) if the environment variable XENVIORNMENT is set, the one XENVIORNMENT
+   points to is the resource file;
+3) finally, try ~/.Xdefaults; (Sometimes it could be ~/.Xdefaults.???,
+   or ~/.Xresources, etc.  Consult a local X guru.)
+
+Or, if none of above works, simply save the definition in any file,
+and then run "xrdb -merge filename".
+
+The predefined set of predefined X resources for cxterm is with the
+cxterm source code, in cxterm-5.0/cxterm/CXterm.ad.  It should have
+been copied into $HOME/.Xdefaults when cxterm is installed.
+
+A cxterm translation table in the X resource takes the following format:
+
+__NAME__*VT100.Translations: #override\
+	__EVENT__ :	__ACTION__ \n\
+	__EVENT__ :	__ACTION__ \n\
+	......
+	__EVENT__ :	__ACTION__ \n\
+	__EVENT__ :	__ACTION__
+
+Where each __EVENT__ is usually a KeyPress event of the following form:
+
+	__MODIFIER__  <KeyPress>  __FUNCTION_KEY__
+
+__FUNCTION_KEY__ are the name of the keys such as F1, F2, ...
+__MODIFIER__ means the "Control" or "Shift" or "Meta" key that is 
+often pressed at the same time when the function key is pressed.
+For example,
+           <KeyPress> F1	- <F1> is pressed
+     Shift <KeyPress> F1	- <F1> is pressed and also <Shift>
+    ~Shift <KeyPress> F1	- <F1> is pressed but not <Shift>
+    !Shift <KeyPress> F1	- <F1> is pressed with <Shift> ONLY
+
+Note that "<KeyPress> F1" only requires that <F1> is pressed.  It
+does not say weather or not another key is pressed at the same time.
+That is, "<KeyPress> F1" includes all the other 3 cases.  Therefore
+if overlapping keypress events are given in the same Translation table,
+make sure that more restricted cases come before the less restricted
+ones.  The least restricted one, "<KeyPress> F1", must be the last
+among all "F1" entries.
+
+There can be only one translation table under one cxterm __NAME__.
+You have to change in the place to add or delete the event-action
+lines.  Note that all line but the last end with "\n\".  Here are
+some example lines:
+
+-- <F2> switch to input method named MYNEW:
+  
+        <KeyPress> F2: switch-HZ-mode(MYNEW) \n\
+
+-- <Shift-F3> switch to input method IC:
+
+        Shift <KeyPress> F3: switch-HZ-mode(IC) \n\
+
+-- <Ctrl-Meta-F6> switch to input method called CANTONESE:
+
+        Ctrl Meta <KeyPress> F6: switch-HZ-mode(CANTONESE) \n\
+

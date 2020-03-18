@@ -1,0 +1,179 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+BUILDDIR=`pwd`/debian/build/
+DESTDIR = `pwd`/debian/tmp/
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+    ## has xmkmf/imake ?
+	@if [ ! -x /usr/X11R6/bin/xmkmf ]; then \
+		printf "ERROR:  \"xmkmf\" not found!\n\
+    \n\
+    \"xmkmf\" is a standard X11 command.  If the X Window System is properly\n\
+    installed in your machine, it should have xmkmf.  Please double check\n\
+    your PATH variable and make should you include the right X11 path.  Ask\n\
+    your system administrator or local X gurus for the availability of xmkmf.\n\
+    \n\
+    If your system indeed does not have xmkmf, please consider switching to\n\
+    a better system that has a better version of X Window -- it makes\n\
+    things much easier!\n"; \
+		exit 1; \
+	fi; \
+	echo '$(MAKE) -f Makefile.ini World  2>&1 | tee Install.log'; \
+	$(MAKE) -f Makefile.ini World  2>&1 | tee Install.log; \
+	if [ -f .done ]; then \
+        echo "Compilation well done."; \
+        exit 0; \
+	else \
+        exit 1; \
+	fi;
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp install-stamp cxterm-{common,big5,gb,jis,ks}
+	rm -rf debian/build
+
+	# Add here commands to clean up after the build process.
+	-$(MAKE) clean
+	-find . -name Makefile -exec rm -f '{}' ';'
+	-rm -f imake.compat
+	rm -f Install.log
+
+	dh_clean
+
+install: install-stamp
+install-stamp: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs -pcxterm-common
+
+	# install into debian/tmp.
+	$(MAKE) install DESTDIR=$(DESTDIR) # > install.log 2>& 1
+	$(MAKE) install.man DESTDIR=$(DESTDIR) # > install.log 2>& 1
+
+	mv $(DESTDIR)/usr/X11R6/bin/cxterm $(DESTDIR)/usr/X11R6/bin/cxterm.common
+
+	install -m 644 cxterm/CXterm.ad \
+      $(DESTDIR)/etc/X11/app-defaults/CXterm
+
+	# install wrapper scripts
+	install -m755 debian/cxtermb5 debian/cxtermgb debian/cxtermjis \
+      debian/cxtermks $(DESTDIR)/usr/X11R6/bin/
+
+	# link subpackage manpages to that of cxterm-common
+	( cd $(DESTDIR)/usr/X11R6/man/man1; \
+      gzip -9 *.1x; \
+      ln -sf cxterm.1x.gz cxterm.common.1x.gz; \
+      ln -sf cxterm.1x.gz cxtermb5.1x.gz; \
+      ln -sf cxterm.1x.gz cxtermgb.1x.gz; \
+  	  ln -s cxterm.1x.gz cxtermjis.1x.gz; \
+      ln -sf cxterm.1x.gz cxtermks.1x.gz )
+
+	touch install-stamp
+
+# Build architecture-independent files here.
+binary-indep: build install cxterm-big5-binary cxterm-gb-binary cxterm-jis-binary cxterm-ks-binary
+
+# Build architecture-dependent files here.
+binary-arch: build install cxterm-common
+
+cxterm-common-binary: install cxterm-common
+cxterm-common:
+	dh_testdir
+	dh_testroot
+	@echo "--- Building: $@"
+	cp debian/README.5.1 Doc/
+	dh_installdocs          -p$@ -P$(BUILDDIR)/$@
+	cd $(BUILDDIR)/$@/usr/share/doc; ln -sf cxterm-common cxterm
+	dh_movefiles            -p$@ -P$(BUILDDIR)/$@
+#	dh_installmanpages      -p$@ -P$(BUILDDIR)/$@
+	dh_installchangelogs    -p$@ -P$(BUILDDIR)/$@
+	dh_strip                -p$@ -P$(BUILDDIR)/$@
+	dh_compress             -p$@ -P$(BUILDDIR)/$@
+	dh_fixperms             -p$@ -P$(BUILDDIR)/$@
+#	dh_suidregister         -p$@ -P$(BUILDDIR)/$@ usr/X11R6/bin/cxterm.common
+	dh_installdeb           -p$@ -P$(BUILDDIR)/$@
+	dh_shlibdeps            -p$@ -P$(BUILDDIR)/$@
+	dh_gencontrol           -p$@ -P$(BUILDDIR)/$@
+	dh_md5sums              -p$@ -P$(BUILDDIR)/$@
+	dh_builddeb             -p$@ -P$(BUILDDIR)/$@
+	touch cxterm-common
+
+cxterm-big5-binary: install cxterm-big5
+cxterm-big5:
+	dh_testdir
+	dh_testroot
+	@echo "--- Building: $@"
+	mkdir -p $(BUILDDIR)/$@/usr/share/doc
+	cd $(BUILDDIR)/$@/usr/share/doc; ln -sf cxterm-common $@
+	dh_movefiles          -p$@ -P$(BUILDDIR)/$@
+	dh_installmenu        -p$@ -P$(BUILDDIR)/$@
+	dh_fixperms           -p$@ -P$(BUILDDIR)/$@
+	dh_installdeb         -p$@ -P$(BUILDDIR)/$@
+	dh_gencontrol         -p$@ -P$(BUILDDIR)/$@
+	dh_md5sums            -p$@ -P$(BUILDDIR)/$@
+	dh_builddeb           -p$@ -P$(BUILDDIR)/$@
+	touch cxterm-big5
+
+cxterm-gb-binary: install cxterm-gb
+cxterm-gb:
+	dh_testdir
+	dh_testroot
+	@echo "--- Building: $@"
+	mkdir -p $(BUILDDIR)/$@/usr/share/doc
+	cd $(BUILDDIR)/$@/usr/share/doc; ln -sf cxterm-common $@
+	dh_movefiles          -p$@ -P$(BUILDDIR)/$@
+	dh_installmenu        -p$@ -P$(BUILDDIR)/$@
+	dh_fixperms           -p$@ -P$(BUILDDIR)/$@
+	dh_installdeb         -p$@ -P$(BUILDDIR)/$@
+	dh_gencontrol         -p$@ -P$(BUILDDIR)/$@
+	dh_md5sums            -p$@ -P$(BUILDDIR)/$@
+	dh_builddeb           -p$@ -P$(BUILDDIR)/$@
+	touch cxterm-gb
+
+cxterm-jis-binary: install cxterm-jis
+cxterm-jis:
+	dh_testdir
+	dh_testroot
+	@echo "--- Building: $@"
+	mkdir -p $(BUILDDIR)/$@/usr/share/doc
+	cd $(BUILDDIR)/$@/usr/share/doc; ln -sf cxterm-common $@
+	dh_movefiles          -p$@ -P$(BUILDDIR)/$@
+	dh_installmenu        -p$@ -P$(BUILDDIR)/$@
+	dh_fixperms           -p$@ -P$(BUILDDIR)/$@
+	dh_installdeb         -p$@ -P$(BUILDDIR)/$@
+	dh_gencontrol         -p$@ -P$(BUILDDIR)/$@
+	dh_md5sums            -p$@ -P$(BUILDDIR)/$@
+	dh_builddeb           -p$@ -P$(BUILDDIR)/$@
+	touch cxterm-jis
+
+cxterm-ks-binary: install cxterm-ks
+cxterm-ks:
+	dh_testdir
+	dh_testroot
+	@echo "--- Building: $@"
+	mkdir -p $(BUILDDIR)/$@/usr/share/doc
+	cd $(BUILDDIR)/$@/usr/share/doc; ln -sf cxterm-common $@
+	dh_movefiles          -p$@ -P$(BUILDDIR)/$@
+	dh_installmenu        -p$@ -P$(BUILDDIR)/$@
+	dh_fixperms           -p$@ -P$(BUILDDIR)/$@
+	dh_installdeb         -p$@ -P$(BUILDDIR)/$@
+	dh_gencontrol         -p$@ -P$(BUILDDIR)/$@
+	dh_md5sums            -p$@ -P$(BUILDDIR)/$@
+	dh_builddeb           -p$@ -P$(BUILDDIR)/$@
+	touch cxterm-ks
+
+source diff:                                                                  
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary

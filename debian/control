@@ -1,0 +1,48 @@
+Source: cxterm
+Section: non-free/x11
+Priority: optional
+Build-Depends: debhelper, xutils, xlibs-dev, xbase-clients, libncurses5-dev | libncurses4-dev, libxaw7-dev | libxaw-dev
+Maintainer: Anthony Wong <ypwong@debian.org>
+Standards-Version: 3.1.1
+
+Package: cxterm-common
+Architecture: any
+Depends: ${shlibs:Depends}
+Suggests: cxterm-big5, cxterm-gb, cxterm-jis, cxterm-ks
+Provides: x-terminal-emulator
+Description: Chinese terminal emulator for X Window System
+ A terminal emulator for X11, just like "xterm", but with the
+ capability of displaying and inputting Chinese, Japanese and
+ Korean.
+ .
+ It supports GB, Big5, JIS, and KS encoding.
+
+Package: cxterm-big5
+Architecture: all
+Depends: cxterm-common, xfonts-intl-chinese | intlfonts-chinese (>= 1.1-5)
+Description: Big5 (Traditional Chinese) supporting files for CXterm
+ You need this package in order to input Big5 characters in CXTerm.
+ To launch the term, just type 'cxtermb5'.
+
+Package: cxterm-gb
+Architecture: all
+Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Suggests: xfonts-intl-chinese | intlfonts-chinese (>= 1.1-5)
+Description: GB (Simplified Chinese) supporting files for CXterm
+ You need this package in order to input GB characters in CXTerm.
+ To launch the term, just type 'cxtermgb'.
+
+Package: cxterm-jis
+Architecture: all
+Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Suggests: xfonts-intl-japanese | intlfonts-japanese (>= 1.1-5)
+Description: JIS supporting files for CXterm
+ You need this package in order to input JIS characters in CXTerm.
+ To launch the term, just type 'cxtermjis'.
+
+Package: cxterm-ks
+Architecture: all
+Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Description: KS supporting files for CXterm
+ You need this package in order to input KS characters in CXTerm.
+ To launch the term, just type 'cxtermks'.

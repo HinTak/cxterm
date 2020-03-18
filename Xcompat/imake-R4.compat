@@ -1,0 +1,61 @@
+/* imake.compat file for X11R4 */
+
+X_COMPATIBLE_FLAGS = -DCXTERM_COMPATIBLE -DX11RELEASE=4
+
+#ifndef	XCOMM
+#define	XCOMM	#
+#endif
+#ifndef NullParameter
+#define	NullParameter
+#endif
+
+/* if [ -d ] or [ ! -d ] causes make to fail, define this as - */
+#ifndef DirFailPrefix
+#define DirFailPrefix
+#endif
+
+/* used in cxterm/Imakefile */
+
+#ifndef RemoveFile
+#define RemoveFile(file) $(RM) file
+#endif /* RemoveFile */
+
+#ifndef MakeDir
+#define MakeDir(dir) DirFailPrefix@if [ -d dir ]; then set +x; \	@@\
+		else (set -x; $(MKDIRHIER) dir); fi
+#endif /* MakeDir */
+
+#ifndef LinkRule
+#define LinkRule(program,options,objects,libraries) \
+$(CC) -o program options objects libraries $(EXTRA_LOAD_FLAGS)
+#endif /* LinkRule */
+
+#ifndef SpecialCObjectRule
+#define	SpecialCObjectRule(a,b,c) SpecialObjectRule(a,b,c)
+#endif
+
+#ifndef SetUIDProgramTarget
+#define SetUIDProgramTarget NormalProgramTarget
+#endif
+
+/* used in utils/Imakefile */
+#ifndef InstallManPageAliases
+#define	InstallManPageAliases(file,destdir,aliases)			@@\
+install.man::								@@\
+	@(TMP=/tmp/tmp.$$$$; \						@@\
+	RemoveFile($${TMP}); \						@@\
+	echo .so `basename destdir`/file.$(MANSUFFIX) > $${TMP}; \	@@\
+	for i in aliases; do (set -x; \					@@\
+	$(INSTALL) $(INSTALLFLAGS) $(INSTMANFLAGS) $${TMP} $(DESTDIR)destdir/$$i.$(MANSUFFIX)); \ @@\
+	done; \								@@\
+	RemoveFile($${TMP}))
+#endif /* InstallManPageAliases */
+
+/* used in fonts/Imakefile */
+#ifndef FontObj
+#if defined UsePCFFonts && UsePCFFonts
+#define FontObj(basename) basename.pcf
+#else
+#define FontObj(basename) basename.snf
+#endif
+#endif /* FontObj */

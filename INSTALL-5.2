@@ -1,0 +1,52 @@
+			============
+			INSTALLATION
+			============
+After introduce autoconf in cxterm-5.2, now it's more simple to install:
+	./configure
+	make 
+	make install
+
+We can install to different directories by using:
+	./configure --prefix=YourPrefixDirectory
+The default prefix directory is /usr/local.
+
+By default, binaries are installed to /usr/local/bin, man files to
+/usr/local/man/man1, other dictionaries and fonts are installed to
+/usr/local/share/cxterm.
+
+To uninstall:
+	make uninstall
+
+
+			============
+			    USAGE
+			============
+cxterm.bin is the binary, cxterm is a wrapping script.
+	cxterm		#to show GB-Chinese
+	cxterm -b5	#to show Big5-Chinese
+	cxterm -jis	#to show Japanese
+	cxterm -ks	#to show Korean
+
+
+
+			=============
+			    FONTS
+			=============
+Since XFree86 now already contains some CJK fonts, cxterm-5.2 doesn't
+install fonts by default. In case you are not using the most recent
+XFree86, 3 Chinese fonts are provided. Run:
+	make install-fonts
+will install the 3 fonts to: {prefix}/share/cxterm/fonts
+
+Then you need to add the following line to your shell startup files
+(~/.bashrc or ~/.tcshrc):
+	xset fp+ {prefix}/share/cxterm/fonts
+Don't forget to replace the {prefix} to your real installation prefix
+directory.
+
+If you wish to use other fonts, say Japanese or Korean fonts, you'll
+further need to change FONT variable in the `cxterm` script
+correspondingly.
+
+`xlsfonts | grep ...` command can be used to check which fonts you
+can use under X-Windows.

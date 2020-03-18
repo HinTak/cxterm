@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+PROG=/usr/X11R6/bin/cxtermgb
+PACKAGE=cxterm-gb
+
+case "$1" in
+  remove|upgrade)
+       if [ -L /usr/doc/$PACKAGE ]; then
+             rm -f /usr/doc/$PACKAGE
+       fi ;;
+  failed-upgrade|deconfigure) exit 0 ;;
+  *)
+    echo "ERROR: cxterm prerm called with unknown argument \"$1\"."
+    echo "Aborting removal of cxterm package."
+    exit 1 ;;
+esac
+
+update-alternatives --remove cxterm $PROG
+
+#DEBHELPER#
+
+exit 0

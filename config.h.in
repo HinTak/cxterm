@@ -1,0 +1,266 @@
+/* config.h.in.  Generated from configure.in by autoheader.  */
+#undef HANZI
+#undef NARROWPROTO
+
+/* Define to 1 if the `getpgrp' function requires zero arguments. */
+#undef GETPGRP_VOID
+
+/* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_DIRENT_H
+
+/* Define to 1 if you have the `gettimeofday' function. */
+#undef HAVE_GETTIMEOFDAY
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `dps' library (-ldps). */
+#undef HAVE_LIBDPS
+
+/* Define to 1 if you have the `dpstk' library (-ldpstk). */
+#undef HAVE_LIBDPSTK
+
+/* Define to 1 if you have the `fl' library (-lfl). */
+#undef HAVE_LIBFL
+
+/* Define to 1 if you have the `fntstubs' library (-lfntstubs). */
+#undef HAVE_LIBFNTSTUBS
+
+/* Define to 1 if you have the `freetype' library (-lfreetype). */
+#undef HAVE_LIBFREETYPE
+
+/* Define to 1 if you have the `FS' library (-lFS). */
+#undef HAVE_LIBFS
+
+/* Define to 1 if you have the `GL' library (-lGL). */
+#undef HAVE_LIBGL
+
+/* Define to 1 if you have the `GLU' library (-lGLU). */
+#undef HAVE_LIBGLU
+
+/* Define to 1 if you have the `GLw' library (-lGLw). */
+#undef HAVE_LIBGLW
+
+/* Define to 1 if you have the `ICE' library (-lICE). */
+#undef HAVE_LIBICE
+
+/* Define to 1 if you have the `ncurses' library (-lncurses). */
+#undef HAVE_LIBNCURSES
+
+/* Define to 1 if you have the `oldX' library (-loldX). */
+#undef HAVE_LIBOLDX
+
+/* Define to 1 if you have the `PEX5' library (-lPEX5). */
+#undef HAVE_LIBPEX5
+
+/* Define to 1 if you have the `phigs' library (-lphigs). */
+#undef HAVE_LIBPHIGS
+
+/* Define to 1 if you have the `psres' library (-lpsres). */
+#undef HAVE_LIBPSRES
+
+/* Define to 1 if you have the `SM' library (-lSM). */
+#undef HAVE_LIBSM
+
+/* Define to 1 if you have the `X11' library (-lX11). */
+#undef HAVE_LIBX11
+
+/* Define to 1 if you have the `Xa' library (-lXa). */
+#undef HAVE_LIBXA
+
+/* Define to 1 if you have the `Xau' library (-lXau). */
+#undef HAVE_LIBXAU
+
+/* Define to 1 if you have the `Xaw' library (-lXaw). */
+#undef HAVE_LIBXAW
+
+/* Define to 1 if you have the `Xbsd' library (-lXbsd). */
+#undef HAVE_LIBXBSD
+
+/* Define to 1 if you have the `Xdmcp' library (-lXdmcp). */
+#undef HAVE_LIBXDMCP
+
+/* Define to 1 if you have the `Xext' library (-lXext). */
+#undef HAVE_LIBXEXT
+
+/* Define to 1 if you have the `Xfont' library (-lXfont). */
+#undef HAVE_LIBXFONT
+
+/* Define to 1 if you have the `Xfontcache' library (-lXfontcache). */
+#undef HAVE_LIBXFONTCACHE
+
+/* Define to 1 if you have the `Xft' library (-lXft). */
+#undef HAVE_LIBXFT
+
+/* Define to 1 if you have the `Xi' library (-lXi). */
+#undef HAVE_LIBXI
+
+/* Define to 1 if you have the `XIE' library (-lXIE). */
+#undef HAVE_LIBXIE
+
+/* Define to 1 if you have the `Xinerama' library (-lXinerama). */
+#undef HAVE_LIBXINERAMA
+
+/* Define to 1 if you have the `xkbfile' library (-lxkbfile). */
+#undef HAVE_LIBXKBFILE
+
+/* Define to 1 if you have the `xkbui' library (-lxkbui). */
+#undef HAVE_LIBXKBUI
+
+/* Define to 1 if you have the `Xkey' library (-lXkey). */
+#undef HAVE_LIBXKEY
+
+/* Define to 1 if you have the `Xmu' library (-lXmu). */
+#undef HAVE_LIBXMU
+
+/* Define to 1 if you have the `Xmuu' library (-lXmuu). */
+#undef HAVE_LIBXMUU
+
+/* Define to 1 if you have the `Xp' library (-lXp). */
+#undef HAVE_LIBXP
+
+/* Define to 1 if you have the `Xpm' library (-lXpm). */
+#undef HAVE_LIBXPM
+
+/* Define to 1 if you have the `Xrender' library (-lXrender). */
+#undef HAVE_LIBXRENDER
+
+/* Define to 1 if you have the `Xss' library (-lXss). */
+#undef HAVE_LIBXSS
+
+/* Define to 1 if you have the `Xt' library (-lXt). */
+#undef HAVE_LIBXT
+
+/* Define to 1 if you have the `Xtst' library (-lXtst). */
+#undef HAVE_LIBXTST
+
+/* Define to 1 if you have the `Xv' library (-lXv). */
+#undef HAVE_LIBXV
+
+/* Define to 1 if you have the `Xxf86dga' library (-lXxf86dga). */
+#undef HAVE_LIBXXF86DGA
+
+/* Define to 1 if you have the `Xxf86misc' library (-lXxf86misc). */
+#undef HAVE_LIBXXF86MISC
+
+/* Define to 1 if you have the `Xxf86rush' library (-lXxf86rush). */
+#undef HAVE_LIBXXF86RUSH
+
+/* Define to 1 if you have the `Xxf86vm' library (-lXxf86vm). */
+#undef HAVE_LIBXXF86VM
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the <ndir.h> header file, and it defines `DIR'. */
+#undef HAVE_NDIR_H
+
+/* Define to 1 if you have the `select' function. */
+#undef HAVE_SELECT
+
+/* Define to 1 if you have the <sgtty.h> header file. */
+#undef HAVE_SGTTY_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strerror' function. */
+#undef HAVE_STRERROR
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if `st_rdev' is member of `struct stat'. */
+#undef HAVE_STRUCT_STAT_ST_RDEV
+
+/* Define to 1 if your `struct stat' has `st_rdev'. Deprecated, use
+   `HAVE_STRUCT_STAT_ST_RDEV' instead. */
+#undef HAVE_ST_RDEV
+
+/* Define to 1 if you have the <sys/dir.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_SYS_DIR_H
+
+/* Define to 1 if you have the <sys/ioctl.h> header file. */
+#undef HAVE_SYS_IOCTL_H
+
+/* Define to 1 if you have the <sys/ndir.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_SYS_NDIR_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have <sys/wait.h> that is POSIX.1 compatible. */
+#undef HAVE_SYS_WAIT_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the `wait3' system call. Deprecated, you should no
+   longer depend upon `wait3'. */
+#undef HAVE_WAIT3
+
+/* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
+   */
+#undef MAJOR_IN_MKDEV
+
+/* Define to 1 if `major', `minor', and `makedev' are declared in
+   <sysmacros.h>. */
+#undef MAJOR_IN_SYSMACROS
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define as the return type of signal handlers (`int' or `void'). */
+#undef RETSIGTYPE
+
+/* Define to 1 if the `setpgrp' function takes no argument. */
+#undef SETPGRP_VOID
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
+#undef TIME_WITH_SYS_TIME
+
+/* Define to 1 if your <sys/time.h> declares `struct tm'. */
+#undef TM_IN_SYS_TIME
+
+/* Version number of package */
+#undef VERSION
+
+/* Define to 1 if the X Window System is missing or not being used. */
+#undef X_DISPLAY_MISSING
+
+/* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
+   `char[]'. */
+#undef YYTEXT_POINTER
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef pid_t

@@ -1,0 +1,27 @@
+Wubizixing and Cangjie Input Method Tutorial
+
+1993 May Second Edition  (in GB Chinese)
+
+by L.S.Ng
+(email: L.S.Ng1@mail.soton.ac.uk)
+
+[[ adopted by Yongguang Zhang to include in the cxterm package ]]
+
+This tutorial contains these files:
+
+1. xuedazi.gb :		A general introduction
+2. cangjie.gb :		Canjie Input Method Tutorial
+3. wubi.gb :		Wubizixing Input Method Tutorial
+4. wbb.ps.Z :		Wubizixing Radical Table
+5. cjb.ps.Z :		Cangjie Radical Table
+6. cazicama.gb :	A demo using NJStar <Reveal-Code> function.
+
+.gb files can be read using GB encoding cxterm.
+.ps files (.ps.Z after uncompress) can be printed by a laser printer.
+
+Thank you.
+Liangsheng Wu
+Southampton
+1993 May
+
+Comments are welcome. Send to L.S.Ng1@mail.soton.ac.uk

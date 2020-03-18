@@ -1,0 +1,138 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(cxterm/main.c)
+AM_INIT_AUTOMAKE(cxterm,5.2)
+dnl AC_CONFIG_SUBDIRS(cxterm utils dict fonts)
+AM_CONFIG_HEADER(config.h)
+dnl Checks for programs.
+AC_PROG_AWK
+AC_PROG_YACC
+AC_PROG_CC
+AC_PROG_CPP
+AM_PROG_LEX
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+AC_PROG_CXX
+
+AC_DEFINE(HANZI)
+AC_DEFINE(NARROWPROTO)	dnl without this, scrollbar will bad behavior.
+dnl Checks for libraries.
+dnl Replace `main' with a function in -lFS:
+AC_CHECK_LIB(FS, main)
+dnl Replace `main' with a function in -lGL:
+AC_CHECK_LIB(GL, main)
+dnl Replace `main' with a function in -lGLU:
+AC_CHECK_LIB(GLU, main)
+dnl Replace `main' with a function in -lGLw:
+AC_CHECK_LIB(GLw, main)
+dnl Replace `main' with a function in -lICE:
+AC_CHECK_LIB(ICE, main)
+dnl Replace `main' with a function in -lPEX5:
+AC_CHECK_LIB(PEX5, main)
+dnl Replace `main' with a function in -lSM:
+AC_CHECK_LIB(SM, main)
+dnl Replace `main' with a function in -lX11:
+AC_CHECK_LIB(X11, main)
+dnl Replace `main' with a function in -lXIE:
+AC_CHECK_LIB(XIE, main)
+dnl Replace `main' with a function in -lXa:
+AC_CHECK_LIB(Xa, main)
+dnl Replace `main' with a function in -lXau:
+AC_CHECK_LIB(Xau, main)
+dnl Replace `main' with a function in -lXaw:
+AC_CHECK_LIB(Xaw, main)
+dnl Replace `main' with a function in -lXbsd:
+AC_CHECK_LIB(Xbsd, main)
+dnl Replace `main' with a function in -lXdmcp:
+AC_CHECK_LIB(Xdmcp, main)
+dnl Replace `main' with a function in -lXext:
+AC_CHECK_LIB(Xext, main)
+dnl Replace `main' with a function in -lXfont:
+AC_CHECK_LIB(Xfont, main)
+dnl Replace `main' with a function in -lXfontcache:
+AC_CHECK_LIB(Xfontcache, main)
+dnl Replace `main' with a function in -lXft:
+AC_CHECK_LIB(Xft, main)
+dnl Replace `main' with a function in -lXi:
+AC_CHECK_LIB(Xi, main)
+dnl Replace `main' with a function in -lXinerama:
+AC_CHECK_LIB(Xinerama, main)
+dnl Replace `main' with a function in -lXkey:
+AC_CHECK_LIB(Xkey, main)
+dnl Replace `main' with a function in -lXmu:
+AC_CHECK_LIB(Xmu, main)
+dnl Replace `main' with a function in -lXmuu:
+AC_CHECK_LIB(Xmuu, main)
+dnl Replace `main' with a function in -lXp:
+AC_CHECK_LIB(Xp, main)
+dnl Replace `main' with a function in -lXpm:
+AC_CHECK_LIB(Xpm, main)
+dnl Replace `main' with a function in -lXrender:
+AC_CHECK_LIB(Xrender, main)
+dnl Replace `main' with a function in -lXss:
+AC_CHECK_LIB(Xss, main)
+dnl Replace `main' with a function in -lXt:
+AC_CHECK_LIB(Xt, main)
+dnl Replace `main' with a function in -lXtst:
+AC_CHECK_LIB(Xtst, main)
+dnl Replace `main' with a function in -lXv:
+AC_CHECK_LIB(Xv, main)
+dnl Replace `main' with a function in -lXxf86dga:
+AC_CHECK_LIB(Xxf86dga, main)
+dnl Replace `main' with a function in -lXxf86misc:
+AC_CHECK_LIB(Xxf86misc, main)
+dnl Replace `main' with a function in -lXxf86rush:
+AC_CHECK_LIB(Xxf86rush, main)
+dnl Replace `main' with a function in -lXxf86vm:
+AC_CHECK_LIB(Xxf86vm, main)
+dnl Replace `main' with a function in -ldps:
+AC_CHECK_LIB(dps, main)
+dnl Replace `main' with a function in -ldpstk:
+AC_CHECK_LIB(dpstk, main)
+dnl Replace `main' with a function in -lfl:
+AC_CHECK_LIB(fl, main)
+dnl Replace `main' with a function in -lfntstubs:
+AC_CHECK_LIB(fntstubs, main)
+dnl Replace `main' with a function in -lfreetype:
+AC_CHECK_LIB(freetype, main)
+dnl Replace `main' with a function in -lncurses:
+AC_CHECK_LIB(ncurses, main)
+dnl Replace `main' with a function in -loldX:
+AC_CHECK_LIB(oldX, main)
+dnl Replace `main' with a function in -lphigs:
+AC_CHECK_LIB(phigs, main)
+dnl Replace `main' with a function in -lpsres:
+AC_CHECK_LIB(psres, main)
+dnl Replace `main' with a function in -lxkbfile:
+AC_CHECK_LIB(xkbfile, main)
+dnl Replace `main' with a function in -lxkbui:
+AC_CHECK_LIB(xkbui, main)
+
+dnl Checks for header files.
+AC_PATH_X
+AC_PATH_XTRA
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(sgtty.h sys/ioctl.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_PID_T
+AC_STRUCT_ST_RDEV
+AC_HEADER_TIME
+AC_STRUCT_TM
+
+dnl Checks for library functions.
+AC_FUNC_GETPGRP
+AC_PROG_GCC_TRADITIONAL
+AC_HEADER_MAJOR
+AC_FUNC_SETPGRP
+AC_TYPE_SIGNAL
+AC_FUNC_WAIT3
+AC_CHECK_FUNCS(gettimeofday select strerror)
+
+LIBS="$X_LIBS -lXaw -lXt -lXmu $X_PRE_LIBS -lncurses -lXext -lX11 -lXpm -lm"
+dnl AC_OUTPUT(Makefile)
+
+AC_OUTPUT(dict/ks/Makefile dict/big5/Makefile dict/jis/Makefile dict/Makefile dict/gb/Makefile Makefile utils/Makefile cxterm/Makefile fonts/Makefile scripts/Makefile)

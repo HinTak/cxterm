@@ -1,0 +1,3 @@
+?package(cxterm-gb):needs=X11 section=XShells\
+  title="CXterm (GB)" longtitle="Simplified Chinese (GB) Xterm (CXterm)" \
+  command="/usr/X11R6/bin/cxtermgb"

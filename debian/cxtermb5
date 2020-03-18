@@ -1,0 +1,9 @@
+#!/bin/sh
+NAME=cxtermb5
+BINDIR=/usr/X11R6/bin/
+CXTERM=$BINDIR/cxterm.common
+CXTERM_AD=/etc/X11/app-defaults/CXterm
+
+XENVIRONMENT=$CXTERM_AD
+export XENVIRONMENT
+exec $CXTERM -name $NAME $*
