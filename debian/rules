@@ -11,7 +11,7 @@ build-stamp:
 	dh_testdir
 
     ## has xmkmf/imake ?
-	@if [ ! -x /usr/X11R6/bin/xmkmf ]; then \
+	@if [ ! -x /usr/bin/xmkmf ]; then \
 		printf "ERROR:  \"xmkmf\" not found!\n\
     \n\
     \"xmkmf\" is a standard X11 command.  If the X Window System is properly\n\
@@ -60,17 +60,17 @@ install-stamp: build-stamp
 	$(MAKE) install DESTDIR=$(DESTDIR) # > install.log 2>& 1
 	$(MAKE) install.man DESTDIR=$(DESTDIR) # > install.log 2>& 1
 
-	mv $(DESTDIR)/usr/X11R6/bin/cxterm $(DESTDIR)/usr/X11R6/bin/cxterm.common
+	mv $(DESTDIR)/usr/bin/cxterm $(DESTDIR)/usr/bin/cxterm.common
 
 	install -m 644 cxterm/CXterm.ad \
       $(DESTDIR)/etc/X11/app-defaults/CXterm
 
 	# install wrapper scripts
 	install -m755 debian/cxtermb5 debian/cxtermgb debian/cxtermjis \
-      debian/cxtermks $(DESTDIR)/usr/X11R6/bin/
+      debian/cxtermks $(DESTDIR)/usr/bin/
 
 	# link subpackage manpages to that of cxterm-common
-	( cd $(DESTDIR)/usr/X11R6/man/man1; \
+	( cd $(DESTDIR)/usr/man/man1; \
       gzip -9 *.1x; \
       ln -sf cxterm.1x.gz cxterm.common.1x.gz; \
       ln -sf cxterm.1x.gz cxtermb5.1x.gz; \
@@ -100,7 +100,7 @@ cxterm-common:
 	dh_strip                -p$@ -P$(BUILDDIR)/$@
 	dh_compress             -p$@ -P$(BUILDDIR)/$@
 	dh_fixperms             -p$@ -P$(BUILDDIR)/$@
-#	dh_suidregister         -p$@ -P$(BUILDDIR)/$@ usr/X11R6/bin/cxterm.common
+#	dh_suidregister         -p$@ -P$(BUILDDIR)/$@ usr/bin/cxterm.common
 	dh_installdeb           -p$@ -P$(BUILDDIR)/$@
 	dh_shlibdeps            -p$@ -P$(BUILDDIR)/$@
 	dh_gencontrol           -p$@ -P$(BUILDDIR)/$@

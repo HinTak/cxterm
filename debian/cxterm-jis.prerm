@@ -2,7 +2,7 @@
 
 set -e
 
-PROG=/usr/X11R6/bin/cxtermjis
+PROG=/usr/bin/cxtermjis
 PACKAGE=cxterm-ks
 
 case "$1" in

@@ -2,7 +2,7 @@
 
 set -e
 
-PROG=/usr/X11R6/bin/cxtermb5
+PROG=/usr/bin/cxtermb5
 PACKAGE=cxterm-big5
 
 case "$1" in

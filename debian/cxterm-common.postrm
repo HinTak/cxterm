@@ -18,7 +18,7 @@ case "$1" in
 esac
 
 if command -v suidunregister > /dev/null 2>&1; then
-    suidunregister -s 'cxterm-common' /usr/X11R6/bin/cxterm.common
+    suidunregister -s 'cxterm-common' /usr/bin/cxterm.common
 fi
 
 exit

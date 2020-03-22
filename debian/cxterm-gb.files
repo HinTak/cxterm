@@ -1,3 +1,3 @@
-usr/X11R6/bin/cxtermgb
-usr/X11R6/lib/X11/cxterm.dic/gb
-usr/X11R6/man/man1/cxtermgb.1x.gz
+usr/bin/cxtermgb
+usr/lib/X11/cxterm.dic/gb
+usr/man/man1/cxtermgb.1x.gz

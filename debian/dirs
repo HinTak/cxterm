@@ -1,7 +1,7 @@
-usr/X11R6/bin
-usr/X11R6/man/man1
-usr/X11R6/lib/X11/cxterm.dic/big5
-usr/X11R6/lib/X11/cxterm.dic/gb
-usr/X11R6/lib/X11/cxterm.dic/jis
-usr/X11R6/lib/X11/cxterm.dic/ks
+usr/bin
+usr/man/man1
+usr/lib/X11/cxterm.dic/big5
+usr/lib/X11/cxterm.dic/gb
+usr/lib/X11/cxterm.dic/jis
+usr/lib/X11/cxterm.dic/ks
 etc/X11/app-defaults

@@ -2,7 +2,7 @@
 
 set -e
 
-PROG=/usr/X11R6/bin/cxtermb5
+PROG=/usr/bin/cxtermb5
 PACKAGE=cxterm-big5
 
 case "$1" in
@@ -18,7 +18,7 @@ case "$1" in
     exit 1 ;;
 esac
 
-update-alternatives --install /usr/X11R6/bin/cxterm cxterm $PROG 10
+update-alternatives --install /usr/bin/cxterm cxterm $PROG 10
 
 #DEBHELPER#
 

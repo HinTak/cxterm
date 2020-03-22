@@ -1,3 +1,3 @@
 ?package(cxterm-big5):needs=X11 section=XShells      \
   title="CXterm (Big5)" longtitle="Traditional Chinese (Big5) Xterm (CXterm)" \
-  command="/usr/X11R6/bin/cxtermb5"
+  command="/usr/bin/cxtermb5"

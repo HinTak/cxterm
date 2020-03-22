@@ -1,2 +1,2 @@
 ?package(cxterm-jis):needs=X11 section=XShells\
-  title="CXterm (JIS)" command="/usr/X11R6/bin/cxtermjis"
+  title="CXterm (JIS)" command="/usr/bin/cxtermjis"
