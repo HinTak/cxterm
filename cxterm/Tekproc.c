@@ -605,7 +605,7 @@ static void Tekparse(void)
 			if(screen->pen == PENDOWN)
 				TekDraw(x, y);
 			else
-				TekMove(x, y);
+				{TekMove(x, y);}
 			break;
 
 		 case CASE_PLT_VEC:
@@ -615,7 +615,7 @@ static void Tekparse(void)
 				if(screen->pen == PENDOWN)
 					TekDraw(screen->cur.x, screen->cur.y);
 				else
-					TekMove(screen->cur.x, screen->cur.y);
+					{TekMove(screen->cur.x, screen->cur.y);}
 				screen->pen = PENDOWN;
 			}
 			break;
