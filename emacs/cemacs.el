@@ -431,7 +431,7 @@
 ;     21: others                   none of the above
 ;
 
-(defun cemacs-set-ctype-list-region (&optional begin &optional end)
+(defun cemacs-set-ctype-list-region (&optional begin end)
   "Creat the list cemacs-ctype-list of a region.
 If the region is not specified, BEGIN is default to beginning of line,
 and END is default to the current point.
