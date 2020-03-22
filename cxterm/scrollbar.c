@@ -421,12 +421,12 @@ static void ScrollTextTo(Widget scrollbarWidget, XtPointer client_data, XtPointe
 /*ARGSUSED*/
 static void ScrollTextUpDownBy(Widget scrollbarWidget, XtPointer client_data, XtPointer call_data)
 {
-	int pixels = (int) call_data;
+	long pixels = (long) call_data;
 
 	register TScreen *screen = &term->screen;
 	register int rowOnScreen, newTopLine;
 
-	rowOnScreen = pixels / FontHeight(screen);
+	rowOnScreen = (int) (pixels / FontHeight(screen));
 	if (rowOnScreen == 0) {
 		if (pixels < 0)
 			rowOnScreen = -1;
