@@ -649,8 +649,8 @@ void ClearRight (register TScreen *screen)
 	screen->do_wrap = 0;
 	if(screen->cur_row - screen->topline <= screen->max_row) {
 	    if(!AddToRefresh(screen)) {
-	if(screen->scroll_amt)
-		FlushScroll(screen);
+	        if(screen->scroll_amt)
+	            FlushScroll(screen);
 		XClearArea (screen->display, TextWindow(screen),
 		 CursorX(screen, screen->cur_col),
 		 CursorY(screen, screen->cur_row),
