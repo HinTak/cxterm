@@ -466,9 +466,9 @@ static int specialcmplowerwiths (char *a, char *b)
     return 0;
 }
 
-static int params_to_pixels (TScreen *screen, String *params, int n)
+static long params_to_pixels (TScreen *screen, String *params, int n)
 {
-    register int mult = 1;
+    register long mult = 1;
     register char *s;
 
     switch (n > 2 ? 2 : n) {
