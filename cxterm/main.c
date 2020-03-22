@@ -3038,7 +3038,7 @@ int spawn (void)
 		  execl (bin_login, "login", "-p", "-f", pw->pw_name, 0);
 #endif
 		execlp (ptr, (term->misc.login_shell ? shname_minus : shname),
-			0);
+			NULL);
 
 		/* Exec failed. */
 		fprintf (stderr, "%s: Could not exec %s!\n", xterm_name, ptr);
