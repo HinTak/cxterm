@@ -56,7 +56,7 @@ static void LineOut (int top, unsigned int trieIdx, FILE *ofile);
 static void KeyOut (short unsigned int type, char *label, FILE *ofile);
 static int Putc (unsigned char ch, FILE *ofile);
 
-main(int argc, char **argv)
+void main(int argc, char **argv)
 {
     FILE *ifile, *ofile;
 

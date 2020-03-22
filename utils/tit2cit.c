@@ -164,7 +164,7 @@ static void InitTable (void);
 static void ParseKey (char *buf);
 static void Predefine (void);
 
-main(int argc, char **argv)
+void main(int argc, char **argv)
 {
     FILE *ifile, *ofile;
 
