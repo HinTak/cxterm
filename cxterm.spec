@@ -54,21 +54,21 @@ Fonts used by cxterm
 %setup 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr/X11R6
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
 make
 
 %install
 DESTDIR=$RPM_BUILD_ROOT make install
 
-mkdir -p $RPM_BUILD_ROOT/usr/X11R6/lib/X11/fonts/chinese
+mkdir -p $RPM_BUILD_ROOT/usr/lib/X11/fonts/chinese
 install -c -m 644 fonts/*.gz fonts/font* \
-  $RPM_BUILD_ROOT/usr/X11R6/lib/X11/fonts/chinese
+  $RPM_BUILD_ROOT/usr/lib/X11/fonts/chinese
 
-ln -sf cxterm $RPM_BUILD_ROOT/usr/X11R6/bin/cxtermgb
-ln -sf cxterm $RPM_BUILD_ROOT/usr/X11R6/bin/cxtermb5
-ln -sf cxterm $RPM_BUILD_ROOT/usr/X11R6/bin/cxtermjis
-ln -sf cxterm $RPM_BUILD_ROOT/usr/X11R6/bin/cxtermks
-ln -sf ../../lib/X11/fonts/chinese $RPM_BUILD_ROOT/usr/X11R6/share/cxterm/fonts
+ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermgb
+ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermb5
+ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermjis
+ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermks
+ln -sf ../../lib/X11/fonts/chinese $RPM_BUILD_ROOT/usr/share/cxterm/fonts
 
 %clean
 rm -fr $RPM_BUILD_ROOT
@@ -81,36 +81,36 @@ rm -fr $RPM_BUILD_ROOT
 %defattr(-, root, root)
 
 %doc Doc README* INSTALL-5.2 ChangeLog cxterm.term* emacs
-%dir /usr/X11R6/share/cxterm/dict
-%config /usr/X11R6/share/cxterm/cxtermrc
+%dir /usr/share/cxterm/dict
+%config /usr/share/cxterm/cxtermrc
 
-/usr/X11R6/bin/cit2tit
-/usr/X11R6/bin/cxterm
-/usr/X11R6/bin/cxterm.bin
-/usr/X11R6/bin/hzimctrl
-/usr/X11R6/bin/tit2cit
+/usr/bin/cit2tit
+/usr/bin/cxterm
+/usr/bin/cxterm.bin
+/usr/bin/hzimctrl
+/usr/bin/tit2cit
 
-/usr/X11R6/man/man1/*.1*
+/usr/man/man1/*.1*
 
 %files big5
-%attr(-,root,root) /usr/X11R6/bin/cxtermb5
-%attr(-,root,root) /usr/X11R6/share/cxterm/dict/big5
+%attr(-,root,root) /usr/bin/cxtermb5
+%attr(-,root,root) /usr/share/cxterm/dict/big5
 
 %files gb
-%attr(-,root,root) /usr/X11R6/bin/cxtermgb
-%attr(-,root,root) /usr/X11R6/share/cxterm/dict/gb
+%attr(-,root,root) /usr/bin/cxtermgb
+%attr(-,root,root) /usr/share/cxterm/dict/gb
 
 %files jis
-%attr(-,root,root) /usr/X11R6/bin/cxtermjis
-%attr(-,root,root) /usr/X11R6/share/cxterm/dict/jis
+%attr(-,root,root) /usr/bin/cxtermjis
+%attr(-,root,root) /usr/share/cxterm/dict/jis
 
 %files ks
-%attr(-,root,root) /usr/X11R6/bin/cxtermks
-%attr(-,root,root) /usr/X11R6/share/cxterm/dict/ks
+%attr(-,root,root) /usr/bin/cxtermks
+%attr(-,root,root) /usr/share/cxterm/dict/ks
 
 %files fonts
-%attr(-,root,root) /usr/X11R6/lib/X11/fonts/chinese
-%attr(-,root,root) /usr/X11R6/share/cxterm/fonts
+%attr(-,root,root) /usr/lib/X11/fonts/chinese
+%attr(-,root,root) /usr/share/cxterm/fonts
 
 %changelog
 * Mon May  5 2003 Hin-Tak Leung <htl10@users.sourceforge.net>
