@@ -1,7 +1,7 @@
 Source: cxterm
 Section: non-free/x11
 Priority: optional
-Build-Depends: debhelper, xutils, xlibs-dev, xbase-clients, libncurses5-dev | libncurses4-dev, libxaw7-dev | libxaw-dev
+Build-Depends: debhelper, xutils, libxt-dev, xbase-clients, libncurses-dev | libncurses5-dev, libxaw7-dev
 Maintainer: Anthony Wong <ypwong@debian.org>
 Standards-Version: 3.1.1
 
