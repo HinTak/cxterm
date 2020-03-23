@@ -1,3 +1,16 @@
+cxterm (5.1p1-8) unstable; urgency=low
+
+  * debian/cxterm-common.postinst
+    - uses /usr/share/man/man1/x-terminal-emulator.1.gz in update-alternatives
+      (Closes: #128010, #161481)
+    - no longer use suid-register
+  * Fixed cxterm{big5,gb,jis,ks} scripts to support quoted arguments. (Closes: #132483)
+  * debian/control: to comply with Debian policy, only Recommends font packages.
+  * No longer make /usr/doc symlinks in postinsts.
+  * Corrected cxterm-jis.postrm such that the old /usr/doc/cxterm-jis
+    directory will be removed.
+  * Thanks Martin Michlmayr and Colin Watson for NMUs. (Closes: #94631, #110380, #111599)
+
 cxterm (5.1p1-7.2) unstable; urgency=low
 
   * Non-maintainer upload.
