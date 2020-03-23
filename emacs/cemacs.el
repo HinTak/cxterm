@@ -721,7 +721,7 @@ argument: (&optional n)\n"
 ;;; ----------------------------
 ;;; sentence related functions 
 ;;; ----------------------------
-;; Redefine the sentence end. Make the original recognied BIG5 or GB
+;; Redefine the sentence end. Make the original recognize BIG5 or GB
 ;; end of sentence, and make the search case sensitive for BIG5.
 (if (not (equal (getenv "CHAR_ENCODING") "GB"))	; default is big5
     (progn
