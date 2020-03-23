@@ -100,7 +100,7 @@ Aug 04, 2004 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
       show you corresponding InputKeys in that method.
 
     + Set up hosting on sourceforge.net: http://cxterm.sourceforge.net,
-      but cvs don't support sysbolic links, so I move scripts/config.sh
+      but cvs don't support symbolic links, so I move scripts/config.sh
       to the root directory. Other symbolic links in root directory to
       Doc subDirectory, such as README, version etc., thus were "removed".
 
