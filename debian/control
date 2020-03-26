@@ -1,6 +1,8 @@
 Source: cxterm
 Section: non-free/x11
 Priority: optional
+Maintainer: Anthony Wong <ypwong@debian.org>
+Standards-Version: 3.1.1
 Build-Depends: debhelper, xutils-dev, libxt-dev, xbase-clients, libncurses-dev | libncurses5-dev, libxaw7-dev
 
 # Reasons for Build-Depends:
@@ -10,8 +12,6 @@ Build-Depends: debhelper, xutils-dev, libxt-dev, xbase-clients, libncurses-dev |
 #   libxt-dev
 #       ptyx.h:#include <X11/IntrinsicP.h>
 
-Maintainer: Anthony Wong <ypwong@debian.org>
-Standards-Version: 3.1.1
 Package: cxterm-common
 Architecture: any
 Depends: ${shlibs:Depends}
