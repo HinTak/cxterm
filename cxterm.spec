@@ -89,28 +89,28 @@ rm -fr $RPM_BUILD_ROOT
 %dir /usr/share/cxterm/dict
 %config /usr/share/cxterm/cxtermrc
 
-/usr/bin/cit2tit
-/usr/bin/cxterm
-/usr/bin/cxterm.bin
-/usr/bin/hzimctrl
-/usr/bin/tit2cit
+%{_bindir}/cit2tit
+%{_bindir}/cxterm
+%{_bindir}/cxterm.bin
+%{_bindir}/hzimctrl
+%{_bindir}/tit2cit
 
-/usr/man/man1/*.1*
+%{_mandir}/man1/*.1*
 
 %files big5
-%attr(-,root,root) /usr/bin/cxtermb5
+%attr(-,root,root) %{_bindir}/cxtermb5
 %attr(-,root,root) /usr/share/cxterm/dict/big5
 
 %files gb
-%attr(-,root,root) /usr/bin/cxtermgb
+%attr(-,root,root) %{_bindir}/cxtermgb
 %attr(-,root,root) /usr/share/cxterm/dict/gb
 
 %files jis
-%attr(-,root,root) /usr/bin/cxtermjis
+%attr(-,root,root) %{_bindir}/cxtermjis
 %attr(-,root,root) /usr/share/cxterm/dict/jis
 
 %files ks
-%attr(-,root,root) /usr/bin/cxtermks
+%attr(-,root,root) %{_bindir}/cxtermks
 %attr(-,root,root) /usr/share/cxterm/dict/ks
 
 %files fonts
