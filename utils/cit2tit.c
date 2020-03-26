@@ -37,7 +37,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 extern char *HZencodeName(int);	/* from HZutil.c */
 
-#include "HZinput.h"
+#include "HZtable.h"
 
 trieNode *trieList;		/* all Tries are saved here */
 XChar2b *hzList;		/* all HZ codes will be put here */
