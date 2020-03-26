@@ -3,7 +3,7 @@ Name: cxterm
 Version: 5.2.4
 Release: 1unix98
 Packager: Hin-Tak Leung <htl10@users.sourceforge.net>
-Source: http://osdn.dl.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
+Source: http://download.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
 
 License: distributable
 Group: X11/Utilities/terms
