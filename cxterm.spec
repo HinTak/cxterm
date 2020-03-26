@@ -59,7 +59,7 @@ Fonts used by cxterm
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
+%configure --prefix=/usr
 make
 
 %install
