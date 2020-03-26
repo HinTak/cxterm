@@ -28,6 +28,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include <X11/Xos.h>	/* OS dependent stuff */
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifdef __CYGWIN32__
 #define FOPEN_R		"rb"
