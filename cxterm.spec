@@ -7,7 +7,12 @@ Source: http://download.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
 License: distributable
 Group: X11/Utilities/terms
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRequires: gcc pkgconfig ncurses-devel
+BuildRequires: libXt-devel libXaw-devel
 BuildRequires: xorg-x11-font-utils
+
+%global x11_font_dir %(pkg-config --variable fontrootdir fontutil)
+
 %description
 A terminal emulator for X11, just like "xterm", but with the
 capability of displaying and inputting Chinese.
@@ -60,15 +65,15 @@ make
 %install
 DESTDIR=$RPM_BUILD_ROOT make install
 
-mkdir -p $RPM_BUILD_ROOT/usr/lib/X11/fonts/chinese
+mkdir -p $RPM_BUILD_ROOT/%{x11_font_dir}/chinese
 install -c -m 644 fonts/*.gz fonts/font* \
-  $RPM_BUILD_ROOT/usr/lib/X11/fonts/chinese
+  $RPM_BUILD_ROOT/%{x11_font_dir}/chinese
 
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermgb
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermb5
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermjis
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermks
-ln -sf ../../lib/X11/fonts/chinese $RPM_BUILD_ROOT/usr/share/cxterm/fonts
+ln -sf %{x11_font_dir}/chinese $RPM_BUILD_ROOT/usr/share/cxterm/fonts
 
 %clean
 rm -fr $RPM_BUILD_ROOT
@@ -109,7 +114,7 @@ rm -fr $RPM_BUILD_ROOT
 %attr(-,root,root) /usr/share/cxterm/dict/ks
 
 %files fonts
-%attr(-,root,root) /usr/lib/X11/fonts/chinese
+%attr(-,root,root) %{x11_font_dir}/chinese
 %attr(-,root,root) /usr/share/cxterm/fonts
 
 %changelog
