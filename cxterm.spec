@@ -58,7 +58,7 @@ Fonts used by cxterm
 %setup -q
 
 %build
-%configure --prefix=/usr
+%configure
 make
 
 %install
