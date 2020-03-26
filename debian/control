@@ -12,7 +12,6 @@ Build-Depends: debhelper, xutils-dev, libxt-dev, xbase-clients, libncurses-dev |
 
 Maintainer: Anthony Wong <ypwong@debian.org>
 Standards-Version: 3.1.1
-
 Package: cxterm-common
 Architecture: any
 Depends: ${shlibs:Depends}
