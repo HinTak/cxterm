@@ -2,7 +2,6 @@ Summary: Chinese X-term
 Name: cxterm
 Version: 5.2.4
 Release: 1unix98
-Packager: Hin-Tak Leung <htl10@users.sourceforge.net>
 Source: http://download.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
 
 License: distributable
