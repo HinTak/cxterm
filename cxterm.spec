@@ -6,7 +6,7 @@ Source: http://download.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
 
 License: distributable
 Group: X11/Utilities/terms
-BuildRoot: /tmp/cxterm-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 %description
 A terminal emulator for X11, just like "xterm", but with the
 capability of displaying and inputting Chinese.
