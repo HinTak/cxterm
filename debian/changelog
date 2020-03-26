@@ -11,6 +11,8 @@ cxterm (5.1p1-8) unstable; urgency=low
     directory will be removed.
   * Thanks Martin Michlmayr and Colin Watson for NMUs. (Closes: #94631, #110380, #111599)
 
+ -- Anthony Wong <ypwong@debian.org>  Sun,  8 Dec 2002 00:33:00 +0800
+
 cxterm (5.1p1-7.2) unstable; urgency=low
 
   * Non-maintainer upload.
