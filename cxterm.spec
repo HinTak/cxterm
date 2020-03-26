@@ -50,7 +50,7 @@ Fonts used by cxterm
 
 %prep
 
-%setup 
+%setup -q
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
