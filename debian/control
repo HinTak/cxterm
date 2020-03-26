@@ -3,12 +3,14 @@ Section: non-free/x11
 Priority: optional
 Maintainer: Anthony Wong <ypwong@debian.org>
 Standards-Version: 3.1.1
-Build-Depends: debhelper, xutils-dev, libxt-dev, xbase-clients, libncurses-dev | libncurses5-dev, libxaw7-dev
+Build-Depends: debhelper, xutils-dev, libxt-dev, xfonts-utils, xbase-clients, libncurses-dev | libncurses5-dev, libxaw7-dev
 
 # Reasons for Build-Depends:
 #
 #   xutils-dev
 #       xmkmf
+#   xfonts-utils
+#       bdftopcf
 #   libxt-dev
 #       ptyx.h:#include <X11/IntrinsicP.h>
 
