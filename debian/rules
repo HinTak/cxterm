@@ -62,6 +62,7 @@ install-stamp: build-stamp
 
 	mv $(DESTDIR)/usr/bin/cxterm $(DESTDIR)/usr/bin/cxterm.common
 
+	mkdir -p $(DESTDIR)/etc/X11/app-defaults
 	install -m 644 cxterm/CXterm.ad \
       $(DESTDIR)/etc/X11/app-defaults/CXterm
 
