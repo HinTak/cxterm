@@ -37,7 +37,9 @@
 /* ptyx.h */
 /* @(#)ptyx.h	X10/6.6	11/10/86 */
 
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
 #include <X11/IntrinsicP.h>
 #include <X11/Xmu/Misc.h>	/* For Max() and Min(). */
