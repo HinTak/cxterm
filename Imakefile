@@ -1,0 +1,52 @@
+#define IHaveSubdirs
+#define PassCDebugFlags CDEBUGFLAGS="$(CDEBUGFLAGS)"
+
+        SUBDIRS = cxterm utils dict fonts
+
+MakeSubdirs($(SUBDIRS))
+DependSubdirs($(SUBDIRS))
+
+World::
+	@echo ""
+	@echo "Building cxterm Version 5.0"
+	@echo ""
+	@date
+	@echo ""
+	@$(RM) .done
+	$(XMKMF)
+	$(MAKE) $(MFLAGS) xrelease
+	$(MAKE) $(MFLAGS) Makefiles
+	$(MAKE) $(MFLAGS) includes
+	$(MAKE) $(MFLAGS)
+	@touch .done
+	@echo ""
+	@date
+	@echo ""
+	@echo "Full build of cxterm complete."
+	@echo ""
+
+xrelease::
+	@if [ -f $(INCROOT)/X11/Xlib.h ]; then	\
+	    x=`sed -n -e 's/^#.*XlibSpecificationRelease.*\([0-9]\).*$$/\1/p'\
+		$(INCROOT)/X11/Xlib.h`;		\
+	else	\
+	    $(MAKE) $(MFLAGS) xrel; \
+	    x=`xrel`;	\
+	fi;	\
+	if [ "R$$x" = R ]; then		\
+		echo "I guess it is X11R4";	\
+		$(RM) imake.compat;	\
+		$(CP) Xcompat/imake-R4.compat imake.compat;	\
+	elif [ -f Xcompat/imake-"R$$x".compat ]; then	\
+		echo "You are using X11R$$x";	\
+		$(RM) imake.compat;	\
+		$(CP) Xcompat/imake-"R$$x".compat imake.compat;	\
+	else	\
+		echo "Unknown X11 release number $$x";	\
+		exit 1;	\
+	fi
+
+clean::
+	$(RM) .done
+
+NormalProgramTarget(xrel,xrel.o,,$(XLIB),)

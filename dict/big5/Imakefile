@@ -1,0 +1,26 @@
+#include "../../imake.compat"
+#include "../../imake.local"
+
+OBJS =	DictObj(4Corner) DictObj(ARRAY30) DictObj(Boshiamy) DictObj(CangJie) \
+	DictObj(ETZY) DictObj(English) DictObj(HSU) DictObj(PY) \
+	DictObj(Punct) DictObj(QJ) DictObj(Simplex) DictObj(ZOZY) \
+	simple.lx
+
+MakeDicts()
+
+DictTarget(4Corner)
+DictTarget(ARRAY30)
+DictTarget(Boshiamy)
+DictTarget(CangJie)
+DictTarget(ETZY)
+DictTarget(English)
+DictTarget(HSU)
+DictTarget(PY)
+DictTarget(Punct)
+DictTarget(QJ)
+DictTarget(Simplex)
+DictTarget(ZOZY)
+
+InstallMultipleFlags($(OBJS),$(DICTDIR)/big5,$(INSTDATFLAGS))
+
+depend::

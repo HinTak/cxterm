@@ -1,0 +1,42 @@
+#include "../imake.compat"
+
+XCOMM $Id: Imakefile,v 1.1 2001/11/13 18:53:21 xucs Exp $
+
+        DEFINES = $(X_COMPATIBLE_FLAGS)
+
+      CXTERMSRC = ../cxterm
+
+          SRCS1 = tit2cit.c
+          OBJS1 = tit2cit.o $(CXTERMSRC)/HZutil.o
+          SRCS2 = cit2tit.c
+          OBJS2 = cit2tit.o $(CXTERMSRC)/HZutil.o
+          SRCS3 = hzimctrl.c
+          OBJS3 = hzimctrl.o
+           SRCS = $(SRCS1) $(SRCS2) $(SRCS3)
+           OBJS = $(OBJS1) $(OBJS2) $(OBJS3)
+#ifdef __CYGWIN32__
+       PROGRAMS = tit2cit.exe cit2tit.exe hzimctrl.exe
+#else
+       PROGRAMS = tit2cit cit2tit hzimctrl
+#endif
+
+AllTarget($(PROGRAMS))
+
+LinkSourceFile(HZtable.h,$(CXTERMSRC))
+
+includes:: HZtable.h
+
+NormalProgramTarget(tit2cit,$(OBJS1),NullParameter,NullParameter,NullParameter)
+InstallProgramWithFlags(tit2cit,$(BINDIR),NullParameter)
+
+NormalProgramTarget(cit2tit,$(OBJS2),NullParameter,NullParameter,NullParameter)
+InstallProgramWithFlags(cit2tit,$(BINDIR),NullParameter)
+
+NormalProgramTarget(hzimctrl,$(OBJS3),NullParameter,NullParameter,NullParameter)
+InstallProgramWithFlags(hzimctrl,$(BINDIR),NullParameter)
+
+InstallManPage(tit2cit,$(MANDIR))
+InstallManPageAliases(tit2cit,$(MANDIR),cit2tit)
+InstallManPage(hzimctrl,$(MANDIR))
+
+DependTarget()

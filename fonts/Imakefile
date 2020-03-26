@@ -1,0 +1,18 @@
+#include "../imake.compat"
+
+XCOMM $Id: Imakefile,v 1.1 2001/11/13 18:25:52 xucs Exp $
+
+OBJS =	FontObj(gb16st) FontObj(hku16et) FontObj(gb16fs)
+
+FONTINSTDIR = $(FONTDIR)/chinese
+
+MakeFonts()
+
+FontTarget(gb16st)
+FontTarget(hku16et)
+FontTarget(gb16fs)
+
+InstallFonts($(FONTINSTDIR))
+InstallFontAliases($(FONTINSTDIR))
+
+depend::
