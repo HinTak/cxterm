@@ -1,0 +1,136 @@
+11/13/2001  cxterm-5.1p2.src.tgz released by Changsen Xu <xucs007@yahoo.com>
+
+    + Input key cross reference for the last CJK character (of a phrase)
+      inputed: Double-hit of any function key (F#) within 1 second will
+      show you corresponding InputKeys in that method.
+
+    + Set up hosting on sourceforge.net: http://cxterm.sourceforge.net,
+      but cvs don't support sysbolic links, so I move scripts/config.sh
+      to the root directory. Other symbolic links in root directory to
+      Doc subDirectory, such as README, version etc., thus were "removed".
+
+    + GB Chinese "Ô¹" in the old WuBi.tit has wrong key: dbn/dbnu; It's
+      corrected to Ï¦¶úÐÄu (qbn or qbnu) --- the later is used by most
+      Windows 95/98/NT/2000 WuBi methods.
+
+
+03/26/2001   cxterm-5.1p1-2.src.rpm released (can be found on
+    http://rpmfind.net ) by Heng Yuan <heng@ag.arizona.edu>
+
+    + Script fixes, RPM re-packaging.
+
+
+
+06/12/1999  cxterm 5.1p1 released by ZHUANG Hao <hz69@columbia.edu>
+
+    + 1) Blinking support for the CXterm. Now you can see the flashing words !
+  
+    + 2) True ANSI color support. Now the CXterm supports hilight colors and
+         normal colors. (16 foreground + 8 background)
+  
+    + 3) FIXED: abnormal display while typing Chinese Characters in BBS;
+  
+    + 4) FIXED: strange color block leftover when the cursor jumps to other
+         locations;
+  
+    + 5) FIXED: the color of the Chinese Input Line changes with the last
+         character displayed on screen.
+  
+    + 6) Special color processing for BBS, use '-bbs on/off' switches or the
+         X resource string 'cxterm*bbs' to turn it on or off.
+  
+    + 7) Chinese mode on/off by pressing <Ctrl> key, but won't be affected by
+         normal <Ctrl>+<key> press. (But you can set it to any key, like
+         <Shift>, <Meta>... See the resource file for more info)
+  
+    + 8) Default RichWin-like Chinese input key settings: use - and = to
+         search back or forward... makes the punctuation input more convenient.
+         But you can change it if you don't like. (This default is for GB
+         only)
+  
+    + 9) Some secure protection.
+
+
+
+
+
+1996-1997	cxterm-5.?p?	Ji-Tzay Yang and Bruce Cheng
+
+    + Color patches
+
+
+
+
+08/08/95	cxterm-5.0p3 packaged and released.
+
+    + X11R6 fix level 12 applied
+	- patch ./cxterm/main.c, ./cxterm/TekPrsTbl.c, and ./cxterm/VTPrsTbl.c
+
+    + some X11R5 is really X11R4 in some aspects
+	- update ./Xcompat/imake-R5.compat
+
+    + fixed two bugs that cause core dump during HZ input
+	- fixed ./cxterm/HZfilter.c 
+
+    + new phrase dictionary for KS encoding
+	- add ./dict/ks/simple.lx
+	- update ./cxterm/CXterm.ad
+
+05/22/95	cxterm-5.0p2 packaged and released.
+
+    + improve installation script to check for fullpath name
+	- enhance ./script/installc.sh
+
+    + fixed the "Error 5, errno 22" problem in SGI IRIX5.3
+	- fix ./cxterm/main.c
+
+    + some imake program generates wrong imake includes
+	- update ./dict/Imakefile
+
+    + replace the Big5 input method Boshiamy with the one provided
+      by K.C.Kao (kckao@event.ee.ntit.edu.tw), which has more hanzi.
+	- update ./dict/big5/Boshiamy.tit
+
+02/14/95	cxterm-5.0p1 packaged and released.
+
+    + X11R6 fixes up to level 11 applied
+	- patch ./cxterm/main.c
+
+    + IC builtin method now also accepts GL codes (hibit unset).
+	- update ./cxterm/HZbuiltn.c
+
+    + added two Big5 input methods.
+	- add ./dict/big5/Boshiamy.tit, ./dict/big5/HSU.tit
+	- update ./dict/big5/Imakefile, ./cxterm/CXterm.ad 
+
+    + fixed a bug in CXterm so that now "CXterm -Big5" works.
+	- update ./scripts/CXterm.sh, ./scripts/installc.sh
+
+    + fixed the "XtGravity redefined" problem for some old X11R4.
+	- fix ./cxterm/charproc.c (line 88)
+
+    + fix a font making problem in some X11R4 (e.g. SGI) system.
+	- added a rule in ./Xcompat/imake-R4.compat
+	- include "imake.local" in ./fonts/Imakefile
+
+    + fixed the "make depend" problem in Sun OpenWindow (makedepend bug).
+	- update ./Imakefile, ./Makefile.ini
+
+    + rewrite ": ${M:=V}" in "if ... then ... fi"
+	- some shells don't understand this
+	- update ./scripts/*.sh
+
+    + added a new way to determine X version. 
+	- fixed ./Imakefile
+	- added a new file ./xrel.c
+	- stupid OpenWindow imake templates
+
+    + minor bug fixes.
+	- ./cxterm/HZchList.c ./cxterm/HZfilter.c ./cxterm/HZinCntx.c
+	- ./utils/tit2cit.c
+
+    + recorded the changes
+	- update Doc/version, add Doc/HISTORY (this file)
+	- update Doc/CXTERM.FAQ
+
+01/17/95	cxterm-5.0 packaged and released.
