@@ -70,7 +70,7 @@ install-stamp: build-stamp
       debian/cxtermks $(DESTDIR)/usr/bin/
 
 	# link subpackage manpages to that of cxterm-common
-	( cd $(DESTDIR)/usr/man/man1; \
+	( cd $(DESTDIR)/usr/share/man/man1; \
       gzip -9 *.1x; \
       ln -sf cxterm.1x.gz cxterm.common.1x.gz; \
       ln -sf cxterm.1x.gz cxtermb5.1x.gz; \

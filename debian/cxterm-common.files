@@ -2,9 +2,9 @@ usr/bin/cxterm.common
 usr/bin/cit2tit
 usr/bin/tit2cit
 usr/bin/hzimctrl
-usr/man/man1/cxterm.1x.gz
-usr/man/man1/cxterm.common.1x.gz
-usr/man/man1/cit2tit.1x.gz
-usr/man/man1/tit2cit.1x.gz
-usr/man/man1/hzimctrl.1x.gz
+usr/share/man/man1/cxterm.1x.gz
+usr/share/man/man1/cxterm.common.1x.gz
+usr/share/man/man1/cit2tit.1x.gz
+usr/share/man/man1/tit2cit.1x.gz
+usr/share/man/man1/hzimctrl.1x.gz
 etc/X11/app-defaults/CXterm

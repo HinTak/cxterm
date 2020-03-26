@@ -31,8 +31,8 @@ fi
 
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator \
     $PROG 10 \
-    --slave /usr/man/man1/x-terminal-emulator.1.gz x-terminal-emulator.1.gz \
-    /usr/man/man1/cxterm.1x.gz
+    --slave /usr/share/man/man1/x-terminal-emulator.1.gz x-terminal-emulator.1.gz \
+    /usr/share/man/man1/cxterm.1x.gz
 
 #DEBHELPER#
 
