@@ -78,7 +78,7 @@ install-stamp: build-stamp
       ln -sf cxterm.1x.gz cxterm.common.1x.gz; \
       ln -sf cxterm.1x.gz cxtermb5.1x.gz; \
       ln -sf cxterm.1x.gz cxtermgb.1x.gz; \
-  	  ln -s cxterm.1x.gz cxtermjis.1x.gz; \
+      ln -sf cxterm.1x.gz cxtermjis.1x.gz; \
       ln -sf cxterm.1x.gz cxtermks.1x.gz )
 
 	touch install-stamp
