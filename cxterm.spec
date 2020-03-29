@@ -73,7 +73,10 @@ ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermgb
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermb5
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermjis
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermks
-ln -sf %{x11_font_dir}/chinese $RPM_BUILD_ROOT/usr/share/cxterm/fonts
+ln -sf %{x11_font_dir}/chinese $RPM_BUILD_ROOT/%{_datadir}/cxterm/fonts
+
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/terminfo/
+TERMINFO=$RPM_BUILD_ROOT/%{_datadir}/terminfo/ tic cxterm.terminfo
 
 %clean
 rm -fr $RPM_BUILD_ROOT
@@ -86,8 +89,8 @@ rm -fr $RPM_BUILD_ROOT
 %defattr(-, root, root)
 
 %doc Doc README* INSTALL-5.2 ChangeLog cxterm.term* emacs
-%dir /usr/share/cxterm/dict
-%config /usr/share/cxterm/cxtermrc
+%dir %{_datadir}/cxterm/dict
+%config %{_datadir}/cxterm/cxtermrc
 
 %{_bindir}/cit2tit
 %{_bindir}/cxterm
@@ -97,25 +100,27 @@ rm -fr $RPM_BUILD_ROOT
 
 %{_mandir}/man1/*.1*
 
+%{_datadir}/terminfo/c/*
+
 %files big5
 %attr(-,root,root) %{_bindir}/cxtermb5
-%attr(-,root,root) /usr/share/cxterm/dict/big5
+%attr(-,root,root) %{_datadir}/cxterm/dict/big5
 
 %files gb
 %attr(-,root,root) %{_bindir}/cxtermgb
-%attr(-,root,root) /usr/share/cxterm/dict/gb
+%attr(-,root,root) %{_datadir}/cxterm/dict/gb
 
 %files jis
 %attr(-,root,root) %{_bindir}/cxtermjis
-%attr(-,root,root) /usr/share/cxterm/dict/jis
+%attr(-,root,root) %{_datadir}/cxterm/dict/jis
 
 %files ks
 %attr(-,root,root) %{_bindir}/cxtermks
-%attr(-,root,root) /usr/share/cxterm/dict/ks
+%attr(-,root,root) %{_datadir}/cxterm/dict/ks
 
 %files fonts
 %attr(-,root,root) %{x11_font_dir}/chinese
-%attr(-,root,root) /usr/share/cxterm/fonts
+%attr(-,root,root) %{_datadir}/cxterm/fonts
 
 %changelog
 * Mon May  5 2003 Hin-Tak Leung <htl10@users.sourceforge.net>
