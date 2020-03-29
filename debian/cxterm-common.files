@@ -8,3 +8,13 @@ usr/share/man/man1/cit2tit.1x.gz
 usr/share/man/man1/tit2cit.1x.gz
 usr/share/man/man1/hzimctrl.1x.gz
 etc/X11/app-defaults/CXterm
+usr/share/terminfo/c/cxterm-24
+usr/share/terminfo/c/cxterm-bold
+usr/share/terminfo/c/cxterm-color
+usr/share/terminfo/c/cxterms
+usr/share/terminfo/c/cxterm-vi
+usr/share/terminfo/c/cxterm
+usr/share/terminfo/c/cvs100
+usr/share/terminfo/c/cxterm-boldso
+usr/share/terminfo/c/cxterm-65
+usr/share/terminfo/c/cxterm-ic

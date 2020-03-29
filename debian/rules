@@ -65,6 +65,9 @@ install-stamp: build-stamp
 	install -m 644 cxterm/CXterm.ad \
       $(DESTDIR)/etc/X11/app-defaults/CXterm
 
+	mkdir -p $(DESTDIR)/usr/share/terminfo/
+	TERMINFO=$(DESTDIR)/usr/share/terminfo/ tic cxterm.terminfo
+
 	# install wrapper scripts
 	install -m755 debian/cxtermb5 debian/cxtermgb debian/cxtermjis \
       debian/cxtermks $(DESTDIR)/usr/bin/
