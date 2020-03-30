@@ -411,7 +411,7 @@ static char **command_to_exec = NULL;
 #ifndef ICRNL
 #include <sys/termio.h>
 #endif
-static struct termio d_tio;
+static struct termios d_tio;
 #ifdef TIOCSLTC
 static struct ltchars d_ltc;
 #endif	/* TIOCSLTC */
@@ -1141,7 +1141,7 @@ int main (int argc, char **argv)
 	    int i;
 
 	    for (i = 0; i <= 2; i++) {
-		struct termio deftio;
+		struct termios deftio;
 		if (ioctl (i, TCGETA, &deftio) == 0) {
 		    d_tio.c_cc[VINTR] = deftio.c_cc[VINTR];
 		    d_tio.c_cc[VQUIT] = deftio.c_cc[VQUIT];
@@ -1497,7 +1497,7 @@ int main (int argc, char **argv)
 	 */
 
 	{
-	    struct termio tio;
+	    struct termios tio;
 
 	    if(ioctl(pty, TCGETA, &tio) == -1)
 		SysError(ERROR_TIOCGETP);
@@ -1904,8 +1904,8 @@ int spawn (void)
 	int discipline;
 	int done;
 #ifdef USE_SYSV_TERMIO
-	struct termio tio;
-	struct termio dummy_tio;
+	struct termios tio;
+	struct termios dummy_tio;
 #ifdef TIOCLSET
 	unsigned lmode;
 #endif	/* TIOCLSET */
