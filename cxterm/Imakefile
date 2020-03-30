@@ -18,7 +18,7 @@ XCOMM
 #if SetTtyGroup			/* turn on in config/machine.cf */
    TTYGROUPDEF = -DUSE_TTY_GROUP
 #endif
-#if UsePUCCPtyd			/* turn on in config/site.def */
+#if defined(UsePUCCPtyd) && UsePUCCPtyd			/* turn on in config/site.def */
     PUCCPTYDDEF = -DPUCC_PTYD		/* does not need to be setuid */
          PTYLIB = -lpucc
 #endif
