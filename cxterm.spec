@@ -68,6 +68,7 @@ DESTDIR=$RPM_BUILD_ROOT make install
 mkdir -p $RPM_BUILD_ROOT/%{x11_font_dir}/chinese
 install -c -m 644 fonts/*.gz fonts/font* \
   $RPM_BUILD_ROOT/%{x11_font_dir}/chinese
+mkfontdir $RPM_BUILD_ROOT/%{x11_font_dir}/chinese
 
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermgb
 ln -sf cxterm $RPM_BUILD_ROOT/usr/bin/cxtermb5
