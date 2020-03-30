@@ -6,7 +6,6 @@ Source: http://download.sourceforge.net/sourceforge/cxterm/cxterm-%{version}.tgz
 
 License: distributable
 Group: X11/Utilities/terms
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: gcc pkgconfig ncurses-devel
 BuildRequires: libXt-devel libXaw-devel
 BuildRequires: xorg-x11-font-utils
