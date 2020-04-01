@@ -8,6 +8,25 @@ if [ -d $FONTSDIR ]; then
     xset fp+ $FONTSDIR
 fi
 
+case "$0" in
+    *b5 )
+        FONT="-fh hku16et"
+        ENCODING=BIG5
+        NAME=cxtermb5
+        INPUTDIR=$DICTDIR/big5
+        ;;
+    *ks )
+        NAME=cxtermks
+        ENCODING=KS
+        INPUTDIR=$DICTDIR/ks
+        ;;
+    *jis )
+        NAME=cxtermjis
+        ENCODING=JIS
+        INPUTDIR=$DICTDIR/jis
+        ;;
+esac
+
 case "$1" in
 	-gb* | -GB* )
 		# this is the default configuration
