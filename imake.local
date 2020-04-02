@@ -31,5 +31,5 @@ DictObj(basename): DictSrc(basename)					@@\
     DICTCFLAGS = DictCompilerFlags
          DICTC = ../../utils/tit2cit
 
-       DICTDIR = $(LIBDIR)/cxterm.dic
+       DICTDIR = /usr/share/cxterm/dict/
 
