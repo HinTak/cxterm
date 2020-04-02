@@ -1,7 +1,7 @@
 usr/bin
 usr/share/man/man1
-usr/lib/X11/cxterm.dic/big5
-usr/lib/X11/cxterm.dic/gb
-usr/lib/X11/cxterm.dic/jis
-usr/lib/X11/cxterm.dic/ks
+usr/share/cxterm/dict/big5
+usr/share/cxterm/dict/gb
+usr/share/cxterm/dict/jis
+usr/share/cxterm/dict/ks
 etc/X11/app-defaults

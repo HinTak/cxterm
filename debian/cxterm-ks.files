@@ -1,3 +1,3 @@
 usr/bin/cxtermks
-usr/lib/X11/cxterm.dic/ks
+usr/share/cxterm/dict/ks
 usr/share/man/man1/cxtermks.1x.gz
