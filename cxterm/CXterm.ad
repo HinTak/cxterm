@@ -45,7 +45,7 @@ cxterm*bbs: on
 ! resource for GB cxterm (Simplified Chinese as used in Mainland China)
 !
 cxterm*HanziEncoding:		GB
-cxterm*hanziInputDir:	/usr/X11R6/lib/X11/cxterm.dic/gb
+cxterm*hanziInputDir:	/usr/share/cxterm/dict/gb
 cxterm*hanziAssociation:	simple.lx
 cxterm*hanziFont:		hanzigb16fs
 cxterm*hanziBoldFont:		hanzigb16st
@@ -101,7 +101,7 @@ cxterm*VT100.Translations: #override\
 ! resource for BIG5 cxterm (Traditional Chinese as used in Taiwan/Hong Kong)
 !
 cxtermb5*HanziEncoding:		BIG5
-cxtermb5*hanziInputDir:	/usr/X11R6/lib/X11/cxterm.dic/big5
+cxtermb5*hanziInputDir:	/usr/share/cxterm/dict/big5
 cxtermb5*hanziAssociation:	simple.lx
 cxtermb5*hanziFont:		taipei16
 cxtermb5*hanziBoldFont:
@@ -158,7 +158,7 @@ cxtermb5*VT100.Translations: #override\
 ! resource for JIS (Japanese) cxterm
 !
 cxtermjis*HanziEncoding:	JIS
-cxtermjis*hanziInputDir: /usr/X11R6/lib/X11/cxterm.dic/jis
+cxtermjis*hanziInputDir: /usr/share/cxterm/dict/jis
 cxtermjis*hanziFont:           kanji16
 cxtermjis*hanziBoldFont:
 cxtermjis*font:			8x16
@@ -194,7 +194,7 @@ cxtermjis*VT100.Translations: #override\
 ! resource for KSC (Korean) cxterm
 !
 cxtermks*HanziEncoding:		KS
-cxtermks*hanziInputDir: /usr/X11R6/lib/X11/cxterm.dic/ks
+cxtermks*hanziInputDir: /usr/share/cxterm/dict/ks
 cxtermks*hanziAssociation:	simple.lx
 cxtermks*hanziFont:		*-mincho-*-16-*-ksc5601.1987-*
 cxtermks*hanziBoldFont:
