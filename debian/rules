@@ -42,7 +42,7 @@ clean:
 	rm -rf debian/build
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
+	-$(MAKE) clean || /bin/true
 	-find . -name Makefile -exec rm -f '{}' ';'
 	-rm -f imake.compat
 	rm -f Install.log
