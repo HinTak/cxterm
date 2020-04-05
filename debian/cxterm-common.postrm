@@ -22,3 +22,4 @@ if command -v suidunregister > /dev/null 2>&1; then
 fi
 
 exit
+#DEBHELPER#
