@@ -73,15 +73,15 @@ the last item "HANZI configuration".  (See Section 17.)
 
     After pressing <F4>, you will get
         ________________________________________________________
-        ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~}
+        ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~}
 
     After you type 'z' 'h' 'o' 'n' 'g' '1', you will get
         ________________________________________________________
-	~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} zhong1
-          1.~{ÖÐ~} 2.~{ÖÕ~} 3.~{ÖÓ~} 4.~{ÖÒ~} 5~{.ÖÔ~} 6.~{ïñ~} >
+	~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} zhong1
+          1.~{ä¸­~} 2.~{ç»ˆ~} 3.~{é’Ÿ~} 4.~{å¿ ~} 5~{.è¡·~} 6.~{é”º~} >
 
     Type a number, say '4', to choose the fourth Chinese character in
-    the list -- ~{ÖÒ~}.
+    the list -- ~{å¿ ~}.
   --------------------------------------------------------------------
 
 3.  CHOICE LIST TRAVERSAL
@@ -114,10 +114,10 @@ list; one can pick a phrase as a whole.
   Ex 2.	 After 't' 'a' 'b' 'l' 'e' keys are entered under the
     "English" input method: 
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡ËÓ¢ºº¡Ë~} table
-        1.~{×À×Ó~} 2.~{±í~}
+      ~{æ±‰å­—è¾“å…¥âˆ·è‹±æ±‰âˆ·~} table
+        1.~{æ¡Œå­~} 2.~{è¡¨~}
 
-    Choosing '1' will input ~{×À×Ó~} -- two characters in a roll.
+    Choosing '1' will input ~{æ¡Œå­~} -- two characters in a roll.
   --------------------------------------------------------------------
 
 The second type of phrase input is composition by an association key
@@ -130,19 +130,19 @@ hanzi matches the second segment, and so on.
 
   --------------------------------------------------------------------
   Ex 3.  In pinyin input, "jin4" matches all the following characters
-	~{½ö½ø½ú½û½ü½þ¾¡¾¢~}
+	~{ä»…è¿›æ™‹ç¦è¿‘æµ¸å°½åŠ²~}
     and "shi4" matches
-	~{Ê½Ê¾Ê¿ÊÀÊÁÊÂÊÃÊÄÊÅÊÆÊÇÊÊÊËÊÌÊÍÊÎÊÏÊÐÊÑÊÒÊÓÊÔËÆ~}
+	~{å¼ç¤ºå£«ä¸–æŸ¿äº‹æ‹­èª“é€åŠ¿æ˜¯é€‚ä»•ä¾é‡Šé¥°æ°å¸‚æƒå®¤è§†è¯•ä¼¼~}
     plus other infrequently-used ones.
 
     The input "jin4-shi4" will matches any two-character word whose
     first character is from the first list and the second character
-    from the second list: ~{½üÊÀ~}, ~{½øÊ¿~}, ~{¾¡ÊÇ~}, ~{½üÊÓ~}, etc.
+    from the second list: ~{è¿‘ä¸–~}, ~{è¿›å£«~}, ~{å°½æ˜¯~}, ~{è¿‘è§†~}, etc.
 
     Here is how the screen looks like when you input "jin4-shi4":
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} jin4-shi4
-        1.~{½üËÆ~} 2.~{½üËÆÖµ~} 3.~{½üÊÀ~} 4.~{¾¡ÊÇ~} 5~{.½øÊ¿~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} jin4-shi4
+        1.~{è¿‘ä¼¼~} 2.~{è¿‘ä¼¼å€¼~} 3.~{è¿‘ä¸–~} 4.~{å°½æ˜¯~} 5~{.è¿›å£«~} >
   --------------------------------------------------------------------
 
 Although cxterm supports both kinds of phrase input, we highly recommend
@@ -159,10 +159,10 @@ key sequence, although it is a common practice to type more keys to
 reduce the number of candidates that one has to choose from.
 
   --------------------------------------------------------------------
-  Ex 4.  You can input ~{ÖÐ~} by only three keys 'z' 'h' 'o':
+  Ex 4.  You can input ~{ä¸­~} by only three keys 'z' 'h' 'o':
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} zho
-        1.~{ÖÐ~} 2.~{ÖÕ~} 3.~{ÖÓ~} 4.~{ÖÒ~} 5~{.ÖÔ~} 6.~{ïñ~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} zho
+        1.~{ä¸­~} 2.~{ç»ˆ~} 3.~{é’Ÿ~} 4.~{å¿ ~} 5~{.è¡·~} 6.~{é”º~} >
 
     Then press key '1'.
   --------------------------------------------------------------------
@@ -172,8 +172,8 @@ reduce the number of candidates that one has to choose from.
     hanzi matches a pinyin beginning with 'z' and the second hanzi
     matches a pinyin beginning with 'g':
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} z-g
-        1.~{Õâ¸ö~} 2.~{ÖÐ¹ú~} 3.~{Õû¸ö~} 4.~{Ö°¹¤~} 5~{.×î¸ß~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} z-g
+        1.~{è¿™ä¸ª~} 2.~{ä¸­å›½~} 3.~{æ•´ä¸ª~} 4.~{èŒå·¥~} 5~{.æœ€é«˜~} >
   --------------------------------------------------------------------
 
 6.  WILDCARD INPUT
@@ -187,11 +187,11 @@ It is to assist hanzi input when the user forgets the keystroke
 sequence.
 
   --------------------------------------------------------------------
-  Ex 6.  If you want to input the character ~{ÖÚ~}, but forget whether
+  Ex 6.  If you want to input the character ~{ä¼—~}, but forget whether
     it is "zhong4" or "zong4", you may try "z*ong4":
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} z*ong4
-        1.~{ÖÐ~} 2.~{ÖÖ~} 3.~{ÖØ~} 4.~{ÖÚ~} 5.~{ÖÙ~} 6.~{×Ý~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} z*ong4
+        1.~{ä¸­~} 2.~{ç§~} 3.~{é‡~} 4.~{ä¼—~} 5.~{ä»²~} 6.~{çºµ~} >
   --------------------------------------------------------------------
 
 WARNING: unless you have a top-of-the-line computer, you should refrain
@@ -215,16 +215,16 @@ The new input key will start a keystroke sequence for the next hanzi.
   Ex 7.  The mode is set to "WHENNOMATCH", and when "e3" is input,
     There is only one choice:
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} e3
-        1.~{¶ñ~}
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} e3
+        1.~{æ¶~}
 
     Without doing any selection, the user immediately types 'x'.
     Since there is no such input string as "e3x", cxterm picks and
-    inputs ~{¶ñ~} and starts a new round of input for the unmatched
+    inputs ~{æ¶~} and starts a new round of input for the unmatched
     "x":
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} x
-        1.~{Î÷~} 2.~{Ï¢~} 3.~{Ï£~} 4.~{Îü~} 5.~{Ï§~} 6.~{Ï¡~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} x
+        1.~{è¥¿~} 2.~{æ¯~} 3.~{å¸Œ~} 4.~{å¸~} 5.~{æƒœ~} 6.~{ç¨€~} >
   --------------------------------------------------------------------
 
 8.  AUTO SEGMENTATION AND CONTINUOUS INPUT
@@ -239,24 +239,24 @@ try to find the matches from the glossary list.
   Ex 8.  In pinyin input method, cxterm will turn "jisuanji" into
     "ji-suan-ji".  Here is how.  After "ji" is typed, cxterm shows
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} ji
-        1.~{Æä~} 2.~{¼¸~} 3.~{ÆÚ~} 4.~{»ú~} 5.~{»ù~} 6.~{»÷~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} ji
+        1.~{å…¶~} 2.~{å‡ ~} 3.~{æœŸ~} 4.~{æœº~} 5.~{åŸº~} 6.~{å‡»~} >
 
     When the user types the next 's', cxterm first tries the new sequence
     "jis" and it matches nothing (since "jis" is not a valid pinyin).
     It then tries to break the sequence by inserting a '-' before 's':
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} ji-s
-        1.~{¾ÍÊÇ~} 2.~{¼¼Êõ~} 3.~{½¨Éè~} 4.~{¼ÆËã~} 5.~{¾«Éñ~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} ji-s
+        1.~{å°±æ˜¯~} 2.~{æŠ€æœ¯~} 3.~{å»ºè®¾~} 4.~{è®¡ç®—~} 5.~{ç²¾ç¥ž~} >
 
     Similarly, when the second 'j' is typed, cxterm breaks "suanj" by
     another '-':
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} ji-suan
-        1.~{¼ÆËã~} 2.~{¼ÆËã»ú~} 3.~{¾ÍËã~} 4.~{½áËã~} 5.~{Ç¿Ëá~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} ji-suan
+        1.~{è®¡ç®—~} 2.~{è®¡ç®—æœº~} 3.~{å°±ç®—~} 4.~{ç»“ç®—~} 5.~{å¼ºé…¸~} >
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} ji-suan-j
-        1.~{¼ÆËã»ú~}
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} ji-suan-j
+        1.~{è®¡ç®—æœº~}
   --------------------------------------------------------------------
 
 Automatic segmentation is based on the longest match of input keys
@@ -265,8 +265,8 @@ and it is input method independent. It can be used with prefix input.
   --------------------------------------------------------------------
   Ex 9.  "xyz" will be segmented into "x-y-z":
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~} x-y-z
-        1.~{ÏÂÒâÊ¶~} 2.~{Ð¡ÒµÖ÷~} 3.~{Ñ¡ÑÔÖ«~} 4.~{ÐÅÓÃÖ¤~}
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~} x-y-z
+        1.~{ä¸‹æ„è¯†~} 2.~{å°ä¸šä¸»~} 3.~{é€‰è¨€è‚¢~} 4.~{ä¿¡ç”¨è¯~}
   --------------------------------------------------------------------
 
 Combining this auto segmentation with the "WHENNOMATCH" mode of auto-
@@ -282,11 +282,11 @@ the list, he/she can simply pick it by a selection key, instead of
 typing another keystroke sequence.
 
   --------------------------------------------------------------------
-  Ex 10.  After "zhong" is input and ~{ÖÐ~} is selected, a new choice
+  Ex 10.  After "zhong" is input and ~{ä¸­~} is selected, a new choice
     list will be presented:
       ________________________________________________________
-      ~{ºº×ÖÊäÈë¡Ë´øµ÷Æ´Òô¡Ë~}				~{ÁªÏë~}
-        1.~{¹ú~} 2.~{ÐÄ~} 3.~{Ñë~} 4.~{¼ä~} 5.~{»ª~} 6.~{Ñ§~} >
+      ~{æ±‰å­—è¾“å…¥âˆ·å¸¦è°ƒæ‹¼éŸ³âˆ·~}				~{è”æƒ³~}
+        1.~{å›½~} 2.~{å¿ƒ~} 3.~{å¤®~} 4.~{é—´~} 5.~{åŽ~} 6.~{å­¦~} >
   --------------------------------------------------------------------
 
 10.  ASSOCIATION LIST
