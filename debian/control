@@ -16,7 +16,7 @@ Build-Depends: debhelper, xutils-dev, libxt-dev, xfonts-utils, xbase-clients, li
 
 Package: cxterm-common
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: cxterm-big5, cxterm-gb, cxterm-jis, cxterm-ks
 Provides: x-terminal-emulator
 Description: Chinese terminal emulator for X Window System
