@@ -35,7 +35,8 @@ Description: Big5 (Traditional Chinese) supporting files for CXterm
 
 Package: cxterm-gb
 Architecture: all
-Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Depends: cxterm-common
+Recommends: xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
 Suggests: xfonts-intl-chinese | intlfonts-chinese (>= 1.1-5)
 Description: GB (Simplified Chinese) supporting files for CXterm
  You need this package in order to input GB characters in CXTerm.
@@ -43,7 +44,8 @@ Description: GB (Simplified Chinese) supporting files for CXterm
 
 Package: cxterm-jis
 Architecture: all
-Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Depends: cxterm-common
+Recommends: xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
 Suggests: xfonts-intl-japanese | intlfonts-japanese (>= 1.1-5)
 Description: JIS supporting files for CXterm
  You need this package in order to input JIS characters in CXTerm.
@@ -51,7 +53,8 @@ Description: JIS supporting files for CXterm
 
 Package: cxterm-ks
 Architecture: all
-Depends: cxterm-common, xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
+Depends: cxterm-common
+Recommends: xfonts-base (>> 4.0) | xfonts-cjk (>= 3.3.3.1-4)
 Description: KS supporting files for CXterm
  You need this package in order to input KS characters in CXTerm.
  To launch the term, just type 'cxtermks'.
