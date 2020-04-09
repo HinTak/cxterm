@@ -3,8 +3,11 @@
 cxterm source code has stayed on http://cxterm.sourceforge.net for 
 quite some years, but it somehow failed to work with Ubuntu Linux recently.
 
-Today I've made it work again on Ubuntu 18.04, by commenting out VEOL2, 
-and VLNEXT lines in main.c . I don't know why, but it is working now. Cheers!
+I tried to make it work again on Ubuntu 18.04, by commenting out VEOL2, 
+and VLNEXT lines in main.c . Later, Hin-Tak Leung informed me it is "termios"
+problem in main.c in fact. So I reverted VEOL2/VLNEXT.
+
+Hin-Tak Leung is also maintaining: https://github.com/HinTak/cxterm .
 
 Ubuntu's default locale is `zh_CN.UTF-8`. Yes, UTF8 is more popular. If you 
 use GB encoding, you may need add GB2312 locale: 

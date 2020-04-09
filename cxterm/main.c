@@ -411,7 +411,7 @@ static char **command_to_exec = NULL;
 #ifndef ICRNL
 #include <sys/termio.h>
 #endif
-static struct termio d_tio;
+static struct termios d_tio;
 #ifdef TIOCSLTC
 static struct ltchars d_ltc;
 #endif	/* TIOCSLTC */
@@ -1045,7 +1045,7 @@ int main (int argc, char **argv)
 	d_tio.c_cc[VKILL] = CKILL;
     	d_tio.c_cc[VEOF] = CEOF;
 	d_tio.c_cc[VEOL] = CNUL;
-//	d_tio.c_cc[VEOL2] = CNUL;
+	d_tio.c_cc[VEOL2] = CNUL;
 	d_tio.c_cc[VSWTCH] = CNUL;
 
 #ifdef USE_TERMIOS /* { */
@@ -1054,7 +1054,7 @@ int main (int argc, char **argv)
 	d_tio.c_cc[VREPRINT] = CRPRNT;
 	d_tio.c_cc[VDISCARD] = CFLUSH;
 	d_tio.c_cc[VWERASE] = CWERASE;
-//	d_tio.c_cc[VLNEXT] = CLNEXT;
+	d_tio.c_cc[VLNEXT] = CLNEXT;
 #endif /* } */
 #ifdef TIOCSLTC /* { */
         d_ltc.t_suspc = CSUSP;		/* t_suspc */
@@ -1106,11 +1106,9 @@ int main (int argc, char **argv)
 #ifdef VSWTCH
 	d_tio.c_cc[VSWTCH] = CSWTCH;            /* usually '^Z' */
 #endif
-	/*
 #ifdef VLNEXT
 	d_tio.c_cc[VLNEXT] = CLNEXT;
 #endif
-*/
 #ifdef VWERASE
 	d_tio.c_cc[VWERASE] = CWERASE;
 #endif
@@ -1143,7 +1141,7 @@ int main (int argc, char **argv)
 	    int i;
 
 	    for (i = 0; i <= 2; i++) {
-		struct termio deftio;
+		struct termios deftio;
 		if (ioctl (i, TCGETA, &deftio) == 0) {
 		    d_tio.c_cc[VINTR] = deftio.c_cc[VINTR];
 		    d_tio.c_cc[VQUIT] = deftio.c_cc[VQUIT];
@@ -1154,16 +1152,12 @@ int main (int argc, char **argv)
 #ifdef VSWTCH
 		    d_tio.c_cc[VSWTCH] = deftio.c_cc[VSWTCH];
 #endif
-/*
 #ifdef VEOL2
 		    d_tio.c_cc[VEOL2] = deftio.c_cc[VEOL2];
 #endif
-*/
-		    /*
 #ifdef VLNEXT
 		    d_tio.c_cc[VLNEXT] = deftio.c_cc[VLNEXT];
 #endif
-*/
 #ifdef VWERASE
 		    d_tio.c_cc[VWERASE] = deftio.c_cc[VWERASE];
 #endif
@@ -1209,7 +1203,7 @@ int main (int argc, char **argv)
 	d_tio.c_cc[VREPRINT] = '\377';
 	d_tio.c_cc[VDISCARD] = '\377';
 	d_tio.c_cc[VWERASE] = '\377';
-//	d_tio.c_cc[VLNEXT] = '\377';
+	d_tio.c_cc[VLNEXT] = '\377';
 #endif /* } USE_TERMIOS */
 #ifdef TIOCLSET /* { */
 	d_lmode = 0;
@@ -1488,7 +1482,6 @@ int main (int argc, char **argv)
 	    write (pty, buf, strlen (buf));
 	}
 
-
 #ifdef ALLOWLOGGING
 	if (term->misc.log_on) {
 		StartLog(screen);
@@ -1504,7 +1497,7 @@ int main (int argc, char **argv)
 	 */
 
 	{
-	    struct termio tio;
+	    struct termios tio;
 
 	    if(ioctl(pty, TCGETA, &tio) == -1)
 		SysError(ERROR_TIOCGETP);
@@ -1911,8 +1904,8 @@ int spawn (void)
 	int discipline;
 	int done;
 #ifdef USE_SYSV_TERMIO
-	struct termio tio;
-	struct termio dummy_tio;
+	struct termios tio;
+	struct termios dummy_tio;
 #ifdef TIOCLSET
 	unsigned lmode;
 #endif	/* TIOCLSET */
@@ -2464,11 +2457,9 @@ int spawn (void)
 		    tio.c_cc[VEOL] = CEOL;			/* '^@' */
 		    /* certain shells (ksh & csh) change EOF as well */
 		    tio.c_cc[VEOF] = CEOF;			/* '^D' */
-		    /*
 #ifdef VLNEXT
 		    tio.c_cc[VLNEXT] = CLNEXT;
 #endif
-*/
 #ifdef VWERASE
 		    tio.c_cc[VWERASE] = CWERASE;
 #endif
@@ -2534,11 +2525,9 @@ int spawn (void)
 #ifdef VWERASE
 			TMODE (XTTYMODE_weras, tio.c_cc[VWERASE]);
 #endif
-			/*
 #ifdef VLNEXT
 			TMODE (XTTYMODE_lnext, tio.c_cc[VLNEXT]);
 #endif
-*/
 #ifdef VSTART
 			TMODE (XTTYMODE_start, tio.c_cc[VSTART]);
 #endif
