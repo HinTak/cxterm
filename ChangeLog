@@ -1,3 +1,9 @@
+Jun 26, 2020 gitee - Changsen Xu <xucs007@qq.com>
+    - Merged with Hin-Tak Leung's branck to clean up unnecessary files. 
+      Fixed problem on Ubuntu 18.04: Changed some 'struct termio' to 
+      'struct termios', upon Hin-Tak Leung's suggestions. Rename version
+      to 5.2.5
+
 Aug 25, 2013 cvs - Hin-Tak Leung <htl10@users.sourceforge.net>
     + HZtable.h - fix compilation against newer xorg
       libX11-devel header
