@@ -66,5 +66,3 @@ cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最
 ## To Do:
 
 - Let it read/save UTF8 encoded files directly.
-
-cxterm 的源码存在于http://cxterm.sourceforge.net, 有些年头了，但最近不再能
