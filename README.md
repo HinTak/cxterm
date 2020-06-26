@@ -1,4 +1,4 @@
-## cxterm 5.2.5 released on 2020/1/11.
+## cxterm 5.3.1 released on 2020/1/11.
 
 cxterm source code has stayed on http://cxterm.sourceforge.net for 
 quite some years, but it somehow failed to work with Ubuntu Linux recently.
