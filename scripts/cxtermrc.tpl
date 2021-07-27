@@ -1,6 +1,6 @@
 ! BEGIN_CXTERM_RESOURCE
 !
-XTerm*vtMenu*cxtermconfig*Label:	Hanzi Input Configuration
+*vtMenu*cxtermconfig*Label:	Hanzi Input Configuration
 
 ! CXterm ANSI color configuration
 cxterm*fcolor0:     #000000
@@ -219,174 +219,174 @@ cxtermks*VT100.Translations: #override\
   ~Meta <Btn1Down>:	select-start() click-HZ-area()	\n\
   ~Meta <KeyPress> Escape:	insert() switch-HZ-mode(ASCII)
 
- XTerm*configPopup*Command.shapeStyle:	oval
- XTerm*configPopup*Command.internalWidth:	10
- XTerm*configPopup*Paned*showGrip:	false
+ *configPopup*Command.shapeStyle:	oval
+ *configPopup*Command.internalWidth:	10
+ *configPopup*Paned*showGrip:	false
 
 
 !{ (paned)  frame
- XTerm*configPopup.frame*left:		chainleft
- XTerm*configPopup.frame*right:		chainleft
+ *configPopup.frame*left:		chainleft
+ *configPopup.frame*right:		chainleft
 
 !  { (label)  frame.title
-   XTerm*configPopup.frame.title.label:		CXTERM input configuration
+   *configPopup.frame.title.label:		CXTERM input configuration
 !  } (label)
 
 !  { (form)  frame.id
 
 !    { (label)  frame.id.hzinputdir
-     XTerm*configPopup.frame.id.hzinputdir.label:		INPUT SEARCH PATH
-     XTerm*configPopup.frame.id.hzinputdir.borderWidth:	0
+     *configPopup.frame.id.hzinputdir.label:		INPUT SEARCH PATH
+     *configPopup.frame.id.hzinputdir.borderWidth:	0
 !    } (label)
 
 !    { (asciiText)  frame.id.value
-     XTerm*configPopup.frame.id.value.scrollHorizontal:	whenneeded
-     XTerm*configPopup.frame.id.value.numCols:		30
-     XTerm*configPopup.frame.id.value.translations:	#override\
+     *configPopup.frame.id.value.scrollHorizontal:	whenneeded
+     *configPopup.frame.id.value.numCols:		30
+     *configPopup.frame.id.value.translations:	#override\
 	<Key>Return:	no-op(RingBell)	\n\
 	Ctrl<Key>J:	no-op(RingBell) \n\
 	Ctrl<Key>M:	no-op(RingBell)
 !    } (asciiText)
 
 !    { (command)  frame.id.apply
-     XTerm*configPopup.frame.id.apply.label:		apply
+     *configPopup.frame.id.apply.label:		apply
 !    } (command)
 !  } (form)
 
 !  { (form)  frame.im
 
 !    { (label)  frame.im.input-method
-     XTerm*configPopup.frame.im.input-method.label:		CURRENT INPUT METHOD
-     XTerm*configPopup.frame.im.input-method.borderWidth:	0
+     *configPopup.frame.im.input-method.label:		CURRENT INPUT METHOD
+     *configPopup.frame.im.input-method.borderWidth:	0
 !    } (label)
 
 !    { (asciiText)  frame.im.value
-     XTerm*configPopup.frame.im.value.scrollHorizontal:	whenneeded
-     XTerm*configPopup.frame.im.value.numCols:		30
-     XTerm*configPopup.frame.im.value.translations:	#override\
+     *configPopup.frame.im.value.scrollHorizontal:	whenneeded
+     *configPopup.frame.im.value.numCols:		30
+     *configPopup.frame.im.value.translations:	#override\
 	<Key>Return:	no-op(RingBell)	\n\
 	Ctrl<Key>J:	no-op(RingBell) \n\
 	Ctrl<Key>M:	no-op(RingBell)
 !    } (asciiText)
 
 !    { (command)  frame.im.apply
-     XTerm*configPopup.frame.im.apply.label:		apply
+     *configPopup.frame.im.apply.label:		apply
 !    } (command)
 
 !    { (label)  frame.im.choose-from
-     XTerm*configPopup.frame.im.choose-from.borderWidth:	0
-     XTerm*configPopup.frame.im.choose-from.justify:		right
-     XTerm*configPopup.frame.im.choose-from.label:		or choose from:
+     *configPopup.frame.im.choose-from.borderWidth:	0
+     *configPopup.frame.im.choose-from.justify:		right
+     *configPopup.frame.im.choose-from.label:		or choose from:
 !    } (label)
 
 !    { (viewport)  frame.im.viewport
-     XTerm*configPopup.frame.im.viewport.allowVert:	true
-     XTerm*configPopup.frame.im.viewport.useRight:		true
+     *configPopup.frame.im.viewport.allowVert:	true
+     *configPopup.frame.im.viewport.useRight:		true
 
 !      { (list)  frame.im.viewport.list
-       XTerm*configPopup.frame.im.viewport.list.Columns:	true
-       XTerm*configPopup.frame.im.viewport.list.numRows:	8
-       XTerm*configPopup.frame.im.viewport.list.numCols:	30
+       *configPopup.frame.im.viewport.list.Columns:	true
+       *configPopup.frame.im.viewport.list.numRows:	8
+       *configPopup.frame.im.viewport.list.numCols:	30
 !      } (list)
 !    } (viewport)
 !  } (form)
 
 !  { (form)  frame.ip
-   XTerm*configPopup.frame.ip.Label.borderWidth:	0
-   XTerm*configPopup.frame.ip.MenuButton.justify:	left
+   *configPopup.frame.ip.Label.borderWidth:	0
+   *configPopup.frame.ip.MenuButton.justify:	left
 
 !    { (label)  frame.ip.parameter
-     XTerm*configPopup.frame.ip.parameter.label:		INPUT PARAMETERS
+     *configPopup.frame.ip.parameter.label:		INPUT PARAMETERS
 !    } (label)
 
 !    { (label)  frame.ip.auto-select
-     XTerm*configPopup.frame.ip.auto-select.justify:		left
-     XTerm*configPopup.frame.ip.auto-select.label:		Auto Selection
+     *configPopup.frame.ip.auto-select.justify:		left
+     *configPopup.frame.ip.auto-select.label:		Auto Selection
 !    } (label)
 
 !    { (label)  frame.ip.auto-segment
-     XTerm*configPopup.frame.ip.auto-segment.justify:		left
-     XTerm*configPopup.frame.ip.auto-segment.label:		Auto Segmentation
+     *configPopup.frame.ip.auto-segment.justify:		left
+     *configPopup.frame.ip.auto-segment.label:		Auto Segmentation
 !    } (label)
 
 !    { (label)  frame.ip.assocation
-     XTerm*configPopup.frame.ip.assocation.justify:		left
-     XTerm*configPopup.frame.ip.assocation.label:		Association
+     *configPopup.frame.ip.assocation.justify:		left
+     *configPopup.frame.ip.assocation.label:		Association
 !    } (label)
 
 !    { (label)  frame.ip.eq1
-     XTerm*configPopup.frame.ip.eq1.label:		=
+     *configPopup.frame.ip.eq1.label:		=
 !    } (label)
 
 !    { (label)  frame.ip.eq2
-     XTerm*configPopup.frame.ip.eq2.label:		=
+     *configPopup.frame.ip.eq2.label:		=
 !    } (label)
 
 !    { (label)  frame.ip.eq3
-     XTerm*configPopup.frame.ip.eq3.label:		=
+     *configPopup.frame.ip.eq3.label:		=
 !    } (label)
 
 !    { (menuButton)  frame.ip.sl-default
-     XTerm*configPopup.frame.ip.sl-default.resizable:	true
-     XTerm*configPopup.frame.ip.sl-default.label:		WhenNoMatch
+     *configPopup.frame.ip.sl-default.resizable:	true
+     *configPopup.frame.ip.sl-default.label:		WhenNoMatch
 
 !      { (simpleMenu)  frame.ip.sl-default.menu
 
 !        { (smeBSB)  frame.ip.sl-default.menu.always
-         XTerm*configPopup.frame.ip.sl-default.menu.always.label:	Always
+         *configPopup.frame.ip.sl-default.menu.always.label:	Always
 !        } (smeBSB)
 
 !        { (smeBSB)  frame.ip.sl-default.menu.never
-         XTerm*configPopup.frame.ip.sl-default.menu.never.label:	Never
+         *configPopup.frame.ip.sl-default.menu.never.label:	Never
 !        } (smeBSB)
 
 !        { (smeBSB)  frame.ip.sl-default.menu.whennomatch
-         XTerm*configPopup.frame.ip.sl-default.menu.whennomatch.label:	WhenNoMatch
+         *configPopup.frame.ip.sl-default.menu.whennomatch.label:	WhenNoMatch
 !        } (smeBSB)
 !      } (simpleMenu)
 !    } (menuButton)
 
 !    { (menuButton)  frame.ip.sg-default
-     XTerm*configPopup.frame.ip.sg-default.resizable:	true
-     XTerm*configPopup.frame.ip.sg-default.label:		Yes
+     *configPopup.frame.ip.sg-default.resizable:	true
+     *configPopup.frame.ip.sg-default.label:		Yes
 
 !      { (simpleMenu)  frame.ip.sg-default.menu
 
 !        { (smeBSB)  frame.ip.sg-default.menu.yes
-         XTerm*configPopup.frame.ip.sg-default.menu.yes.label:	Yes
+         *configPopup.frame.ip.sg-default.menu.yes.label:	Yes
 !        } (smeBSB)
 
 !        { (smeBSB)  frame.ip.sg-default.menu.no
-         XTerm*configPopup.frame.ip.sg-default.menu.no.label:	No
+         *configPopup.frame.ip.sg-default.menu.no.label:	No
 !        } (smeBSB)
 !      } (simpleMenu)
 !    } (menuButton)
 
 !    { (menuButton)  frame.ip.as-default
-     XTerm*configPopup.frame.ip.as-default.resizable:	true
-     XTerm*configPopup.frame.ip.as-default.label:		Yes
+     *configPopup.frame.ip.as-default.resizable:	true
+     *configPopup.frame.ip.as-default.label:		Yes
 
 !      { (simpleMenu)  frame.ip.as-default.menu
 
 !        { (smeBSB)  frame.ip.as-default.menu.yes
-         XTerm*configPopup.frame.ip.as-default.menu.yes.label:	Yes
+         *configPopup.frame.ip.as-default.menu.yes.label:	Yes
 !        } (smeBSB)
 
 !        { (smeBSB)  frame.ip.as-default.menu.no
-         XTerm*configPopup.frame.ip.as-default.menu.no.label:	No
+         *configPopup.frame.ip.as-default.menu.no.label:	No
 !        } (smeBSB)
 !      } (simpleMenu)
 !    } (menuButton)
 
 !    { (command)  frame.ip.apply
-     XTerm*configPopup.frame.ip.apply.label:		apply
+     *configPopup.frame.ip.apply.label:		apply
 !    } (command)
 !  } (form)
 
 !  { (box)  frame.bottom_bx
 
 !    { (command)  frame.bottom_bx.done
-     XTerm*configPopup.frame.bottom_bx.done.label:	DONE
+     *configPopup.frame.bottom_bx.done.label:	DONE
 !    } (command)
 !  } (box)
 !} (paned)
