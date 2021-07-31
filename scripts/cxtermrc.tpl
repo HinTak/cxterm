@@ -66,10 +66,6 @@ cxterm*VT100*font6:		cclib16st
 cxterm*fontMenu*fontescape*Label:	Escape Sequence
 cxterm*fontMenu*fontsel*Label:		Selection
 cxterm*VT100.Translations: #override\
- ~Shift ~Meta <KeyPress> Control_R: set-HZ-parameter(input-conv=wait_toggle)	\n\
- ~Shift ~Meta <KeyRelease> Control_R: set-HZ-parameter(input-conv=toggle)	\n\
- ~Shift ~Meta <KeyPress> Control_L: set-HZ-parameter(input-conv=wait_toggle)	\n\
- ~Shift ~Meta <KeyRelease> Control_L: set-HZ-parameter(input-conv=toggle)	\n\
  ~Shift <KeyPress> F1:	set-HZ-parameter(input-conv=wait_toggle)	\n\
  ~Shift <KeyRelease> F1:	set-HZ-parameter(input-conv=toggle)	\n\
   Shift <KeyPress> F1:	switch-HZ-mode(ASCII)		\n\
@@ -122,10 +118,6 @@ cxtermb5*VT100*font6:		taipei24
 cxtermb5*fontMenu*fontescape*Label:	Escape Sequence
 cxtermb5*fontMenu*fontsel*Label:		Selection
 cxtermb5*VT100.Translations: #override\
- ~Shift ~Meta <KeyPress> Control_R: set-HZ-parameter(input-conv=wait_toggle)	\n\
- ~Shift ~Meta <KeyRelease> Control_R: set-HZ-parameter(input-conv=toggle)	\n\
- ~Shift ~Meta <KeyPress> Control_L: set-HZ-parameter(input-conv=wait_toggle)	\n\
- ~Shift ~Meta <KeyRelease> Control_L: set-HZ-parameter(input-conv=toggle)	\n\
  ~Shift <KeyPress> F1:	set-HZ-parameter(input-conv=wait_toggle)	\n\
  ~Shift <KeyRelease> F1:	set-HZ-parameter(input-conv=toggle)	\n\
   Shift <KeyPress> F1:	switch-HZ-mode(ASCII)	\n\
