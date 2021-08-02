@@ -325,13 +325,9 @@
 
 (when (> emacs-major-version 22)
   (when (equal (getenv "CHAR_ENCODING") "BIG5")
-    (set-keyboard-coding-system 'big5)
-    (set-terminal-coding-system 'big5)
     (set-language-environment "Chinese-BIG5")
     )
   (when (equal (getenv "CHAR_ENCODING") "GB")
-    (set-keyboard-coding-system 'gb2312)
-    (set-terminal-coding-system 'gb2312)
     (set-language-environment "Chinese-GB")
     )
   )
