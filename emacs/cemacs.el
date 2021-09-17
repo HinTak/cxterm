@@ -170,8 +170,8 @@
 ;;    If you feel annoyed or immensely insulted, put the following lines
 ;;    in your ~/.emacs file to disable it:
 ;;
-        (setq cemacs-enable-help-dummy nil)
-        (setq cemacs-enable-help-setup nil)
+(setq cemacs-enable-help-dummy nil)
+(setq cemacs-enable-help-setup nil)
 ;;
 ;;    If you have have cemacs-keyboard-list defined, the setup help page
 ;;    will be turned off anyway.
@@ -302,26 +302,26 @@
    "Error: cemacs.el does not work on a windows system, please try option -nw"))
 ; ((boundp 'mule-version)
 ;  (error "Error: this version of cemacs.el does not work with mule"))
-)
+ )
 
 ;; commented out the mule-version check above because
 ;; emacs/mule 20+ does work within cxterm, if this workaround
 ;; below is used:
 
 (defun undo-mule-clever-options ()
-   (set-buffer-multibyte nil)                     ;; scratch buffer
-   (setq-default enable-multibyte-characters nil) ;; files
-   (set-default-coding-systems nil)
-   (set-buffer-file-coding-system nil)
-   (set-terminal-coding-system nil)
-   (set-keyboard-coding-system nil)
-) 
+  (set-buffer-multibyte nil)                     ;; scratch buffer
+  (setq-default enable-multibyte-characters nil) ;; files
+  (set-default-coding-systems nil)
+  (set-buffer-file-coding-system nil)
+  (set-terminal-coding-system nil)
+  (set-keyboard-coding-system nil)
+  )
 
 (cond
  ((and (> emacs-major-version 19) (< emacs-major-version 23))
   (undo-mule-clever-options)
   )
-)
+ )
 
 (when (> emacs-major-version 22)
   (when (equal (getenv "CHAR_ENCODING") "BIG5")
@@ -362,7 +362,7 @@
 
 ;; 8-bit characters for input (Meta keys will be disabled)
 (set-input-mode
-  (car (current-input-mode)) (car (cdr (current-input-mode))) 0)
+ (car (current-input-mode)) (car (cdr (current-input-mode))) 0)
 
 ;;; -------------------------
 ;;; cursor movement/deleting
@@ -563,7 +563,7 @@ on the 2nd byte."
 	(setq cemacs-ctype-list (cdr cemacs-ctype-list))
 	(backward-char 2)))		; move to the 1st byte
   ;;  (message "%s" cemacs-ctype-list)   ; only for debug
-)
+  )
 
 (defun cemacs-forward-char (&optional arg)
   "cemacs replacement for forward-char\n
@@ -600,22 +600,22 @@ arguments: (&optional n)\n"
   (while (> arg 0)
     (setq arg (1- arg))
     (cond
-      ((= (point) (point-min))		; beginning of buffer
-       (message "Beginning of buffer")
-       (setq arg 0))
-      ((= (char-after (1- (point))) ?\n) ; newline, which is not used
-       (backward-char 1)		;    by big5 encoding on the 2nd byte
-       (cemacs-set-ctype-list-region))
-      (t				; otherwise on this line
-       (if (not (memq last-command cemacs-update-cmds))
-	   (cemacs-set-ctype-list-region))
-       (if (< (car cemacs-ctype-list) 1) ; ascii character
-	   (progn
-	     (backward-char 1)
-	     (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
-	 (progn
-	   (backward-char 2)		; Chinese character
-	   (setq cemacs-ctype-list (cdr cemacs-ctype-list))))))))
+     ((= (point) (point-min))		; beginning of buffer
+      (message "Beginning of buffer")
+      (setq arg 0))
+     ((= (char-after (1- (point))) ?\n) ; newline, which is not used
+      (backward-char 1)		;    by big5 encoding on the 2nd byte
+      (cemacs-set-ctype-list-region))
+     (t				; otherwise on this line
+      (if (not (memq last-command cemacs-update-cmds))
+	  (cemacs-set-ctype-list-region))
+      (if (< (car cemacs-ctype-list) 1) ; ascii character
+	  (progn
+	    (backward-char 1)
+	    (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
+	(progn
+	  (backward-char 2)		; Chinese character
+	  (setq cemacs-ctype-list (cdr cemacs-ctype-list))))))))
 	 
 (defun cemacs-delete-char (&optional arg)
   "cemacs replacement for delete-char\n
@@ -627,13 +627,13 @@ arguments: (&optional n)\n"
   (while (> arg 0)
     (setq arg (1- arg))
     (cond
-      ((eobp)
-       (message "End of buffer")
-       (setq arg 0))
-      ((>= (char-after (point)) 160)
-       (delete-char 2))
-      (t (delete-char 1)))
-))
+     ((eobp)
+      (message "End of buffer")
+      (setq arg 0))
+     ((>= (char-after (point)) 160)
+      (delete-char 2))
+     (t (delete-char 1)))
+    ))
 
 (defun cemacs-backward-delete-char (&optional arg)
   "cemacs replacement for backward-delete-char\n
@@ -644,22 +644,22 @@ arguments: (&optional n)\n"
   (interactive "p")
   (while (> arg 0)
     (setq arg (1- arg))
-      (cond
-       ((bobp)
-	(message "Beginning of buffer")
-	(setq arg 0))
-       ((= (char-after (1- (point))) ?\n) ; newline, which is not used
-	(backward-delete-char 1)	;    by big5 encoding on the 2nd byte
-	(cemacs-set-ctype-list-region))
-       (t				; otherwise on this line
-	(if (not (memq last-command cemacs-update-cmds))
-	    (cemacs-set-ctype-list-region))
-	(if (< (car cemacs-ctype-list) 1) ; ascii character
-	    (progn
-	      (backward-delete-char 1)
-	      (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
-	  (backward-delete-char 2)	; Chinese character
-	  (setq cemacs-ctype-list (cdr cemacs-ctype-list)))))))
+    (cond
+     ((bobp)
+      (message "Beginning of buffer")
+      (setq arg 0))
+     ((= (char-after (1- (point))) ?\n) ; newline, which is not used
+      (backward-delete-char 1)	;    by big5 encoding on the 2nd byte
+      (cemacs-set-ctype-list-region))
+     (t				; otherwise on this line
+      (if (not (memq last-command cemacs-update-cmds))
+	  (cemacs-set-ctype-list-region))
+      (if (< (car cemacs-ctype-list) 1) ; ascii character
+	  (progn
+	    (backward-delete-char 1)
+	    (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
+	(backward-delete-char 2)	; Chinese character
+	(setq cemacs-ctype-list (cdr cemacs-ctype-list)))))))
 
 (defun cemacs-backward-delete-char-untabify (&optional arg)
   "cemacs replacement for backward-delete-char-untabify\n
@@ -670,22 +670,22 @@ arguments: (&optional n)\n"
   (interactive "p")
   (while (> arg 0)
     (setq arg (1- arg))
-      (cond
-       ((bobp)
-	(message "Beginning of buffer")
-	(setq arg 0))
-       ((= (char-after (1- (point))) ?\n) ; newline, which is not used
-	(backward-delete-char-untabify 1) ;    by big5 encoding on the 2nd byte
-	(cemacs-set-ctype-list-region))
-       (t				; otherwise on this line
-	(if (not (memq last-command cemacs-update-cmds))
-	    (cemacs-set-ctype-list-region))
-	(if (< (car cemacs-ctype-list) 1) ; ascii character
-	    (progn
-	      (backward-delete-char-untabify 1)
-	      (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
-	  (backward-delete-char-untabify 2)	; Chinese character
-	  (setq cemacs-ctype-list (cdr cemacs-ctype-list)))))))
+    (cond
+     ((bobp)
+      (message "Beginning of buffer")
+      (setq arg 0))
+     ((= (char-after (1- (point))) ?\n) ; newline, which is not used
+      (backward-delete-char-untabify 1) ;    by big5 encoding on the 2nd byte
+      (cemacs-set-ctype-list-region))
+     (t				; otherwise on this line
+      (if (not (memq last-command cemacs-update-cmds))
+	  (cemacs-set-ctype-list-region))
+      (if (< (car cemacs-ctype-list) 1) ; ascii character
+	  (progn
+	    (backward-delete-char-untabify 1)
+	    (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
+	(backward-delete-char-untabify 2)	; Chinese character
+	(setq cemacs-ctype-list (cdr cemacs-ctype-list)))))))
 
 (defvar cemacs-goal-column 0
   "Cursor position used by cemacs-next-line and cemacs-previous-line")
@@ -702,7 +702,7 @@ argument: (&optional n)\n"
   (forward-line arg)
   (move-to-column cemacs-goal-column)
   (cemacs-set-ctype-list-region)	; correct cursor location if it's wrong
-)
+  )
 
 (defun cemacs-previous-line(&optional arg)
   "cemacs replacement for previous-line\n
@@ -716,7 +716,7 @@ argument: (&optional n)\n"
   (forward-line (* arg -1))
   (move-to-column cemacs-goal-column)
   (cemacs-set-ctype-list-region)	; correct cursor location if it's wrong
-)
+  )
 
 ;;; ----------------------------
 ;;; sentence related functions 
@@ -797,10 +797,10 @@ With arg, repeat, or kill forward to Nth end of sentence if negative arg -N."
 Put mark at end of sentence.  Arg works as in `cemacs-forward-sentence'."
   (interactive "p")
   (push-mark
-    (save-excursion
-      (cemacs-forward-sentence arg)
-      (point))
-    nil t))
+   (save-excursion
+     (cemacs-forward-sentence arg)
+     (point))
+   nil t))
 
 (defun cemacs-transpose-sentences (arg)
   "cemacs replacement of transpost-sentence\n
@@ -1056,7 +1056,7 @@ SPACING spaces between adjacent Chinese characters."
 	    (beg (progn (backward-paragraph) (point))))
 	(goto-char before)
 	(cemacs-fill-region-as-paragraph beg end spacing)
-))))
+        ))))
 
 ;; you have to make a one-line patch to emacs source code for the 
 ;; following function (cemacs-auto-fill-mode) to work right. It
@@ -1079,18 +1079,18 @@ In `cemacs-auto-fill' mode, inserting anything at a column beyond
   (if (> (current-column) fill-column)
       (progn
 	(save-excursion
-	 ;; move to the last breakable point before fill-column
-	 (move-to-column fill-column)
-	 (cemacs-set-ctype-list-region)
-	 (while (zerop (car cemacs-ctype-list))
-	   (backward-char 1)
-	   (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
-	 (insert ?\n)
-	 (or (/= (char-after (point)) ?\ )
-	     (delete-char 1))
+	  ;; move to the last breakable point before fill-column
+	  (move-to-column fill-column)
+	  (cemacs-set-ctype-list-region)
+	  (while (zerop (car cemacs-ctype-list))
+	    (backward-char 1)
+	    (setq cemacs-ctype-list (cdr cemacs-ctype-list)))
+	  (insert ?\n)
+	  (or (/= (char-after (point)) ?\ )
+	      (delete-char 1))
 ;; refresh the display seems helpful sometimes
 ;;	 (redraw-frame (selected-frame)) 
-	 ))))
+	  ))))
 
 ;; -------------------------------
 ;; input lookup related functions
@@ -1116,7 +1116,7 @@ cemacs-input-lookup-file, otherwise returns the keyprompt list."
 		      (1- (re-search-forward "[^: \t]" nil t 1))
 		      (1- (re-search-forward "[ \t\n]" nil t 1))))
 		    alist))))
-      alist))
+    alist))
 
 (defun cemacs-input-lookup ()
   "displays the chinese input sequence for the character under cursor\n
@@ -1272,7 +1272,7 @@ For input lookup and keyboard helper, put lines like below in your ~/.emacs:
    (setq cemacs-input-lookup-file \"/your-directory-for/CangJie.tit\")
    (setq cemacs-keyboard-list (list \"/your-directory-for/ZOZY.tit\"
                                     \"/your-directory-for/CangJie.tit\"))"
-				      cemacs-helper))))
+				 cemacs-helper))))
 
 ; add the first page of help for dummy
 (defvar cemacs-enable-help-dummy t
@@ -1285,7 +1285,7 @@ If nil, no dummy help shows up at startup. Default is to enable.")
 ^b    backward   ^p prev line     ^x^s save    ^y yank   ^l redraw  ESC q fill
 ^v    PageDn     ^a beg of line   ^x^w write   ^c^i input lookup at cursor
 ESC v PageUp     ^e end of line   ^x^c quit    ^c^p input lookup before cursor"
-				    cemacs-helper)))
+			       cemacs-helper)))
 
 (setq cemacs-helper-pointer cemacs-helper) ; pointer to the first helper page
 
@@ -1311,10 +1311,10 @@ ESC v PageUp     ^e end of line   ^x^c quit    ^c^p input lookup before cursor"
 	(beginning-of-buffer)
 	(if (search-forward "ENCODE:" nil t 1)
 	    (progn
-	     (rename-buffer " *cemacs-input-lookup-buffer*")
-	     ; a space leading the buffer name make it less visible to users
-	     (setq cemacs-keyprompt-alist
-		   (cemacs-build-keyprompt-alist cemacs-tit-buffer)))
+	      (rename-buffer " *cemacs-input-lookup-buffer*")
+	      ; a space leading the buffer name make it less visible to users
+	      (setq cemacs-keyprompt-alist
+		    (cemacs-build-keyprompt-alist cemacs-tit-buffer)))
 	  (message "wrong or non-existing tit file: %s"
 		   cemacs-input-lookup-file)
 	  (kill-buffer cemacs-tit-buffer)))
@@ -1329,19 +1329,19 @@ ESC v PageUp     ^e end of line   ^x^c quit    ^c^p input lookup before cursor"
 (global-set-key "\C-c\C-l" 'cemacs-help-next)
 
 (when (< emacs-major-version 23)
-(substitute-key-definition 'forward-char
-			   'cemacs-forward-char global-map)
-(substitute-key-definition 'backward-char
-			   'cemacs-backward-char global-map)
-(substitute-key-definition 'delete-char
-			   'cemacs-delete-char global-map)
-(substitute-key-definition 'delete-backward-char
-			   'cemacs-backward-delete-char global-map)
-(substitute-key-definition 'backward-delete-char
-			   'cemacs-backward-delete-char global-map)
-(substitute-key-definition 'backward-delete-char-untabify
-			   'cemacs-backward-delete-char-untabify global-map)
-)
+  (substitute-key-definition 'forward-char
+			     'cemacs-forward-char global-map)
+  (substitute-key-definition 'backward-char
+			     'cemacs-backward-char global-map)
+  (substitute-key-definition 'delete-char
+			     'cemacs-delete-char global-map)
+  (substitute-key-definition 'delete-backward-char
+			     'cemacs-backward-delete-char global-map)
+  (substitute-key-definition 'backward-delete-char
+			     'cemacs-backward-delete-char global-map)
+  (substitute-key-definition 'backward-delete-char-untabify
+			     'cemacs-backward-delete-char-untabify global-map)
+  )
 (substitute-key-definition 'next-line
 			   'cemacs-next-line global-map)
 (substitute-key-definition 'previous-line
