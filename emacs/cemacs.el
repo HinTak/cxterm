@@ -995,7 +995,7 @@ SPACING spaces between adjacent Chinese characters."
 		(while (and (not (eobp)) ; erase 1st few spaces
 			    (= (char-after (point)) ?\ ))
 		  (delete-char 1))
-		; check 1st ascii chunk aliagnment
+ 		; check 1st ascii chunk aliagnment
  		(if (and (not (eobp))
 			 (< (char-after (point)) 160))
 		    (if (catch 'alignment-required
